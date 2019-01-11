@@ -132,7 +132,7 @@
 	<div id="students"></div></div> -->
 	
 	<div class="col-md-6">
-	<h3>Fee Collection </h3>
+	<h3>Collection </h3>
 	<div id="chartdiv1"></div></div>
 	
 	<div class="col-md-6">

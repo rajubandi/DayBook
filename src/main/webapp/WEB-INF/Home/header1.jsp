@@ -10,7 +10,7 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		 <link rel="shortcut icon" href="img/logo (1).png">
+		 <link rel="shortcut icon" href="img/daybookshort.png">
 		<script src="js/moment.min.js"></script>
 		<!-- <title>Vijnana Vihara Nutakki</title> -->
 		<title>Day-Book</title>
@@ -327,6 +327,7 @@ session.setAttribute("url", url);
 <!-- 							<li><a href="academicYearHome"><span>Academic Year Creation</span></a></li> -->
 							<li><a href="addAccountHead"><span>Day-Book Catagories</span></a></li>
 							<li><a href="ledger"><span>Ledger</span></a></li>
+							<li><a href="collections"><span>Collections</span></a></li>
 							<li><a href="dailyFeesCollection"><span>Daily Collection</span></a></li>
 <!-- 							<li><a href="studentFeeHome"><span>Collection</span></a></li> -->
 							<li><a href="reports"><span>Reports</span></a></li>

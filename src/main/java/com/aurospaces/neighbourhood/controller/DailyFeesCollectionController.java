@@ -44,8 +44,7 @@ public class DailyFeesCollectionController {
 		List<Map<String,Object>> dfcList = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-		session.setAttribute("activeAcademicYearId", academicYearId);
+		
 		try{
 			dfcList = studentFeeDao.dfCollection();
 			

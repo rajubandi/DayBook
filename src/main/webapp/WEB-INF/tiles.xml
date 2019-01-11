@@ -388,6 +388,9 @@
 	<definition name= "studentPromotion" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/studentPromotion.jsp" />
 	</definition>
+	<definition name="collections" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/collections.jsp" />
+	</definition>
 </tiles-definitions>
 
 

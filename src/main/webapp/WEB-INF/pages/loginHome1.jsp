@@ -4,7 +4,7 @@
 <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<link rel="shortcut icon" href="img/logo (1).png">
+		<link rel="shortcut icon" href="img/daybookshort.png">
 		<!-- <title>Vijnana Vihara Nutakki</title> -->
 <title>Day-Book</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
@@ -77,13 +77,13 @@ var isClick = 'No';
 							<div class="col-lg-4 col-md-4 hidden-sm hidden-xs"></div>
 							
 							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 fadeInDown animated">
-								<div class="blog lf">
+								<!-- <div class="blog lf">
 									<div class="blog-header" align="center" style="height:89px;background: #dedede;">
-										<!-- <img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
-										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b> -->
-<!-- 										<img src="img/loginp.png" align="middle" style="height: ;" alt="viekananda" class="img-responsive"> -->
-										&nbsp; &nbsp; &nbsp; <!-- <b style="font-size: 25px;color: white !important">GRETNALTES</b> -->
-									</div>
+										<img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
+										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b>
+										<img src="img/loginp.png" align="middle" style="height: ;" alt="viekananda" class="img-responsive">
+										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">GRETNALTES</b>
+									</div> -->
 									<div class="blog-body" id="loginFormDiv">
 
 										<form id="login-form" action="LoginHome1" method="post" class="form-horizontal" role="form">
