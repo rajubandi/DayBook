@@ -13,6 +13,7 @@
 # Log file
 *.log
 
+Users/*
 # BlueJ files
 *.ctxt
 
