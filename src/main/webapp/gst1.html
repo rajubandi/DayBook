@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>GST Invoice</title>
+<link rel="stylesheet" href="css/style1.css"/>
+<link href="fonts/font-awesome.min.css" rel="stylesheet" />
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+
+table #dependent_table{
+	width: 100%;
+	counter-reset: rowNumber;
+}
+
+table tbody tr.rowInc{
+	counter-increment: rowNumber;
+}
+
+table#dependent_table tbody tr td:first-child::before {
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+}
+
+.your-class::-webkit-input-placeholder {color: red !important;}
+.your-class::-moz-placeholder {color: red !important;}
+
+.default-class::-webkit-input-placeholder {color: red !important;}
+.default-class::-moz-placeholder {color: red !important;}
+
+</style>
+</head>
+<body>
+<header>
+
+  <h1 id="testId">Charvikent ITES Pvt. Ltd.,<br>
+    <address >
+    <p>#405, Manga Enclave, Near Bose Statue</p>
+    <p>4th Line, AT. Agraharam, Guntur - 4</p>
+    <p>Ph No: 0863 6550655</p>
+    </address>
+  </h1>
+  <form action="submitGST" method="post">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><h3>GST No: 3EDTLNU564FL6KD</h3></td>
+      <td class="bgcolor"><h5>INVOICE</h5></td>
+      <td><h4>PAN No: 3EDTLNU564FL6KD</h4></td>
+    </tr>
+  </table>
+</header>
+<article>
+  <address >
+  <span>Customer Details</span>
+  <div>
+    <textarea name="customer_address" cols="" rows="6"></textarea>
+  </div>
+  </address>
+  <table class="meta">
+    <tr>
+      <th><span >Invoice #</span></th>
+      <td><input name="invoiceNumber" type="text"></td>
+    </tr>
+    <tr>
+      <th><span >Invoice Date</span></th>
+      <td><input name="invoiceDate" type="text"></td>
+    </tr>
+    <tr>
+      <th><span >Party Pan #</span></th>
+      <td><input name="partyPan" type="text"></td>
+    </tr>
+    <tr>
+      <th><span >Party GST #</span></th>
+      <td><input name="partyGst" type="text"></td>
+    </tr>
+    <tr>
+      <th><span >Party's State</span></th>
+      <td><input name="partyState" type="text"></td>
+    </tr>
+  </table>
+ 
+
+<table>
+ <tr>
+ <td> 
+  <span onclick="addMoreRowsForDependent(this.form);" >
+	Add Row
+</span>
+</td>
+</tr>
+</table>
+
+  <table class="inventory" id="dependent_table">
+    <thead>
+      <tr>
+        <th rowspan="2" style="width:20px"><span >Sl.<br />
+          No</span></th>
+        <th rowspan="2" style="width:200px"><span >Product Description</span></th>
+        <th rowspan="2">HSE/SAC Code</th>
+        <th rowspan="2">Qty</th>
+        <th rowspan="2">Unit</th>
+        <th rowspan="2">Rate</th>
+        <th rowspan="2">Total Sale</th>
+        <th rowspan="2">Disc</th>
+        <th rowspan="2">Taxable<br>
+          Value</th>
+        <th colspan="2">CGST</th>
+        <th colspan="2">SGST</th>
+        <th colspan="2">IGST</th>
+      </tr>
+      <tr>
+        <th>%</th>
+        <th>Amt</th>
+        <th>%</th>
+        <th>Amt</th>
+        <th>%</th>
+        <th>Amt</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr id="1" class="rowInc">
+						<td class="labelCss"></td>
+						<td class="inputCss"><input name="pdescription" tabindex="1"  id="1pdescription" type="text" onkeydown="removeBorder(this.id);" class="form-control " /></td>
+						<td class="inputCss"><input name="code" id="1code"  tabindex="2" type="text" onkeydown="removeBorder(this.id);" class="form-control" /></td>
+						<td class="inputCss"><input name="qty" id="1qty"  tabindex="3" type="text" onkeydown="removeBorder(this.id);" class="form-control numericOnly" onblur="allcalculate(this.id)" /></td>
+						<td class="inputCss"><input name="unit" id="1unit"  tabindex="4" type="text" onkeydown="removeBorder(this.id);" class="form-control" /></td>
+						<td class="inputCss"><input name="rate" id="1rate"  tabindex="5" type="text" onkeydown="removeBorder(this.id);" onkeyup="totalValue(this.id)" onblur="allcalculate(this.id)" class="form-control numericOnly" /></td>
+						<td class='labelCss'><input name="totalvalue" value="0" id="1totalvalue" type="text" onkeydown="removeBorder(this.id);" class="form-control" readonly="readonly"/></td>
+						<td class="inputCss"><input name="discount" id="1discount" tabindex="6" type="text" onkeydown="removeBorder(this.id);" onkeyup="discountValue(this.id)" onblur="allcalculate(this.id)" class="form-control numericOnly" /></td>
+						<td class="labelCss"><input name="taxable" value="0" id="1taxable" type="text" onkeydown="removeBorder(this.id);" class="form-control" readonly="readonly"/></td>
+						<td class="inputCss"><input name="CGSTp" id="1CGSTp" tabindex="7"  type="text" onkeydown="removeBorder(this.id);" class="form-control numericOnly" onkeyup="CGSTp(this.id)" onblur="allcalculate(this.id)" /></td>
+						<td class="labelCss"><input name="CGSTa" value="0" id="1CGSTa" type="text" onkeydown="removeBorder(this.id);" class="form-control numericOnly" readonly="readonly"/></td>
+						<td class="inputCss"><input name="SGSTp" id="1SGSTp" type="text"  tabindex="8" onkeydown="removeBorder(this.id);" class="form-control numericOnly" onkeyup="SGSTp(this.id)"  onblur="allcalculate(this.id)"/></td>
+						<td class="labelCss"><input name="SGSTa" value="0" id="1SGSTa" type="text" onkeydown="removeBorder(this.id);" class="form-control numericOnly" readonly="readonly"/></td>
+						<td class="inputCss"><input name="IGSTp" id="1IGSTp" type="text"  tabindex="9"  onkeydown="removeBorder(this.id);" class="form-control numericOnly" onkeyup="IGSTp(this.id)"  onblur="allcalculate(this.id)"/></td>
+						<td class="labelCss"><input name="IGSTa" value="0"  id="1IGSTa" type="text" onkeydown="removeBorder(this.id);" class="form-control numericOnly" readonly="readonly"/></td>
+					</tr>
+		</tbody>
+      <tfoot>
+      <tr>
+        <th colspan="6"><h3 align="right">Total</h3></th>
+        <th class="labelCss"><span class="totalInvoiceValue"></span></th>
+		<th class="labelCss"><span class="totalDiscounts"></span></th>
+		<th class="labelCss"><span class="totalTaxableValue"></span></th>
+		<th class="labelCss"></th>
+		<th class="labelCss"><span class="totalCGST"></span></th>
+		<th class="labelCss"></th>
+		<th class="labelCss"><span class="totalSGST"></span></th>
+		<th class="labelCss"></th>
+		<th class="labelCss"><span class="totalIGST"></span></th>
+      </tr>
+     </tfoot>
+    
+  </table>
+ 
+  
+  
+  <table class="balance1">
+    <tr>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td><input name="" type="text"></td>
+    </tr>
+    <tr >
+      <td style="text-align:left"><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        Customer's Signature</td>
+      <td style="text-align:left"><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        Authorised Signature</td>
+    </tr>
+  </table>
+  <table class="balance">
+    <tr>
+      <th>Total Invoice value </th>
+      <td><span class="totalInvoiceValue"></td>
+    </tr>
+    <tr>
+      <th>Total Discounts </th>
+      <td><span class="totalDiscounts"></span></td>
+    </tr>
+    <tr>
+      <th>Total Taxable value </th>
+      <td><span class="totalTaxableValue"></span></td>
+    </tr>
+    <tr>
+      <th>Total CGST</th>
+      <td><span class="totalCGST"></span></td>
+    </tr>
+    <tr>
+      <th>Total SGST</th>
+      <td><span class="totalSGST"></span></td>
+    </tr>
+    <tr>
+      <th>Total IGST</th>
+      <td><span class="totalIGST"></span></td>
+    </tr>
+    <tr>
+      <th>Grand Total</th>
+      <td><span class="grandTotal"></span></td>
+    </tr>
+  </table>
+  
+</article>
+<input type="submit" id="submitId" class="notPrintMe" onclick="validateGSTForm()" style="width:20%;color :red;text-align:center;margin-left: 25em;"/>
+  </form><br></br>
+  <input type="button" id="printId" class="notPrintMe" value="print" onclick="printInvoice()" class="notPrintMe" style="width:20%;color :red;text-align:center;margin-left: 25em;"/>
+  <br></br>
+  <br></br>
+  <a class="notPrintMe" style="width:20%;color :red;text-align:center;margin-left: 25em;" href="gstList"> GST List</a>
+<aside>
+  <h3>Notes</h3>
+  <div class="notes">
+    <p>Note: Make all cheques payable to Company Name<br />
+      Thank you for your Business</p>
+  </div>
+</aside><br />
+<br />
+<br />
+<br />
+
+</body>
+<script>
+
+$( document ).ready(function() {
+	var testId = $("#testId").text();
+	$.ajax({
+		type : "POST",
+		url : "securityCheck.json",
+		data : "testId=" + testId ,
+		success : function(response) {
+		},
+		error : function(e) {
+		}
+	});
+});
+
+var dependentRowCount = 1;
+var validates = true;
+var rowvalidate = false;
+
+function addMoreRowsForDependent() {
+	rowvalidate =false;
+	var rowid =$('#dependent_table tbody tr:last').attr('id');
+	console.log(rowid);
+	    var number = parseInt(rowid.match(/[0-9]+/)[0], 10);
+	    var qty = $('#'+number+'qty').val();
+
+	    if(qty == "" || qty == null || qty == "undefined")
+	    {
+	//	        	alert("Please Enter Name");
+	    	$('#'+number+'qty').css('color','red');
+	    	$('#'+number+'qty').css("border-color","#e73d4a");
+	    	$('#'+number+'qty').attr("placeholder","Enter Quantity");
+	    	$('#'+number+'qty').addClass('your-class');
+	    	$('#'+number+'qty').focus();
+	    	rowvalidate = true;
+	    	return false;
+	}
+	dependentRowCount++;
+	var dependentRow1 = '<tr class="rowInc" role="row" id="'+dependentRowCount+'">'
+			+ '<td class="labelCss"></td>' +
+			'<td class="inputCss"><input tabindex="1" name="pdescription" id="'
+			+ dependentRowCount
+			+ 'pdescription" type="text" class="form-control" onkeydown="removeBorder(this.id);" required="required"/></td>'
+			+ '<td class="inputCss"><input tabindex="2" name="code" id="'
+			+ dependentRowCount
+			+ 'code" type="text" class="form-control" onkeydown="removeBorder(this.id);" required="required"/></td>'
+			+ '<td class="inputCss"><input tabindex="3" name="qty" id="'
+			+ dependentRowCount
+			+ 'qty" type="text" class="form-control numericOnly" onkeydown="removeBorder(this.id);" onblur="allcalculate(this.id)" required="required"/></td>'
+			+ '<td class="inputCss"><input name="unit" id="'
+			+ dependentRowCount
+			+ 'unit" type="text" value="Piece(s)/Item(s)" class="form-control" onkeydown="removeBorder(this.id);"/></td>'
+			+ '<td class="inputCss"><input tabindex="4" name="rate" id="'
+			+ dependentRowCount
+			+ 'rate" type="text" class="form-control numericOnly" onkeydown="removeBorder(this.id);" onkeyup="totalValue(this.id)" onblur="allcalculate(this.id)" required="required"/></td>'
+			+ '<td class="labelCss"><input name="totalvalue" id="'
+			+ dependentRowCount
+			+ 'totalvalue" value="0" type="text"  class="form-control" onkeydown="removeBorder(this.id);" readonly="readonly"/></td>'
+			+ '<td class="inputCss"><input name="discount" id="'
+			+ dependentRowCount
+			+ 'discount" type="text" value="0.00" class="form-control numericOnly" onkeydown="removeBorder(this.id);" onkeyup="discountValue(this.id)" onblur="allcalculate(this.id)"/></td>'
+			+ '<td class="labelCss"><input name="taxable" id="'
+			+ dependentRowCount
+			+ 'taxable" value="0" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" readonly="readonly"/></td>'
+			+ '<td class="inputCss"><input name="CGSTp" id="'
+			+ dependentRowCount
+			+ 'CGSTp" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" onkeyup="CGSTp(this.id)" onblur="allcalculate(this.id)" /></td>'
+			+ '<td class="labelCss"><input name="CGSTa" id="'
+			+ dependentRowCount
+			+ 'CGSTa" value="0" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" readonly="readonly"/></td>'
+			+ '<td class="inputCss"><input name="SGSTp" id="'
+			+ dependentRowCount
+			+ 'SGSTp" type="text"  class="form-control" onkeydown="removeBorder(this.id);" onkeyup="SGSTp(this.id)"onblur="allcalculate(this.id)" /></td>'
+			+ '<td class="labelCss"><input name="SGSTa" id="'
+			+ dependentRowCount
+			+ 'SGSTa" value="0" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" readonly="readonly"/></td>'
+			+ '<td class="inputCss"><input name="IGSTp" id="'
+			+ dependentRowCount
+			+ 'IGSTp" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" onkeyup="IGSTp(this.id)" onblur="allcalculate(this.id)" /></td>'
+			+ '<td class="labelCss"><input name="IGSTa" id="'
+			+ dependentRowCount
+			+ 'IGSTa" value="0" type="text"  class="form-control numericOnly" onkeydown="removeBorder(this.id);" readonly="readonly"/></td>'
+			+ "<th class='labelCss' style='width: 10px;'><a href='javascript:void(0);' style='color: red;' onclick='removeDependentRow("
+			+ dependentRowCount + ");'><i class='fa fa-trash' style='padding-top: 10px;color: red;text-decoration: none;cursor: pointer;'></i></a></th>" +
+			 + "</tr>";
+	$(dependentRow1).appendTo("#dependent_table");
+}
+
+function removeDependentRow(dependentRowCount) {
+	jQuery('#' + dependentRowCount).remove();
+	priceCalculator();
+	
+	
+}
+function removeBorder(el) {
+	$("#" + el).css("border", "");
+	$("#" + el).css('color', 'black');
+	$('#' + el).addClass('default-class');
+}
+function validateGSTForm(){
+	if( $('#1qty').val().length == 0 || $('#1qty').val() ==" " || $('#1qty').val()=="undefined")
+	{												   
+		if($('#1qty').val().length == 0 || $('#1qty').val() =="" || $('#1qty').val()=="undefined")
+		{
+		    $('#1qty').css('color','red');
+		    $("#1qty").css("border-color","#e73d4a");
+		    $("#1qty").attr("placeholder","Enter Quantity");
+		    $('#1qty').addClass('your-class');
+		    $('#1qty').focus();
+	    }
+		return false;
+	}
+	validates = false;
+  	addMoreRowsForDependent();
+  	if(!rowvalidate )
+  	{
+		$('#gstForm').attr('action',"submitGST");
+		$("#gstForm").submit();
+	}
+}
+
+function allcalculate(id){
+	
+	
+	var total1 = 0.00;
+	var qty =0.00;
+	var rate =0.00;
+	var total = 0.00;
+	var discount= 0.00;
+	var CGSTp =0.00;
+	var taxable = 0.00;
+	var SGSTp =0.00;
+	var IGSTp = 0.00;
+	
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	 qty = $('#' + number + 'qty').val();
+	 rate = $('#' + number + 'rate').val();
+	total1 = qty * rate;
+
+	taxable = $('#' + number + 'taxable').val();
+	
+	$('#' + number + 'totalvalue').val(total1);
+	
+	 total = $('#' + number + 'totalvalue').val();
+	 discount = $('#' + number + 'discount').val();
+	var result = total - discount;
+	$('#' + number + 'taxable').val(result);
+	
+	 CGSTp = $('#' + number + 'CGSTp').val();
+	 
+	var result = taxable * (CGSTp / 100);
+	$('#' + number + 'CGSTa').val(result);
+	
+	 SGSTp = $('#' + number + 'SGSTp').val();
+	var result = taxable * (SGSTp / 100);
+	$('#' + number + 'SGSTa').val(result);
+	
+	IGSTp = $('#' + number + 'IGSTp').val();
+	var result = taxable * (IGSTp / 100);
+	$('#' + number + 'IGSTa').val(result);
+	
+	priceCalculator();
+}
+function totalValue(id) {
+	var total = 0.00;
+	var qty =0.00;
+	var rate =0.00;
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	 qty = $('#' + number + 'qty').val();
+	 rate = $('#' + number + 'rate').val();
+	total = qty * rate;
+	$('#' + number + 'totalvalue').val(total);
+}
+function discountValue(id) {
+	var total = 0.00;
+	var discount= 0.00;
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	total = $('#' + number + 'totalvalue').val();
+	discount = $('#' + number + 'discount').val();
+	var result = total - discount;
+	$('#' + number + 'taxable').val(result);
+}
+function CGSTp(id) {
+	var CGSTp =0.00;
+	var taxable = 0.00;
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	 CGSTp = $('#' + number + 'CGSTp').val();
+	taxable = $('#' + number + 'taxable').val();
+	var result = taxable * (CGSTp / 100);
+	$('#' + number + 'CGSTa').val(result);
+}
+function SGSTp(id) {
+	var taxable = 0.00;
+	var SGSTp =0.00;
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	SGSTp = $('#' + number + 'SGSTp').val();
+	taxable = $('#' + number + 'taxable').val();
+	var result = taxable * (SGSTp / 100);
+	$('#' + number + 'SGSTa').val(result);
+}
+function IGSTp(id) {
+	var taxable = 0.00;
+	var IGSTp = 0.00;
+	var number = parseInt(id.match(/[0-9]+/)[0], 10);
+	 IGSTp = $('#' + number + 'IGSTp').val();
+	taxable = $('#' + number + 'taxable').val();
+	var result = taxable * (IGSTp / 100);
+	$('#' + number + 'IGSTa').val(result);
+}
+function priceCalculator(){
+	var globelTotalValue = 0.00;
+	var globalDiscount = 0.00;
+	var globalTaxable = 0.00;
+	var globalTotalCGST = 0.00;
+	var globalTotalSGST = 0.00;
+	var globalTotalIGST = 0.00;
+	var grandTotal = 0.00;
+	var array = $.makeArray($('tbody tr[id]').map(function() {
+		  return this.id;
+		}));
+		console.log(array);
+	 for(var i=0;i<array.length;i++){
+	
+		$(".totalInvoiceValue").text('');
+		$(".totalDiscounts").text('');
+		$(".totalTaxableValue").text('');
+		$(".totalCGST").text('');
+		$(".totalSGST").text("");
+		$(".totalIGST").text("");
+		var discount = 0.00;
+		var total = 0.00;
+		var taxable = 0.00;
+		var CGST =0.00;
+		var SGST = 0.00;
+		var IGST = 0.00;
+		 total = $('#' + array[i] + 'totalvalue').val();
+		globelTotalValue = globelTotalValue + parseFloat(total);
+		
+		 discount = $('#' + array[i] + 'discount').val();
+		 if(discount == ""){
+			 discount = 0.00;
+		 }
+		globalDiscount = globalDiscount + parseFloat(discount);
+		
+		taxable = $('#' + array[i] + 'taxable').val();
+		globalTaxable = globalTaxable+parseFloat(taxable);
+		
+		CGST = $('#' + array[i] + 'CGSTa').val();
+		globalTotalCGST = globalTotalCGST+parseFloat(CGST);
+		
+		SGST= $('#' + array[i] + 'SGSTa').val();
+		globalTotalSGST = globalTotalSGST+parseFloat(SGST);
+		
+		IGST= $('#' + array[i] + 'IGSTa').val();
+		globalTotalIGST = globalTotalIGST+parseFloat(IGST);
+		
+		$(".totalInvoiceValue").text(globelTotalValue.toFixed(2));
+		$(".totalDiscounts").text(globalDiscount.toFixed(2));
+		$(".totalTaxableValue").text(globalTaxable.toFixed(2));
+		$(".totalCGST").text(globalTotalCGST.toFixed(2));
+		$(".totalSGST").text(globalTotalSGST.toFixed(2));
+		$(".totalIGST").text(globalTotalIGST.toFixed(2));
+		
+	 }
+	 grandTotal = globalTaxable+globalTotalCGST+globalTotalSGST+globalTotalIGST;
+	 $(".grandTotal").text(grandTotal.toFixed(2));
+}
+
+function printInvoice(){
+	$(".notPrintMe").hide();
+	/* $("#printId").hide();
+	$(".notes").show(); */
+	window.print();
+	$(".notPrintMe").show();
+	/* $("#submitId").show();
+	$("#printId").show(); */
+}
+</script>
+</html>

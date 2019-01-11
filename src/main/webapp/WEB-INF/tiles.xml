@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/Home/home.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/Home/header1.jsp" />
+		<!-- <put-attribute name="menu" value="/WEB-INF/Home/menu.jsp" /> -->
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/Home/footer1.jsp" />
+	
+	</definition>
+
+	<!-- Login -->
+	<definition name="loginHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/login.jsp" />
+	</definition>
+	<!-- <definition name="partnerLoginHome" extends="base.definition"> <put-attribute 
+		name="body" value="/WEB-INF/pages/partnerLogin.jsp" /> </definition> -->
+	<!-- Exception page -->
+	<definition name="ExceptionsHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/ErrorPages/genericError.jsp" />
+	</definition>
+	<!-- Category -->
+	<definition name="newadminHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/newAdminAllOrders.jsp" />
+	</definition>
+	<definition name="catHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/category.jsp" />
+	</definition>
+	<definition name="otp" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/otp.jsp" />
+	</definition>
+	<definition name="vendorDetails" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/vendorDetails.jsp" />
+	</definition>
+	<definition name="packageHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/packageInsertion.jsp" />
+	</definition>
+	<!-- Servvice -->
+	<definition name="serHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/services.jsp" />
+	</definition>
+	<!-- vendorProfileHome -->
+	<definition name="vendorProfileHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/vendorProfile.jsp" />
+	</definition>
+	<!-- vendorHome -->
+	<definition name="vendorHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/vendorRegistration.jsp" />
+	</definition>
+
+	<!-- Experience Home -->
+	<definition name="CustomerHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/customer.jsp" />
+	</definition>
+
+	<!-- vendorHome -->
+	<definition name="ExperienceHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/experience.jsp" />
+	</definition>
+	<!-- customerLoginHome -->
+	<definition name="customerLoginHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/customerLogin.jsp" />
+	</definition>
+	<!-- StatusHome -->
+	<definition name="statusHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/status.jsp" />
+	</definition>
+	<!-- TypeHome -->
+	<definition name="TypeHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/type.jsp" />
+	</definition>
+	<!-- Medicine Order -->
+	<definition name="medicineOrderHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/medicineOrder.jsp" />
+	</definition>
+	<!-- Doctor Details -->
+	<definition name="doctorHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/doctorDetails.jsp" />
+	</definition>
+	<!-- Order Details -->
+	<definition name="orderHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/allOrders.jsp" />
+	</definition>
+	<!-- medicine Inventory -->
+	<definition name="medicineInventoryHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/medicineInventory.jsp" />
+	</definition>
+
+	<!-- Pathology Details -->
+	<definition name="pathologyHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/pathologyVendor.jsp" />
+	</definition>
+
+	<!-- pathologyTestHome -->
+	<definition name="pathologyTestHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/PathologyTest.jsp" />
+	</definition>
+
+	<!-- Vendor Order -->
+	<definition name="vendorOrder" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/vendorOrder.jsp" />
+	</definition>
+
+	<!-- Customer Order -->
+	<definition name="customerOrder" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/customerOrder.jsp" />
+	</definition>
+	<!-- vendor order tracking -->
+	<definition name="ordertracking" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/ordertracking.jsp" />
+	</definition>
+	<!-- Pathology Booking -->
+	<definition name="pathologyBook" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/pathologyDetails.jsp" />
+	</definition>
+	<!-- Pathology Order -->
+	<definition name="pathologyHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/pathologyOrder.jsp" />
+	</definition>
+
+	<definition name="TimeSlotHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/timeSlot.jsp" />
+	</definition>
+	<definition name="adminOrderHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/adminAllOrders.jsp" />
+	</definition>
+	<definition name="pageHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/pages.jsp" />
+	</definition>
+	<definition name="locationHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/location.jsp" />
+	</definition>
+	<!-- Pathology Inventory -->
+	<definition name="pathologyInventoryHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/pathologyInventory.jsp" />
+	</definition>
+
+	<!-- Pathology Inventory -->
+	<definition name="imagesDisplay" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/imagesDisplay.jsp" />
+	</definition>
+
+	<!-- pathologyPackageHome -->
+	<definition name="pathologyPackageHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/pathologyPackage.jsp" />
+	</definition>
+	<!-- adminOrderBooking -->
+	<definition name="adminBooking" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/adminOrderBooking.jsp" />
+	</definition>
+	<!-- pathologyPackageHome -->
+	<definition name="imageUpload" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/imageUpload.jsp" />
+	</definition>
+	<!-- pathologyPackageHome -->
+	<definition name="couponHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/couponCode.jsp" />
+	</definition>
+	<definition name="coHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/coupon.jsp" />
+	</definition>
+	<!-- vendor location home -->
+	<definition name="vendorLocationHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/vendorLocation.jsp" />
+	</definition>
+	<!-- vendor location home -->
+	<definition name="partnerReg" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/partnerReg.jsp" />
+	</definition>
+
+	<!-- un assigned order home monthlyOrdersHome -->
+	<definition name="unassignedOrederHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/unassignOrder.jsp" />
+	</definition>
+	<definition name="invoiceGenerateHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/totalNetAmoutnt.jsp" />
+	</definition>
+
+	<!-- monthlyOrdersHome -->
+	<definition name="monthlyOrdersHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/monthlyOrders.jsp" />
+	</definition>
+	<!-- weeklyOrdersHome -->
+	<definition name="weeklyOrdersHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/weeklyOrders.jsp" />
+	</definition>
+
+	<definition name="grapicHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/grapicDesign.jsp" />
+	</definition>
+
+	<definition name="bulkbookingHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/bulkbooking.jsp" />
+	</definition>
+	<definition name="userReg" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/users.jsp" />
+	</definition>
+	<!-- revenueReportHome -->
+	<definition name="revenueReportHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/revenueReport.jsp" />
+	</definition>
+	<definition name="openOrederHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/openOrders.jsp" />
+	</definition>
+	<definition name="closedOrederHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/closedOrders.jsp" />
+	</definition>
+	<definition name="assignedOrederHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/assignedOrders.jsp" />
+	</definition>
+	<!-- client booking -->
+	<definition name="clientBookingHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/clientBooking.jsp" />
+	</definition>
+	<definition name="dailyOrdersHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/dailyReports.jsp" />
+	</definition>
+	<definition name="ServiceReportHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/serviceReport.jsp" />
+	</definition>
+	<definition name="VenSummaryReportHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/vendorSummary.jsp" />
+	</definition>
+	<definition name="VendorDetailReportHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/vendrDetailReport.jsp" />
+	</definition>
+	<definition name="clientServiceReportHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/clientserviceReport.jsp" />
+	</definition>
+
+
+	<!-- csvPackageInsertHome -->
+	<definition name="csvPackageInsertHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/csvPackageInsert.jsp" />
+	</definition>
+	<!-- custmerBankDetails -->
+	<definition name="customerBankDetails" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/customerBankDetails.jsp" />
+	</definition>
+
+	<!-- client Transactins Details -->
+	<definition name="clientTransactionHome" extends="base.definition">
+		<put-attribute name="body"
+			value="/WEB-INF/pages/clientTransactions.jsp" />
+	</definition>
+
+	<definition name="academicYearHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/academicYear.jsp" />
+	</definition>
+	<definition name="dashBoard" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/dashboard.jsp" />
+	</definition>
+	<definition name="ledger" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/ledger.jsp" />
+	</definition>
+	<definition name="feeDefination" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/homejsp.jsp" />
+	</definition>
+	<definition name="addclass" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/homejsp.jsp" />
+	</definition>
+	<definition name="facultyHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/faculty.jsp" />
+	</definition>
+	<definition name="facultyAddStudent" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/facultyAddStudent.jsp" />
+	</definition>
+	
+	<definition name="studentHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/student1.jsp" />
+	</definition>
+	<definition name="attendanceHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/attendanceHome.jsp" />
+	</definition>
+	<definition name="examSchedule" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examSchedule.jsp" />
+	</definition>
+	<definition name="changePasswordHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/changePassword.jsp" />
+	</definition>
+		<definition name="adminChangePasswordHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/adminChangePassword.jsp" />
+	</definition>
+
+	<definition name="ImportStudent" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/importAtudent.jsp" />
+	</definition>
+
+	<definition name="facultySubject" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/facultySubject.jsp" />
+	</definition>
+	<definition name="viewStudent" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/viewStudent.jsp" />
+	</definition>
+	<definition name="viewAttendance" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/viewAttendance.jsp" />
+	</definition>
+	<definition name="studentFeeHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studentFee.jsp" />
+	</definition>
+	<definition name="userStudentFeeHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/userStudentFee.jsp" />
+	</definition>
+	<definition name="viewStudentFee" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/viewStudentFee.jsp" />
+	</definition>
+	<definition name="eventsHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/eventsHome.jsp" />
+	</definition>
+	<definition name="ExportStudent" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/export.jsp" />
+	</definition>
+	<definition name="viewEventsHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/viewEvents.jsp" />
+	</definition>
+	<definition name="subjectHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/subjectCreation.jsp" />
+	</definition>
+	<definition name="examType" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examType.jsp" />
+	</definition>
+	<definition name="examPattern" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examPattern.jsp" />
+	</definition>
+	
+	<definition name="boardHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/boardCreation.jsp" />
+	</definition>
+	
+	<definition name="classHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/classCreation.jsp" />
+	</definition>
+	<definition name="sectionHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/section.jsp" />
+	</definition>
+	<definition name="mediumHome" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/medium.jsp" />
+	</definition>
+	<definition name="classSubjects" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/addClassSubjects.jsp" />
+	</definition>
+	<definition name="examMarks" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/examMarks.jsp" />
+	</definition>
+	<definition name="hallticket" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/hallticket1.jsp" />
+	</definition>
+	<definition name="studentMarks" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studentMarks.jsp" />
+	</definition>
+	
+	<definition name="studenttimetable" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studenttimetable.jsp" />
+	</definition>
+	<definition name="addAccountHead" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/addAccountHead.jsp" />
+	</definition>
+	<definition name="busRouteFee" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/busRoute.jsp" />
+	</definition>
+	<definition name="addBusRoute" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/addBusRoute.jsp" />
+	</definition>
+	<definition name="reports" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/reports.jsp" />
+	</definition>
+	<definition name= "dailyFeesCollection" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/dailyFeesCollection.jsp" />
+	</definition>
+	<definition name= "studentPromotion" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/studentPromotion.jsp" />
+	</definition>
+</tiles-definitions>
+
+

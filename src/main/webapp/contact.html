@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Begin Inspectlet Embed Code -->
+<script type="text/javascript" id="inspectletjs">
+window.__insp = window.__insp || [];
+__insp.push(['wid', 26443257]);
+(function() {
+function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+})();
+</script>
+<!-- End Inspectlet Embed Code -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aurospaces</title>
+	<link rel="shortcut icon" href="images/ico/favicon.ico"> 
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+function customerfeedback(){
+	if($('#phoneno').val().length == 0 || $('#message').val().length == 0){
+	if($('#phoneno').val().length == 0 ) {
+	    $('#phoneno').css('color','red');
+	    $("#phoneno").css("border-color","red");
+	    $("#phoneno").attr("placeholder","Please enter email or mobile number");
+	    $('#phoneno').addClass('your-class');
+	}
+	if($('#message').val().length == 0 ) {
+	    $('#message').css('color','red');
+	    $("#message").css("border-color","red");
+	    $("#message").attr("placeholder","Please leave your message");
+	    $('#message').addClass('your-class');
+	       }
+	 return false;
+	}
+	$('#phoneno').css('color','black');
+	$("#phoneno").css("border-color","black");
+	contactNum=$("#phoneno").val();
+	var p=contactNum.indexOf("@");
+	if(p !== -1){
+	m_pat=/^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+	if(!m_pat.test(contactNum))
+	{
+		$("#contactMessage").text("Enter valid email");
+		//$("#emailId").focus();
+		 $('#phoneno').css('color','red');
+		    $("#phoneno").css("border-color","red");
+	return false;
+	}
+	}else{
+	if(contactNum.charAt(0) == '+'){
+		m_pat=/^[6-9,+][0-9]{12}$/;
+		if(!m_pat.test(contactNum))
+		{
+			$("#contactMessage").text("Enter valid mobile number");
+		//	$("#contactNum").focus();
+			 $('#phoneno').css('color','red');
+			    $("#phoneno").css("border-color","red");
+		return false;
+		}else{
+			$("#contactMessage").text(" ");
+		}
+	}
+	contactNum = contactNum.slice(-10);
+	m_pat=/^[6-9,+][0-9]{9}$/;
+	if(!m_pat.test(contactNum))
+	{
+		$("#contactMessage").text("Enter valid mobile number");
+		//$("#contactNum").focus();
+		 $('#phoneno').css('color','red');
+		    $("#phoneno").css("border-color","red");
+	return false;
+	}else{
+		$("#contactMessage").text(" ");
+	}
+	}
+	
+		document.getElementById("addForm").submit();
+}
+function removeWarnig(){
+	$("#contactMessage").text(" ");
+}
+</script>
+</head>
+<body>
+
+    <div class="header1">
+        <div class="container-main">
+            <div class="logo">
+                <a href="auroHome.htm">
+                    <img src="images/logo.png" alt="logo image" />
+                    <div class="name">
+                        <h3>Aurospaces</h3>
+                        <div class="clearfix"></div>
+                        <p>One space for all services</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-main">
+        
+        
+        <div class="col-md-6 col-sm-6 contact">
+        
+           <h2>Let us know your feedback</h2>
+           <form id="addForm" action="emailFeedback.htm" method='post'>
+            <div class="clearfix">&nbsp;</div>
+            <input type="text" id="phoneno" name="phone"  autocomplete="off" placeholder="Enter email or phone no" role="textbox" class="form form-control" onkeyup="removeBorder(this.id),removeWarnig();">
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix hidden-xs">&nbsp;</div>
+            <textarea rows="6" role="contentinfo" id="message" name ="message" placeholder="Leave your sweet message here" class="form-control" onkeyup="removeBorder(this.id)"></textarea>
+            <div class="alert-danger " id="contactMessage" style="padding-left: 60px;">
+		</div>
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix hidden-xs">&nbsp;</div>
+            <!-- <form name="folderForm">
+                   <input type=file name="file">
+                   <input type=text name="folderLocation">
+                   <input type=button value="Get Folder" onclick="javascript:GetFolder();">
+           </form> -->
+           <!-- <input type="file" name="filename" id="filename-input" value="browse" size="18" style="float: right; width: 250px;"> -->
+            
+            <div class="col-md-12 no-pad"> <a href="javascript:;" class="btn btn1 btn-primary btn-lg btn-block" type="button" onclick="customerfeedback();">Submit</a></div>
+            </form>
+        </div>
+          <div class="clearfix visible-xs">&nbsp;</div>
+        <div class="col-md-3 col-sm-3 col-md-offset-1 col-sm-offset-1 address">
+           <div class="clearfix hidden-xs">&nbsp;</div>
+           <div class="clearfix hidden-xs">&nbsp;</div>
+           <div class="clearfix hidden-xs">&nbsp;</div>
+                    <h3>Contact Address:</h3>
+                    <p><strong>Aurospaces software Pvt Ltd.</strong></p>
+                    <p>#1190/1,3rd Floor,22nd Cross,</p>
+                    <p>14th Main,3rd sector,HSR Layout,</p>
+                    <p>Bangalore-560102.</p>
+                    <span class="fa fa-phone-square" style="margin-top:-3%;">&nbsp;Phone:+91-974-255-7757</span>
+                    <span class="fa fa-envelope-o"> care@aurospaces.com</span>
+                    <div class="clearfix">&nbsp;</div>
+                    <div class="clearfix">&nbsp;</div>
+                   <!--  <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d972.2254976076763!2d77.63518718405172!3d12.91402044965535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m3!3m2!1d12.9141063!2d77.6351597!4m0!5e0!3m2!1sen!2sin!4v1438237348122" width="300" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div> -->
+        </div>
+       
+    </div>
+    
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="footer pos">
+        <div class="container-main">
+            <div class="col-md-4 col-sm-4 col-xs-4 no-pad col-md-offset-4 col-sm-offset-4 text-center">
+                <a href="javascript:;">&copy; 2014 Aurospaces </a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-8 text-center">
+                <a href="terms&condititons.html"> Terms&amp;Conditions </a> &nbsp; &nbsp;
+                <a href="privacypolicy.html"> Privacy Policy </a>
+            </div>
+
+        </div>
+    </div>  <!--end of footer-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="Branding/js/MntValidator.js"></script>
+    <script type="text/javascript">
+function GetFolder() {
+    document.folderForm.folderLocation.value=document.folderForm.file.value;
+}
+</script>
+    
+</body>
+<style>
+.your-class::-webkit-input-placeholder {
+    color: red;
+}
+.default-class::-webkit-input-placeholder {
+    color: red;
+}
+</style>
+</html>

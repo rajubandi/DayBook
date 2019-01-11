@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Aurospeaces</title>
+	
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/smile-font.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->   
+    
+	<link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/nbdimages/images/ico/favicon.ico">
+	
+</head><!--/head-->
+
+<body class="homepage">
+
+<!-- Google Tag Manager -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63399103-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Tag Manager -->
+
+    <header id="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                     <span class="log-head"> Aurospaces </span>
+                     <span class="log-head-sub"> Enablers in your neighbourhood </span>
+					 <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="login.html">Sign In</a></li>                        
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+
+
+	<section id="main-slider" class="no-margin">
+<!--		<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">  class for slinging th images-->
+		<div id="myCarousel" data-interval="3000" data-ride="carousel">
+			<!-- Carousel indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>   
+		   <!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">
+					
+					  <img src="images/slider/bg1.jpg" />
+			   
+				</div>
+				<div class="item">
+					
+					  <img src="images/slider/bg2.jpg" />
+			
+				</div>
+				<div class="item">
+					
+					  <img src="images/slider/bg3.jpg" />
+				 
+				</div>
+			</div>
+			<!-- Carousel nav -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+	</section><!--/#main-slider-->
+
+    <section class="SelectLocation"> <!--/. #location & service select-->
+            <div class="SearchLocation">
+                <div class="col-md-12 as-heading">
+                    <span> Be Lazy, Be Smart, Choose Us </span>
+
+                </div>
+            </div>
+            <div class="col-md-12" style="margin-left:-50px;">
+                <div class="col-md-5" style="margin:-20px;">
+                    <div class="panel-body">
+                        <div class="btn-group btn-input clearfix">
+                            <button type="button" class="btn btn-default dropdown-toggle form-control selectpicker as-custom-dropdown" data-toggle="dropdown">
+                            <span data-bind="label">Choose your Location</span>&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" >
+                                <li class="as-dropdown-divider" style="padding-left: 30px">Bangalore</li>
+                                <li><a href="#">HSR Layout</a></li>
+                                <li><a href="#">Bellandur</a></li>
+                                <li><a href="#">Marathahalli</a></li>
+                                <li><a href="#">Electronic City</a></li>
+                                <li><a href="#">Sarjapura Road</a></li>
+                                <li><a href="#">BTM Layout</a></li>
+                                <li><a href="#">Harlur Road</a></li>
+                                <li><a href="#">Koramangala</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" style="margin:-20px;">
+                        <div class="panel-body">
+                            <div class="btn-group btn-input clearfix">
+                                <button type="button" class="btn btn-default dropdown-toggle form-control selectpicker as-custom-dropdown" data-toggle="dropdown">
+                                <span data-bind="label">Choose a Service </span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" style="margin-top: -113.7%;">
+                                    <li class="as-dropdown-divider">Health Care</li>
+                                    <li><a href="doctor.html">Doctors</a></li>
+                                    <li><a href="doctor.html">Nursing & Home Care Taker</a></li>
+                                    <li><a href="pathology.html" target="self">Pathology</a></li>
+                                    <li><a href="#">Physiotherapy</a></li>
+                                    <li class="as-dropdown-divider">Up Keeping</li>
+                                    <li><a href="#">Carpentry</a></li>
+                                    <li><a href="#">Painter</a></li>
+                                    <li><a href="#">Pest Control</a></li>
+                                    <li><a href="#">Electrician</a></li>
+                                    <li><a href="#">Plumber</a></li>
+                                    <li class="as-dropdown-divider">Coming Soon</li>
+                                    <li><a href="#">Fitness</a></li>
+                                    <li><a href="#">Beauty</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>            
+
+                <div class="col-md-2" style="margin:-20px;">
+                        <div class="panel-body">
+                            <div class="btn-group btn-input clearfix">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg  as-cutom-but" required="required">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </section>
+
+    <section>
+        <div class="container as-container">
+           <div class="as-left">
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <img class="img-responsive center-block" src="images/patented.png">
+                    </div>
+                    <div class="col-md-7" style="margin-top: 5%;">
+                        <h2 class="as-left as-left-bottom ">Quick Service Guaranteed</h2>
+                        <p class="lead as-left-bottom ">Our patented technology helps you to avail <br />
+                                        services from your neighbourhood thus quick
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->
+    </section><!--/#patient-->
+
+    <section>
+        <div class="container as-container as-container-bg">
+           <div class="as-left">
+                <div class="col-md-12">
+                    <div class="as-left">
+                            <div class="col-md-6" style="margin-top: 5%;">
+                                <h2 class="as-left" style="padding:0px;">We Provide, What we consume</h2>
+                                <p class="lead">We feel proud to source best in class professionals from 
+                                    our country and make available to you. 
+                                    </p>
+                                    <p class="lead">
+                                    We do thorough due diligence and thus bring the trust and reliability
+                                    professionals to you.</p>
+                            </div>
+                        <div class="col-md-6" style="float:right;">
+                            <img class="img-responsive center-block" src="images/certificted.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->
+    </section><!--/#Certificted-->
+
+    <section>
+        <div class="container as-container" style="border:none;">
+           <div class="as-left">
+                <div class="col-md-12" style="  padding-bottom: 80px;">
+
+                   
+                        <div class="col-md-5" >
+                            <img class="img-responsive center-block img-border" src="images/doctor.jpg">
+                        </div>
+
+                        <div class="col-md-7">
+                            <address class="as-address">
+                            <h1 style="color:#000;">Our Strength lies in our Selection Process </h1>
+                            <h2>Doctor @your Location</h2> 
+                                <p class="lead">20 Years of Experience </p>
+                                 <p class="lead">Delivered 100s of Babies successfully </p>
+                                 <p class="lead">Consultant Practician @Major Hospitals</p>
+                            </address>  
+   
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->
+    </section><!--/#Selection Process-->
+    <section id="bottom">
+        <div class="container" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 as-bottom-rightborder">
+                    <div class="widget">
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">CSR</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-6 col-sm-6 as-bottom-rightborder">
+                    <div class="widget">
+                        <div class="as-bootom-text as-butom-links"> “At Aurospaces Pvt Ltd is to enable best of the professionals “ </div>
+                        <div class="as-bootom-text as-butom-links"><a href="contact.html"  style="color: #f9c603;">Become an Auro Professional <i class="fa fa-arrow-right"></i></a></div>
+                    </div>  
+                    <br /> 
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget as-left-bottom">
+                         <p><a href=""><img class="img-responsive center-block" src="images/android-app.png"></a></p><br />
+                         <p><a href=""><img class="img-responsive center-block" src="images/facebook.png"></a></p> 
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row" style="text-align: right;">
+                <div class="col-sm-12">
+                    <div class="col-sm-7">
+                        &copy; 2014 Aurospaces
+                    </div>
+                    <div class="col-sm-2">
+                        
+                    </div>
+                    <div class="col-sm-3" style="text-align: right;">
+                        Terms& Conditions  &nbsp; &nbsp; &nbsp; Privacy Policy
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.range.js"></script>
+
+    <script type="text/javascript">
+       $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+
+          var $target = $( event.currentTarget );
+
+          $target.closest( '.btn-group' )
+             .find( '[data-bind="label"]' ).text( $target.text() )
+                .end()
+             .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+          return false;
+
+       });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.single-slider').jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0,25,50,75,100],
+                format: '%s',
+                width: 600,
+                showLabels: true
+            });
+            /*$('.range-slider').jRange({
+                from: 0,
+                to: 100,
+                step: 1,
+                scale: [0,25,50,75,100],
+                format: '%s',
+                width: 300,
+                showLabels: true,
+                isRange : true
+            }); */
+        });
+    </script>
+	
+</body>
+</html>

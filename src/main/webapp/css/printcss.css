@@ -1,0 +1,15 @@
+
+hr {
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+    border-top-style: dotted;
+    border-color:1px #000;
+}
+hr {
+   
+    border-top: 1px dotted #333 !important;
+}
+
+.table-condensed > thead > tr > th, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > tbody > tr > td, .table-condensed > tfoot > tr > td {
+    padding: 2px 10px;
+}
