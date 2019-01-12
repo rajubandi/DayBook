@@ -17,7 +17,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 		
 		public List<Map<String, String>> getAccountHaed( ){
 			 StringBuffer objStringBuffer = new StringBuffer();
-			 objStringBuffer.append("select id as accountId,date,client,description,amount from collections ");
+			 objStringBuffer.append("select id as accountId,DATE_format(date,'%d-%M-%Y') as date,client,description,amount from collections ");
 			
 	String sql = objStringBuffer.toString();
 				System.out.println(sql);
@@ -30,7 +30,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 		
 		public CollectionBean existingOrNot(String id ){			
 			
-			String sql = "select id ,date, client, description, amount from collections where id =? ";
+			String sql = "select id ,DATE_format(date,'%d-%M-%Y') as date, client, description, amount from collections where id =? ";
 			List<CollectionBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{id},
 			ParameterizedBeanPropertyRowMapper.newInstance(CollectionBean.class));

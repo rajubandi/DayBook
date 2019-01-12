@@ -20,6 +20,7 @@ import com.aurospaces.neighbourhood.bean.CollectionBean;
 public class AddBaseCollectionDao {
 
 	@Autowired public JdbcTemplate jdbcTemplate;
+	java.sql.Timestamp createdTime,updatedTime;
 
 	 
 	public final String INSERT_SQL = "INSERT INTO collections( date, client, description, amount) values (?, ?, ?, ?)"; 
@@ -35,10 +36,18 @@ public class AddBaseCollectionDao {
 			new PreparedStatementCreator() {
 					public PreparedStatement 
 					createPreparedStatement(Connection connection) throws SQLException {
+						
+						if(addAccountHeadBean.getDate() == null)
+						{
+							addAccountHeadBean.setDate( new Date());
+						}
+						createdTime = 
+							new java.sql.Timestamp(addAccountHeadBean.getDate().getTime()); 
 	
 					PreparedStatement ps =
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
-	ps.setString(1, addAccountHeadBean.getDate());
+					ps.setTimestamp(1, createdTime);
+					
 	ps.setString(2, addAccountHeadBean.getClient());
 	ps.setString(3, addAccountHeadBean.getDescription());
 	ps.setString(4, addAccountHeadBean.getAmount());
@@ -55,10 +64,13 @@ public class AddBaseCollectionDao {
 		}
 		else
 		{
+			
+			updatedTime = 
+					new java.sql.Timestamp(addAccountHeadBean.getDate().getTime());
 
 			String sql = "UPDATE collections  set date = ? ,client = ? ,description = ?,amount = ?  where id = ? ";
 	
-			jdbcTemplate.update(sql, new Object[]{addAccountHeadBean.getDate(),addAccountHeadBean.getClient(),addAccountHeadBean.getDescription(),addAccountHeadBean.getAmount(),addAccountHeadBean.getId()});
+			jdbcTemplate.update(sql, new Object[]{updatedTime,addAccountHeadBean.getClient(),addAccountHeadBean.getDescription(),addAccountHeadBean.getAmount(),addAccountHeadBean.getId()});
 		}
 	}
 		

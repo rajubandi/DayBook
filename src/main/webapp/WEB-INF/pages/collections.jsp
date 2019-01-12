@@ -8,7 +8,21 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+	
+	<link href="css/datepicker1.css" rel="stylesheet">
+	<link rel='stylesheet' type='text/css' href='css/MonthPicker.min.css' /> 
+    <script type='text/javascript' src='js/MonthPicker.min.js'></script>
+	
 	<script type="text/javascript" src="js/collection.js"></script>
+	<script>
+	window.setTimeout(function() {
+		$(".msgcss").fadeTo(500, 0).slideUp(500, function() {
+			$(this).remove();
+		});
+	}, 5000);
+</script>
+
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
@@ -25,57 +39,71 @@
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="collections">Collections</a></li>
+    	<li><a href="collections"></a>Collections</li>
 	</ol>
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 							
-<%-- 									<%${message} %> --%>
-			<div class="col-md-4">
 			<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>Collections</h4>
 					</div>                    
                     
-                     <div class="panel-body">
+                    <div class="panel-body collapse in">
+                    
+                    <!-- Row Starts -->
+						<div class="row">
 									<form:form action="collectionName.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Date</label>
-											    <div class="col-lg-6 col-md-6 col-sm-6">
-													<form:input path="date" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Date" required="true"/>
-													<span class="date_error" id="name_error"></span>
-												</div>
+											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
+											<div class="col-sm-8">
+											<form:input id="date"  name="date" path="date" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+											<span class="date_error" id="name_error"></span>
 											</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Client</label>
-											    <div class="col-lg-6 col-md-6 col-sm-6">
+											    <div class="col-sm-8">
 													<form:input path="client" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Client" required="true"/>
 													<span class="client_error" id="name_error"></span>
 												</div>
 											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Description</label>
-											    <div class="col-lg-6 col-md-6 col-sm-6">
+											   <div class="col-sm-8">
 													<form:input path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
 													<span class="description_error" id="name_error"></span>
 												</div>
 											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Amount</label>
-											    <div class="col-lg-6 col-md-6 col-sm-6">
-													<form:input path="amount" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Amount" required="true"/>
+											    <div class="col-sm-8">
+													<form:input path="amount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Amount" required="true"/>
 													<span class="amount_error" id="name_error"></span>
 												</div>
 											</div>
+											</div>
+											
 											<form:hidden path="id"/>
-												<div class="form-group">
-												  	<div class="col-sm-8 col-sm-offset-4">
+												<div class="col-sm-12">
+												  	<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="2"/>
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
 													</div>
 												</div>
-												<div class="form-group">
-													<div class="col-sm-8 col-sm-offset-4">
+												
+												<div class="col-sm-12">
+													<div class="col-sm-8 col-sm-offset-2">
 													<%
 														String message = null;
 														message=(String)session.getAttribute("message");
@@ -88,17 +116,15 @@
 													</div>
 												</div>
 									</form:form></div></div>
-									</div>
-									<div class="col-md-8 gutter">
+									</div></div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:20px">
 									<div class="panel panel-info">
 					<div class="panel-heading">
 						<h4>List of Collection Details</h4>
 					</div>  
-                      <div class="panel-body">
-									<div class="blog">
+                      <div class="panel-body collapse in">
 									
-									<div class="blog-body">
-										<div class="">
+										<div class="table-responsive">
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
@@ -109,7 +135,7 @@
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Amount</th>
-																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Options</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>
 															<!-- <tfoot>
@@ -133,23 +159,23 @@
 						<!-- Row Ends -->
 						
 						<!-- Row Starts -->
-						<div class="row gutter">
+						<!-- <div class="row gutter">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								
 							</div>
-						</div>
+						</div> -->
 						<!-- Row Ends -->
 						
-					</div>
+					<!-- </div> -->
 					<!-- Spacer ends -->
 
-				</div>
+				<!-- </div> -->
 				<!-- Container fluid ends -->
 
-			</div>
+			<!-- </div> -->
 			<!-- Main Container ends -->
 
-		</div>
+		<!-- </div> -->
 		<!-- Dashboard Wrapper ends -->
 
 <!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->

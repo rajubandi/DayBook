@@ -1,9 +1,20 @@
 package com.aurospaces.neighbourhood.bean;
 
+import java.util.Date;
+
 public class CollectionBean {
 
 	private int id;
-	private String date,client,description,amount;
+	private Date date;
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	private String client,description,amount;
 	
 	public int getId() {
 		return id;
@@ -11,15 +22,7 @@ public class CollectionBean {
 	
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String date) {
-		this.date = date;
-	}
+	}	
 	
 	public String getClient() {
 		return client;

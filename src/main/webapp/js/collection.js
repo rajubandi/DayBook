@@ -47,6 +47,20 @@ $(function(){
 
 });
 
+$(function(){
+	
+	$("#date").datepicker({
+		changeDate : true,
+		changeMonth : true,
+		changeYear : true,
+		yearRange: "-17:+0",
+		showButtonPanel : false,
+	    maxDate: '0', 
+		dateFormat : 'dd-MM-yy'
+	});
+	
+});
+
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
 				$("#basicExample td").remove();
@@ -105,7 +119,7 @@ $(function(){
 			  
 			  $.ajax({
 						type : "POST",
-						url : "deleteAccount.json",
+						url : "deleteCollection.json",
 						data : "id=" + id ,
 						success : function(response) {
 							displayTable(response);
@@ -134,5 +148,16 @@ $(function(){
 			}else{
 			return false;
 			}
+		}
+		
+		//remove borders
+		function removeBorder(el){	
+			  $("#"+el).css("border", "");
+			  $("#"+el).css('color','black');
+			  $('#'+el).addClass('default-class');
+			  if ($("#" + el+"_chosen").length)
+				{
+					$("#" +el+"_chosen").children('a').css('border-color','black');
+				}
 		}
 		
