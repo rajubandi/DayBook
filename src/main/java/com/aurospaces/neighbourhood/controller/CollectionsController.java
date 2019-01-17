@@ -1,6 +1,7 @@
 package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,12 +23,14 @@ import com.aurospaces.neighbourhood.bean.AddBoardBean;
 import com.aurospaces.neighbourhood.bean.CollectionBean;
 import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
 import com.aurospaces.neighbourhood.dao.AddCollectionDao;
+import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
 public class CollectionsController {
 	@Autowired AddCollectionDao addAccountHeadDao;
+	@Autowired usersDao1 usesDao1;
 	
 	@RequestMapping(value = "/collections")
 	public String addAccountHead(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
@@ -169,6 +172,23 @@ public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest 
 	}
 
 	return sJson;  
+}
+
+@ModelAttribute("client")
+public Map<Integer, String> populateStudent() {
+	Map<Integer, String> statesMap = new LinkedHashMap<Integer, String>();
+	try {
+		String sSql = "select * from accounthead order by name asc";
+		List<AddAccountHeadBean> list= usesDao1.populate1(sSql);
+		for(AddAccountHeadBean bean: list){
+			statesMap.put(bean.getId(), bean.getName());
+		}
+				
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+	}
+	return statesMap;
 }
 }
 
