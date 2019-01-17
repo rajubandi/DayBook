@@ -65,14 +65,16 @@
 											</div>
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Client</label>
-											    <div class="col-sm-8">
-													<form:input path="client" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Client" required="true"/>
-													<span class="client_error" id="name_error"></span>
-												</div>
+										  	<div class="form-group">
+											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
+											<div class="col-sm-8">
+											<form:select path="client" name="client" class="form-control " >
+											<form:option value="" >-- Choose Client --</form:option>
+											<form:options items="${client}"></form:options>
+											</form:select>
+											</div>											  
 											</div>
-											</div>
+											</div>	
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -117,6 +119,7 @@
 												</div>
 									</form:form></div></div>
 									</div></div>
+									
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:20px">
 									<div class="panel panel-info">
 					<div class="panel-heading">

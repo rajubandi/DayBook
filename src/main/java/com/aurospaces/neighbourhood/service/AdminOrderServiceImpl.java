@@ -42,8 +42,9 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 	OrderInfoDao objOrderInfoDao;
 	@Autowired
 	ServletContext objContext;
-	 @Autowired
-	 VendorRegisrationDao objRegisrationDao;
+	@Autowired
+	VendorRegisrationDao objRegisrationDao;
+	
 	@Override
 	public List<OrderBean> getOrders(OrderBean objOrderBean) {
 		List<OrderBean> listOrderBeans = null;
@@ -62,7 +63,8 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 	public List<OrderBean> getAllOrders(OrderBean objOrderBean) {
 		List<OrderBean> listOrderBeans = null;
 		try {
-			listOrderBeans = objAdminOrderDao.getAllOrders(objOrderBean);
+			listOrderBeans = objAdminOrderDao.getAllOrders(objOrderBean);			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -22,7 +22,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title">DFC</div>
+				<div class="page-title">DC</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -35,22 +35,25 @@
 					<!-- Spacer starts -->
 					<ol class="breadcrumb">
 					    	<li><a href="dashBoard">Home</a></li>
-					    	<li><a href="#">Daily Fees Collection</a></li>
+					    	<li><a href="#">Daily Collection</a></li>
 						    </ol>
-						<div class="col-sm-4">
+						    
+						<!-- Row Starts -->
+						<div class="row">
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+					
 							<div class="panel panel-info">
 								<div class="panel-heading">
-									<h4>DFC</h4>
+									<h4>DC</h4>
 								</div>
 								<div class="panel-body collapse in">						
 									
 									<!-- Row Starts -->
 									<div class="row">
 						
-										<form:form id="dfc-form" commandName="dfc"  method="post" class="form-horizontal">
+										<form:form id="dfc-form" commandName="dfc"  method="post" class="form-horizontal">										
 										
-										
-										<div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
 												    <label  class="col-sm-4 control-label">From <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
@@ -71,7 +74,7 @@
 											
 											<div class="col-sm-12">
 												<div class="col-sm-8 col-sm-offset-2">
-													<input type="button" id="submitId" value="Get DFC" class="btn btn-success"	/>
+													<input type="button" id="submitId" value="Get Daily Collection" class="btn btn-success"	/>
 													<button type="button" class="btn btn-danger" id="cancel"	tabindex="9">Reset</button>
 												</div>
 											</div>
@@ -82,10 +85,11 @@
 								<!-- Row Ends -->
 							</div>
 						</div>
-						<div class="col-md-8">
+						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:20px">
 									<div class="panel panel-info" id="todayFeeCollecitonDivId">
 						<div class="panel-heading">
-							<h4 id="todayFeeCollectoinheading">Today Fee Collection</h4>
+							<h4 id="todayFeeCollectoinheading">Today Collection</h4>
 						</div>
 						<div class="panel-body collapse in">	
 											<div class="table-responsive">
@@ -96,11 +100,9 @@
 	 														<table id="basicExampleDFC" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
 																<thead>
 																	<tr role="row">
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student Name</th>
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Class</th>
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Medium</th>
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Fee Category</th>
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>
+																	    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>
+																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client Name</th>
+																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>																		
 																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">AMOUNT</th>
 																	</tr>
 																</thead>
@@ -115,6 +117,8 @@
 											</div>
 										</div>
 									</div>
+								</div>
+								
 											
 							<!-- Row Starts -->
 						<!-- 	<div class="row gutter" id="BetweenTwoDatesListId">
@@ -153,11 +157,10 @@
 								</div>
 				
 							<!-- Row Starts -->
-							<div class="row gutter">
+							<!-- <div class="row gutter">
 								
-							</div>
-							<!-- Row Ends -->
-					
+							</div> -->
+							<!-- Row Ends -->					
 		
 					</div>
 					<!-- Spacer ends -->
@@ -165,7 +168,6 @@
 
 				</div>
 			<!-- Main Container ends -->
-
 	
 			</div>
 		<!-- Dashboard Wrapper ends -->
@@ -177,12 +179,12 @@ var getTabName = window.location.pathname.split('/')[2];
 $("#conf_li").addClass('active');
 $("#conf_li ul").css('display','block');
 $("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
 $(function () {
 			var getTabName = window.location.pathname.split('/')[2];
 	$("#from").val("");
 	$("#to").val("");
-	//$('#basicExample').dataTable();
-	
+	//$('#basicExample').dataTable();	
 
 	//$('#betweenDatesTableId').dataTable();
 	
@@ -206,8 +208,8 @@ $(function () {
 				
 			},
 			messages : {
-				from:{required:'Select Date '},
-				to:{required:'Select Date'},
+				from:{required:'Select From Date '},
+				to:{required:'Select To Date'},
 				
 			},
 			errorPlacement: function(error, element){
@@ -219,8 +221,7 @@ $(function () {
 			      else
 			        error.insertAfter(element);
 			      }
-		});
-		
+		});		
 
 			$("#stu_li").addClass('active');
 			$("#stu_li ul").css('display','block');
@@ -236,11 +237,7 @@ $(function () {
 			   /*  $('#todayFeeCollecitonDivId').show();
 				$('#BetweenTwoDatesListId').hide(); */
 			    
-			});
-			
-			
-
-	 
+			});	 
 });
 
 $("#submitId").click(function(e){
@@ -322,8 +319,7 @@ function removeBorder(el){
 	 var listOrders1 = ${dfcList};
 	if (listOrders1 != "") {
 		displayTable(listOrders1);
-	}
-	
+	}	
 	
 	function displayTable(listOrders) {
 		if (listOrders != null) {
@@ -334,90 +330,33 @@ function removeBorder(el){
 			var tableHead = '<table id="basicExampleDFC" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
 					+ '<thead>'
 					+ '<tr role="row">'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student Name</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Class</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Medium</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Fee Category</th>'
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>'
+					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client Name</th>'
+					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>'
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">AMOUNT</th>'
-					+ '</tr>' + '</thead>' + '<tbody></tbody><tfoot><tr><th colspan="5">Total</th><th id="dfcTotal">0.00</th></tfoot></table>';
-			$('#basicTable').html(tableHead);
-			
-			
-			var dfcTotal = 0.0;
+					+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
+			$('#basicTable').html(tableHead);					
 								
-			$.each(listOrders, function(i, orderObj) {	
-				var feecategory = '' ;
+			$.each(listOrders, function(i, orderObj) {					
 				
-				if(orderObj.admissionFee > 0){
-					
-					feecategory += "Admission Fee";
-				}
-				if(orderObj.tutionFee > 0){
-					
-					if(feecategory != ''){
-					
-					feecategory += ", Tution Fee"
-					}else{
-						
-						feecategory += "Tution Fee";
-					}
-				}
-				if(orderObj.transportationFee > 0){
-					if(feecategory != ''){
-						
-						feecategory += ", Bus Fee"
-					}else{
-						feecategory += " Bus Fee"
-					}
-				}
-				if(orderObj.hostelFee > 0){
-					if(feecategory != ''){
-						
-					feecategory += ", School Fee"
-					}else{
-						feecategory += " School Fee"
-					}
-				}
-				if(orderObj.stationaryFee > 0){
-					if(feecategory != ''){
-						
-					feecategory += ", Stationary Fee"
-					}else{
-						
-						feecategory += " Stationary Fee"
-					}
-				}
-				
-				dfcTotal += orderObj.total;
 								var tblRow = "<tr align='center' role='row' class='odd'>" 
-										+ "<td title='"+orderObj.name+"'>"
-										+ orderObj.name
+										+ "<td title='"+orderObj.date+"'>"
+										+ orderObj.date
 										+ "</td>"
-										+ "<td title='"+orderObj.className+"'>"
-										+ orderObj.className
+										+ "<td title='"+orderObj.client+"'>"
+										+ orderObj.client
 										+ "</td>"
-										+ "<td title='"+orderObj.medium+"'>"
-										+ orderObj.medium
+										+ "<td title='"+orderObj.description+"'>"
+										+ orderObj.description
 										+ "</td>"
-										+ "<td title='"+feecategory+"'>"
-										+ feecategory
-										+ "</td>"
-										+ "<td title='"+orderObj.createdTime+"'>"
-										+ orderObj.createdTime
-										+ "</td>"
-										+ "<td title='"+orderObj.total+"'>"
-										+ orderObj.total
-										+ "</td>"
+										+ "<td title='"+orderObj.amount+"'>"
+										+ orderObj.amount
+										+ "</td>"										
 										+ "</tr>";
 								$(tblRow).appendTo("#basicExampleDFC tbody");
-			});
-			
-			$("#dfcTotal").text(dfcTotal);
-			
+			});			
 		} 
-	}  
- 	
+	}   	
 	
 		/* 
 		function displayTableDfcListBetweenTwoDates(listOrders) {

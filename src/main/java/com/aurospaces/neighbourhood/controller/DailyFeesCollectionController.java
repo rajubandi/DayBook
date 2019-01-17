@@ -46,33 +46,28 @@ public class DailyFeesCollectionController {
 		String sJson = "";
 		
 		try{
-			dfcList = studentFeeDao.dfCollection();
+			dfcList = studentFeeDao.dfCollection();			
 			
-			
-			String message = "null";
 			if(dfcList != null) {
 				
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(dfcList);
 				  request.setAttribute("dfcList", sJson);
-				 // System.out.println(sJson); 
+				  //System.out.println("sJson value in not null: "  +sJson); 
 			}else{
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(dfcList);
-				  request.setAttribute("dfcList", "''");
+				  request.setAttribute("dfcList", "''");				 
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in DFCController class");
-		}
-		
-			
+		}			
 		
 		return "dailyFeesCollection";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "/dailyFeesCollectionBetweentwoDate")
 	public @ResponseBody  String dailyFeesCollectionBetweentwoDate(@ModelAttribute("dfc") DFCBean dFCBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -81,34 +76,29 @@ public class DailyFeesCollectionController {
 		String sJson = "";
 
 		try{
-			dfcList = studentFeeDao.dfCollectionBetweenTwoDates(dFCBean.getFrom(),dFCBean.getTo());
+			dfcList = studentFeeDao.dfCollectionBetweenTwoDates(dFCBean.getFrom(),dFCBean.getTo());	
 			
 			
-			String message = "null";
+			
 			if(dfcList != null) {
 				
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(dfcList);
-				  //request.setAttribute("dfcListBetweenTwoDates", sJson);
-				 // System.out.println(sJson); 
+				  //request.setAttribute("dfcListBetweenTwoDates", sJson);				 
 			}else{
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(dfcList);
 				  request.setAttribute("dfcList", "''");
 			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in DFCController class");
-		}
-		
-			
+		}			
 		
 		return sJson;
-	}
-	
-	
-	
+	}	
 	
 }

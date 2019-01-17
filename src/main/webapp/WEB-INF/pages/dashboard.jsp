@@ -104,8 +104,8 @@
                             <a href="dailyFeesCollection">
 								<div class="info-bg center-align-text">
 									<div class="spacer-xs">
-									<small class="text-white">Daily Fees</small>
-										<h4 class="no-margin no-padding" title="Daily Fees Collection">Collection</h4>
+									<small class="text-white">Daily</small>
+										<h4 class="no-margin no-padding" title="Daily Collection">Collection</h4>
 									</div>
 								</div>
                                 </a>
