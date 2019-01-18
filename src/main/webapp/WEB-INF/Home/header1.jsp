@@ -331,6 +331,7 @@ session.setAttribute("url", url);
 							<li><a href="dailyFeesCollection"><span>Daily Collection</span></a></li>
 <!-- 							<li><a href="studentFeeHome"><span>Collection</span></a></li> -->
 							<li><a href="reports"><span>Reports</span></a></li>
+							<li><a href="addClient"><span>Add Client</span></a></li>
 							<!-- <li><a href="boardHome"><span>Board Creation</span></a></li>
 							<li><a href="classHome"><span>Class Creation</span></a></li>
 							<li><a href="sectionHome"><span>Section Creation</span></a></li>

@@ -10,9 +10,9 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	
-	<link href="css/datepicker1.css" rel="stylesheet">
+	<!-- <link href="css/datepicker1.css" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='css/MonthPicker.min.css' /> 
-    <script type='text/javascript' src='js/MonthPicker.min.js'></script>
+    <script type='text/javascript' src='js/MonthPicker.min.js'></script> -->
 	
 	<script type="text/javascript" src="js/collection.js"></script>
 	<script>
@@ -58,7 +58,7 @@
 											<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
 											<div class="col-sm-8">
-											<form:input id="date"  name="date" path="date" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+											<form:input id="date"  name="date" type="date" path="date" autocomplete="off"  placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
 											<span class="date_error" id="name_error"></span>
 											</div>
 											</div>
@@ -68,10 +68,11 @@
 										  	<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
 											<div class="col-sm-8">
-											<form:select path="client" name="client" class="form-control " >
+											<form:select path="client" name="client" class="form-control" >
 											<form:option value="" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
+											<span class="client_error" id="name_error"></span>
 											</div>											  
 											</div>
 											</div>	
@@ -80,7 +81,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Description</label>
 											   <div class="col-sm-8">
-													<form:input path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
+													<form:input name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
 													<span class="description_error" id="name_error"></span>
 												</div>
 											</div>
@@ -88,11 +89,30 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Amount</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">FullAmount</label>
 											    <div class="col-sm-8">
-													<form:input path="amount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Amount" required="true"/>
-													<span class="amount_error" id="name_error"></span>
+													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="FullAmount" required="true"/>
+													<span class="fullamount_error" id="name_error"></span>
 												</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">PaidAmount</label>
+											    <div class="col-sm-8">
+													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="PaidAmount" required="true"/>
+													<span class="paidamount_error" id="name_error"></span>
+												</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											<label  for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<div class="col-sm-8">
+											<form:input id="duedate"  name="duedate" type="date" path="duedate" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
+											</div>
 											</div>
 											</div>
 											
@@ -137,7 +157,9 @@
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Date</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>
-																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Amount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">FullAmount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">PaidAmount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">DueAmount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>

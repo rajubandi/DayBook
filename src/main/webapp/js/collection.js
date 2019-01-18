@@ -8,14 +8,17 @@ $(function(){
 					date: {required: true},
 					client: {required: true},
 					description: {required: true},
-					amount: {required: true},
+					fullamount: {required: true},
+					paidamount: {required: true},						
 				},
 				messages:
 				{
 					date: {required: 'Date'},
 					client: {required: 'Client'},
 					description: {required: 'Description'},
-					amount: {required: 'Amount'},
+					fullamount: {required: 'FullAmount'},
+					paidamount: {required: 'PaidAmount'},	
+					
 				},
 				errorPlacement: function(error, element)
 				{
@@ -25,8 +28,10 @@ $(function(){
 				        error.insertAfter(".client_error").css("color", "red");
 				      else if(element.attr("name") == "description")
 					        error.insertAfter(".description_error").css("color", "red"); 
-				      else if(element.attr("name") == "amount")
-					        error.insertAfter(".amount_error").css("color", "red");					      
+				      else if(element.attr("name") == "fullamount")
+					        error.insertAfter(".fullamount_error").css("color", "red");		
+				      else if(element.attr("name") == "paidamount")
+					        error.insertAfter(".paidamount_error").css("color", "red");					     	
 				      else
 				        error.insertAfter(element);
 				}	
@@ -39,7 +44,9 @@ $(function(){
 				    $("#date").val('');
 				    $("#client").val('');
 				    $("#description").val('');
-				    $("#amount").val('');
+				    $("#fullamount").val('');
+				    $("#paidamount").val('');
+				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
 				    $("#headId").text("Account Creation");
 				    $("#cls-form").addClass('form-horizontal');
@@ -47,7 +54,7 @@ $(function(){
 
 });
 
-$(function(){
+/*$(function(){
 	
 	$("#date").datepicker({
 		changeDate : true,
@@ -59,7 +66,7 @@ $(function(){
 		dateFormat : 'dd-MM-yy'
 	});
 	
-});
+});*/
 
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
@@ -81,8 +88,14 @@ $(function(){
 											+ "<td class='' title='"+orderObj.description+"' >"
 											+ orderObj.description
 											+ "</td>"
-											+ "<td class='' title='"+orderObj.amount+"' >"
-											+ orderObj.amount
+											+ "<td class='' title='"+orderObj.fullamount+"' >"
+											+ orderObj.fullamount
+											+ "</td>"
+											+ "<td class='' title='"+orderObj.paidamount+"' >"
+											+ orderObj.paidamount
+											+ "</td>"
+											+ "<td class='' title='"+orderObj.dueamount+"' >"
+											+ orderObj.dueamount
 											+ "</td>"
 											+ "<td>"
 											+ '<a href="javascript:void(0)" onclick=editPack('
@@ -104,7 +117,8 @@ $(function(){
 			$('#date').val(serviceUnitArray[ids].date);
 			$('#client').val(serviceUnitArray[ids].client);
 			$('#description').val(serviceUnitArray[ids].description);
-			$('#amount').val(serviceUnitArray[ids].amount);
+			$('#fullamount').val(serviceUnitArray[ids].fullamount);
+			$('#paidamount').val(serviceUnitArray[ids].paidamount);
 			$("#submitId").val("Update");
 			$("#headId").text("Edit AccountHead");
 		}
@@ -159,5 +173,14 @@ $(function(){
 				{
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
+		}
+		
+		function checkAmount(theForm) {		
+			
+			if(theForm.fullamount.value != theForm.paidamount.value){
+				document.getElementById('duedate').style.display="block" ;
+		        return false;
+		    }
+		    return true;
 		}
 		

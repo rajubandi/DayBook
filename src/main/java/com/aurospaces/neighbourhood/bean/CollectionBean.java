@@ -1,21 +1,45 @@
 package com.aurospaces.neighbourhood.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class CollectionBean {
 
 	private int id;
-	private Date date;
-	public Date getDate() {
+	private Date date,duedate;
+	private String client,description,fullamount,paidamount,dueamount;
+	
+	public Date getDuedate() {
+		return duedate;
+	}
+
+	public void setDuedate(Date duedate) {
+		this.duedate = duedate;
+	}		
+	
+	public String getDueamount() {
+		return dueamount;
+	}
+
+	public void setDueamount(String dueamount) {
+		this.dueamount = dueamount;
+	}
+
+	public java.sql.Date getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(java.sql.Date date) {
 		this.date = date;
 	}
 
-	private String client,description,amount;
-	
+	public String getPaidamount() {
+		return paidamount;
+	}
+
+	public void setPaidamount(String paidamount) {
+		this.paidamount = paidamount;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -36,16 +60,16 @@ public class CollectionBean {
 		return description;
 	}
 	
+	public String getFullamount() {
+		return fullamount;
+	}
+
+	public void setFullamount(String fullamount) {
+		this.fullamount = fullamount;
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	
-	public String getAmount() {
-		return amount;
-	}
-	
-	public void setAmount(String amount) {
-		this.amount = amount;
 	}	
 	
 }

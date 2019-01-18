@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.AddBoardBean;
+import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
 import com.aurospaces.neighbourhood.bean.CollectionBean;
 import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
 import com.aurospaces.neighbourhood.dao.AddCollectionDao;
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class CollectionsController {
 	@Autowired AddCollectionDao addAccountHeadDao;
 	@Autowired usersDao1 usesDao1;
+	Map<Integer, String> statesMap1 = new LinkedHashMap<Integer, String>();
 	
 	@RequestMapping(value = "/collections")
 	public String addAccountHead(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
@@ -66,10 +68,12 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 	List<Map<String, String>> listOrderBeans = null;
 	CollectionBean listOrderBeans1 = null;
 	ObjectMapper objectMapper = null;
-	String sJson = "";
+	String sJson = "";	
+	
 	try{
 		System.out.println("addBoardaddBoardaddBoardaddBoard");
-		listOrderBeans1 = addAccountHeadDao.existingOrNot(objAddAccountHeadBean.getClient());
+		listOrderBeans1 = addAccountHeadDao.existingOrNot(objAddAccountHeadBean.getDescription());		
+		
 		int id = 0;
 		 int dummyId = 0;
 			if (listOrderBeans1 != null) {
@@ -78,23 +82,32 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 			if (objAddAccountHeadBean.getId() != 0) {
 				id = objAddAccountHeadBean.getId();
 				if (id == dummyId || listOrderBeans1 == null) {
+					
+					String selectOptionIntValue = request.getParameter("client");
+					int gg = Integer.parseInt(selectOptionIntValue);
+					String selectOptionStringValue = statesMap1.get(gg);					
 
-					addAccountHeadDao.save(objAddAccountHeadBean);
+					addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
 					redir.addFlashAttribute("msg", "Record Updated Successfully");
 					redir.addFlashAttribute("cssMsg", "warning");
 				} else {
-					redir.addFlashAttribute("msg", "Already Record Exist");
+					redir.addFlashAttribute("msg", "Already Record Update Exist");
 					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 == null) {
-				addAccountHeadDao.save(objAddAccountHeadBean);
+				
+				String selectOptionIntValue = request.getParameter("client");
+				int gg = Integer.parseInt(selectOptionIntValue);
+				String selectOptionStringValue = statesMap1.get(gg);				
+				
+				addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
 
 				redir.addFlashAttribute("msg", "Record Inserted Successfully");
 				redir.addFlashAttribute("cssMsg", "success");
 			}
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 != null) {
-				redir.addFlashAttribute("msg", "Already Record Exist");
+				redir.addFlashAttribute("msg", "Already Record Insert Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
 			}
 		
@@ -178,12 +191,13 @@ public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest 
 public Map<Integer, String> populateStudent() {
 	Map<Integer, String> statesMap = new LinkedHashMap<Integer, String>();
 	try {
-		String sSql = "select * from accounthead order by name asc";
-		List<AddAccountHeadBean> list= usesDao1.populate1(sSql);
-		for(AddAccountHeadBean bean: list){
-			statesMap.put(bean.getId(), bean.getName());
+		String sSql = "select * from clients order by clientName asc";
+		List<ClientDetailsBean> list= usesDao1.populateClient(sSql);
+		for(ClientDetailsBean bean: list){
+			statesMap.put(bean.getId(), bean.getClientName());
 		}
 				
+				statesMap1 = statesMap;
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
