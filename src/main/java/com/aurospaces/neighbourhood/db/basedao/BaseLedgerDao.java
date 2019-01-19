@@ -96,8 +96,7 @@ public class BaseLedgerDao{
 		public void delete(String  id) {
 			String sql = "DELETE FROM ledger WHERE id in(" + id + " )";
 			jdbcTemplate.update(sql, new Object[]{});
-		}
-		
+		}		
 
 	 public ExpensesBean getById(int id) {
 			String sql = "SELECT * from ledger where id = ? ";
@@ -108,6 +107,7 @@ public class BaseLedgerDao{
 				return retlist.get(0);
 			return null;
 		}
+	 
 	 public List<ExpensesBean> getExpensesBeanAll(String date) throws ParseException {
 		 
 		
@@ -133,6 +133,5 @@ public class BaseLedgerDao{
 			if(retlist.size() > 0)
 				return retlist;
 			return null;
-		}
-	
+		}	
 }

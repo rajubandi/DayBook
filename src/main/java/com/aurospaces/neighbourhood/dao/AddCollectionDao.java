@@ -15,7 +15,7 @@ package com.aurospaces.neighbourhood.dao;
 		
 		public List<Map<String, String>> getAccountHaed( ){
 			 StringBuffer objStringBuffer = new StringBuffer();
-			 objStringBuffer.append("select id as accountId,date,client,description,fullamount,paidamount,dueamount from collections ");
+			 objStringBuffer.append("select id as accountId, DATE_format(date,'%d-%M-%Y') as date,client,description,fullamount,paidamount,dueamount from collections ");
 			
 	String sql = objStringBuffer.toString();
 				System.out.println(sql);
@@ -28,7 +28,7 @@ package com.aurospaces.neighbourhood.dao;
 		
 		public CollectionBean existingOrNot(String id ){			
 			
-			String sql = "select id , date, client, description, fullamount, paidamount, dueamount from collections where id =? ";
+			String sql = "select id , DATE_format(date,'%d-%M-%Y') as date, client, description, fullamount, paidamount, dueamount from collections where id =? ";
 			List<CollectionBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{id},
 			ParameterizedBeanPropertyRowMapper.newInstance(CollectionBean.class));

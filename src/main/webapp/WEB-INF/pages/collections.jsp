@@ -10,11 +10,20 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	
-	<!-- <link href="css/datepicker1.css" rel="stylesheet">
+	<link href="css/datepicker1.css" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='css/MonthPicker.min.css' /> 
-    <script type='text/javascript' src='js/MonthPicker.min.js'></script> -->
+    <script type='text/javascript' src='js/MonthPicker.min.js'></script>
 	
 	<script type="text/javascript" src="js/collection.js"></script>
+	
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> -->
+
 	<script>
 	window.setTimeout(function() {
 		$(".msgcss").fadeTo(500, 0).slideUp(500, function() {
@@ -58,7 +67,7 @@
 											<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
 											<div class="col-sm-8">
-											<form:input id="date"  name="date" type="date" path="date" autocomplete="off"  placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+											<form:input id="date" name="date" data-format="dd-MM-yyyy" type="text" path="date" autocomplete="off"  placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
 											<span class="date_error" id="name_error"></span>
 											</div>
 											</div>
@@ -110,11 +119,8 @@
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
-
 											<div class="col-sm-8">
-											
-											<form:input id="duedate"  name="duedate" type="date"  style="display: none" path="duedate" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
-
+			     							<form:input id="duedate"  name="duedate" data-format="dd-MM-yyyy" style="display: none" path="duedate" type="text" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
 											</div>
 											</div>
 											</div>

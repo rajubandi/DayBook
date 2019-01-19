@@ -5,7 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
-<<!-- link href="css/datepicker1.css" rel="stylesheet"> -->
+<link href="css/datepicker1.css" rel="stylesheet">
+
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<style>
@@ -57,7 +58,7 @@
 											  	<div class="form-group">
 												    <label  for="inputEmail3" class="col-sm-4 control-label">From </label>
 												    <div class="col-sm-8">
-														<form:input id="from"  name="from" type="date" path="from"  autocomplete="off" placeholder="From Date" class="form-control validate" required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+												        <form:input id="from" name="from" data-format="dd-MM-yyyy" type="text" path="from" autocomplete="off"  placeholder="From Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />														
 														<span class="from_error" id="from_error"></span>
 													</div>
 											  	</div>
@@ -67,8 +68,8 @@
 											  	<div class="form-group">
 												    <label  for="inputEmail3" class="col-sm-4 control-label">To </label>
 												    <div class="col-sm-8">
-														<form:input id="to"  name="to" type="date" path="to"  autocomplete="off" data-format="dd-MM-yyyy" placeholder="To Date" class="form-control validate"  onfocus="removeBorder(this.id)" />
-														<span class="to_error" id="to_error"></span>
+												    <form:input id="to" name="to" data-format="dd-MM-yyyy" type="text" path="to" autocomplete="off"  placeholder="To Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />														
+													<span class="to_error" id="to_error"></span>
 													</div>
 											  	</div>
 											</div>
@@ -189,7 +190,7 @@ $(function () {
 
 	//$('#betweenDatesTableId').dataTable();
 	
-	/* $("#from,#to").datepicker({
+	 $("#from,#to").datepicker({
 		changeDate : true,
 		changeMonth : true,
 		changeYear : true,
@@ -198,7 +199,7 @@ $(function () {
 // 		minDate: '-50Y',
 	    maxDate: '0', 
 		dateFormat : 'dd-MM-yy'
-	}); */
+	}); 
 	
 	 $("#dfc-form").validate({
 			errorElement : 'span',
