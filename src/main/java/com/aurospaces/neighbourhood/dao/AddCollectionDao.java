@@ -5,12 +5,10 @@ package com.aurospaces.neighbourhood.dao;
 
 	import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 	import org.springframework.stereotype.Repository;
-
-	import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
-import com.aurospaces.neighbourhood.bean.CollectionBean;
-import com.aurospaces.neighbourhood.db.basedao.AddBaseAccountHeadDao;
-import com.aurospaces.neighbourhood.db.basedao.AddBaseCollectionDao;
-import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
+	
+	import com.aurospaces.neighbourhood.bean.CollectionBean;
+	import com.aurospaces.neighbourhood.db.basedao.AddBaseCollectionDao;
+	import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 	
 	@Repository(value="addCollectionDao")
 	public class AddCollectionDao extends AddBaseCollectionDao {

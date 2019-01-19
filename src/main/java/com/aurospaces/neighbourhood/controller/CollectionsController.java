@@ -18,11 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
-import com.aurospaces.neighbourhood.bean.AddBoardBean;
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
 import com.aurospaces.neighbourhood.bean.CollectionBean;
-import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
+
 import com.aurospaces.neighbourhood.dao.AddCollectionDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -39,7 +37,7 @@ public class CollectionsController {
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
-		String accountName=null;
+		
 		try{
 			listOrderBeans = addAccountHeadDao.getAccountHaed();
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {

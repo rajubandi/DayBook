@@ -81,7 +81,7 @@ public class AddBaseCollectionDao {
 				},
 				keyHolder);
 				
-				Number unId = keyHolder.getKey();
+				//Number unId = keyHolder.getKey();
 				//addAccountHeadBean.setId(unId.intValue());
 				
 

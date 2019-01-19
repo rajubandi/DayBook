@@ -175,12 +175,33 @@ $(function(){
 				}
 		}
 		
-		function checkAmount(theForm) {		
+		function checkAmount(theForm) {				
 			
-			if(theForm.fullamount.value != theForm.paidamount.value){
-				document.getElementById('duedate').style.display="block" ;
-		        return false;
-		    }
-		    return true;
+			var valueDate = document.getElementById('duedate').value;			
+		    
+		    if (theForm.fullamount.value == theForm.paidamount.value) {
+		    	  //  block of code to be executed if condition1 is true
+		    	document.getElementById("duedate").value = "2019-01-01";
+		    	return true;
+		    	} 
+		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is true
+		    		document.getElementById('duedate').style.display="block" ;
+		    		document.getElementById("endTimeLabel").style.display = 'block';
+		    		return false;
+		    	} 
+		    	else if ((theForm.fullamount.value != theForm.paidamount.value)&&(Date.parse(valueDate))) {
+			    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is true			    		
+			    		return true;
+			    	} 
+		    	else {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is false
+		    	}		    
+		    
 		}
 		
+		// USED LINK FOR VALIDATING EMPTY INPUT DATE: https://stackoverflow.com/questions/19110663/how-to-check-the-empty-value-of-a-input-type-date-in-chrome 
+		// USED LINK FOR ONSUBMIT IN SPRING FORM: 
+		// 1. https://stackoverflow.com/questions/26376369/spring-form-submit-using-java-script
+		// 2. https://stackoverflow.com/questions/16262797/html-form-action-and-onsubmit-issues
+		// USED LINK FOR COMPARE TWO INPUT FIELDS IN JAVASCRIPT:  https://lab.artlung.com/compare-fields/

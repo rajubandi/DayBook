@@ -53,7 +53,7 @@
                     
                     <!-- Row Starts -->
 						<div class="row">
-									<form:form action="collectionName.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+									<form:form action="collectionName.htm" onsubmit="return checkAmount(this);" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
@@ -109,9 +109,10 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
 											<div class="col-sm-8">
-											<form:input id="duedate"  name="duedate" type="date" path="duedate" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
+											
+											<form:input id="duedate"  name="duedate" type="date"  style="display: none" path="duedate" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
 											</div>
 											</div>
 											</div>
