@@ -192,9 +192,9 @@ public class SchoolHomecontroller {
 			userBean.setRolId(rolId);
 			userBean.setPassword(password);
 			userBean.setName(name);
-			//academicYearBean =addAcademicYearDao.getAcademicYearSelectList();
+			academicYearBean =addAcademicYearDao.getAcademicYearSelectList();
 			
-			/*if (academicYearBean != null) {
+			if (academicYearBean != null) {
 			objectMapper = new ObjectMapper(); 
 			academicYearJson =objectMapper.writeValueAsString(academicYearBean);
 			session.setAttribute("academicYear", academicYearJson);
@@ -207,7 +207,7 @@ public class SchoolHomecontroller {
 				//session.setAttribute("academicYear", academicYearBean);
 				session.setAttribute("academicYear", academicYearJson);
 			}
-			*/
+			
 			objuserBean = usesDao1.loginDetails(userBean);
 			
 			if (objuserBean != null) {

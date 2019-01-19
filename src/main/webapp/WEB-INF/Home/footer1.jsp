@@ -49,8 +49,8 @@
 		
 <script type="text/javascript">
 var isClick = 'Yes'; 
-<%-- var activeAcademicYearId = '<%= session.getAttribute("activeAcademicYearId") %>'; --%>
-/* function activateAcademicYear(){
+var activeAcademicYearId = '<%= session.getAttribute("activeAcademicYearId") %>';
+function activateAcademicYear(){
 	
 	var id12 = $("#academicYearList").val(); 
 	
@@ -69,7 +69,7 @@ var isClick = 'Yes';
 				}
 			});
 	
-} */
+}
 
 	$.fn.dataTableExt.sErrMode = 'console';
 	var oTable = null ;
