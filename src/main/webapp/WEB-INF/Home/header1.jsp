@@ -453,11 +453,11 @@ session.setAttribute("url", url);
 
 
 	<script type="text/javascript">
-  var acadamicYear = '<%= session.getAttribute("academicYear") %>'; 
+<%--   var acadamicYear = '<%= session.getAttribute("academicYear") %>';  --%>
 	//var acadamicYear = ${academicYear};
    // console.log(acadamicYear);
     
-    var optionsForClass ;
+   /*  var optionsForClass ;
 	optionsForClass = $("#academicYearList").empty();
 	//optionsForClass = $("#academicYearList");
 	//optionsForClass.append(new Option("-- Choose A --", ""));
@@ -469,7 +469,7 @@ session.setAttribute("url", url);
   		  $("#academicYearList").val(id);
   		
   	}
-	});
+	}); */
 	
 	
     
