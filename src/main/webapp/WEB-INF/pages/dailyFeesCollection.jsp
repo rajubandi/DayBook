@@ -22,7 +22,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title">DC</div>
+				<div class="page-title">Daily Collection</div>
 			</div>
 			<!-- Top Bar ends -->
 
@@ -44,7 +44,7 @@
 					
 							<div class="panel panel-info">
 								<div class="panel-heading">
-									<h4>DC</h4>
+									<h4>Daily Collection</h4>
 								</div>
 								<div class="panel-body collapse in">						
 									
