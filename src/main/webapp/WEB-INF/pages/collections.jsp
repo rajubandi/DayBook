@@ -89,9 +89,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">FullAmount</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
 											    <div class="col-sm-8">
-													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="FullAmount" required="true"/>
+													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
 													<span class="fullamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -99,9 +99,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">PaidAmount</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
 											    <div class="col-sm-8">
-													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="PaidAmount" required="true"/>
+													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -109,9 +109,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<label  for="inputEmail3" class="col-sm-4 control-label">Due Date</label>
 											<div class="col-sm-8">
-											<form:input id="duedate"  name="duedate" type="date" path="duedate" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
+											<form:input id="duedate"  name="duedate" type="date" path="duedate" autocomplete="off"  placeholder="Due Date" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
 											</div>
 											</div>
 											</div>
@@ -157,9 +157,9 @@
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Date</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>
-																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">FullAmount</th>
-																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">PaidAmount</th>
-																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">DueAmount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Full Amount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Paid Amount</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Due Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>
