@@ -139,13 +139,13 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		return result;
 
 	}
+	
 	public List<Map<String, Object>> getHistoryFee(int studentfeeId) {
 
 		String sql ="select s.netFee-(select sum(sf1.fee) from studentfee sf1 where sf.studentId =sf1.studentId) as dueFee, sf.*,DATE_FORMAT( Date(sf.paymentDate),'%d-%M-%Y') as createdate,s.name,s.fatherName,s.mobile,bn.name as boardName,st.name as sectionName," + 
 				"m.name as mediumName,sf.dueFee1,ct.name as className from student s,classtable ct,sectiontable st,mediam m,boardname bn ,studentfee sf where s.id =sf.studentId and " + 
 				"s.className=ct.id and st.id=s.section and m.id=s.medium and bn.id=s.boardName and ct.id=s.className and s.id=?" ;
 				
-		
 		List<Map<String, Object>> retlist = jdbcTemplate.queryForList(sql, new Object[] { studentfeeId });
 		if (retlist.size() > 0)
 			return retlist;
@@ -164,6 +164,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 				return retlist.get(0);
 			return null;
 		}
+	 
 	 @Transactional
 		public void delete(int id) {
 			String sql = "DELETE FROM studentfee WHERE id=?";
@@ -182,6 +183,7 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 			return null;
 		}
 	*/
+	 
 	 public StudentFeeBean getTotalfee(String studentId,int id) {
 			String sql = "select ifnull(sum(fee),0.00) as fee from studentfee where studentId =? and id not in(?)"  ;
 			List<StudentFeeBean> retlist = jdbcTemplate.query(sql,	new Object[]{studentId,id},	ParameterizedBeanPropertyRowMapper.newInstance(StudentFeeBean.class));
@@ -206,28 +208,24 @@ public class StudentFeeDao extends BaseStudentFeeDao {
 		 */
 		//String sql = " select ifnull(sum(sf.fee),0.00) as total,DATE_format(now(),'%d-%M-%Y') as createdTime from studentfee sf where DATE(paymentDate)=DATE(now())"  ;
 		
-		String sql = "select s.name,ct.name as className,m.name as medium ,sf.admissionFee,sf.tutionFee ,sf.transportationFee,sf.hostelFee,sf.stationaryFee,sf.fee as total,DATE_format(now(),'%d-%M-%Y') as createdTime " 
-		+" from studentfee sf ,classtable ct,mediam m ,student s where  sf.studentId = s.id and s.className = ct.id and s.medium = m.id and DATE(paymentDate)=DATE(now())";
+		String sql = "select date,client,description,fullamount from collections where DATE(date) = CAST(CURRENT_TIMESTAMP AS DATE)";
+		
 		List<Map<String,Object>> retlist = jdbcTemplate.queryForList(sql,new Object[]{}	);
 		if(retlist.size() > 0)
 			return retlist;
 		return null;
 	}
 
-	public List<Map<String,Object>> dfCollectionBetweenTwoDates(Date from, Date to) throws ParseException {
+	public List<Map<String,Object>> dfCollectionBetweenTwoDates(java.sql.Date from, java.sql.Date to) throws ParseException {
 //		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy");
 //		Date date1 = formatter.parse(from.toString());
-//		Date date2 = formatter.parse(to.toString());
+//		Date date2 = formatter.parse(to.toString());		
 		
-		java.sql.Timestamp fromdate = 
-				new java.sql.Timestamp(from.getTime()); 
-		java.sql.Timestamp todate = 
-				new java.sql.Timestamp(to.getTime());
+		/*java.sql.Timestamp fromdate = new java.sql.Timestamp(from.getTime()); 
+		java.sql.Timestamp todate = new java.sql.Timestamp(to.getTime());*/ // Now COmmented
 		
 		//String sql = " select DATE_format(paymentDate,'%d-%M-%Y') as createdTime,sum(sf.fee) as amount from studentfee sf where date(paymentDate) between Date('"+fromdate+"')  AND Date('"+todate+"') group by daTE(paymentDate)"  ;
-		String sql = "select s.name,ct.name as className,m.name as medium ,sf.admissionFee,sf.tutionFee ,sf.transportationFee,sf.hostelFee,sf.stationaryFee,sf.fee as total,"
-		+" DATE_format(paymentDate,'%d-%M-%Y') as createdTime from studentfee sf,classtable ct,mediam m ,student s where "
-		+" date(paymentDate) between Date('"+fromdate+"')  AND Date('"+todate+"') and sf.studentId = s.id and s.className = ct.id and s.medium = m.id";
+		String sql = "select date,client,description,fullamount from collections where date(date) between Date('"+from+"')  AND Date('"+to+"')";
 		
 		List<Map<String,Object>>  retlist = jdbcTemplate.queryForList(sql,new Object[]{});
 		System.out.println(sql);

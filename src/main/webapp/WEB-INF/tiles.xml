@@ -391,6 +391,9 @@
 	<definition name="collections" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/pages/collections.jsp" />
 	</definition>
+	<definition name="addClient" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/pages/addClient.jsp" />
+	</definition>
 </tiles-definitions>
 
 

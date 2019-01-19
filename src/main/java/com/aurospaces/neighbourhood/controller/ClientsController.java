@@ -18,26 +18,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
 import com.aurospaces.neighbourhood.bean.CollectionBean;
-
+import com.aurospaces.neighbourhood.dao.AddClientsDao;
 import com.aurospaces.neighbourhood.dao.AddCollectionDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
-public class CollectionsController {
-	@Autowired AddCollectionDao addAccountHeadDao;
+public class ClientsController {
+	@Autowired AddClientsDao addAccountHeadDao;
 	@Autowired usersDao1 usesDao1;
-	Map<Integer, String> statesMap1 = new LinkedHashMap<Integer, String>();
 	
-	@RequestMapping(value = "/collections")
-	public String addAccountHead(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+	@RequestMapping(value = "/addClient")
+	public String addAccountHead(@ModelAttribute("packCmd") ClientDetailsBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
-		
+		String accountName=null;
 		try{
 			listOrderBeans = addAccountHeadDao.getAccountHaed();
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -57,21 +57,19 @@ public class CollectionsController {
 			
 		}
 
-		return "collections";  
+		return "addClient";  
 	}
 	
-@RequestMapping(value = "/collectionName")
-public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
+@RequestMapping(value = "/addClientName")
+public String addAccountName(@ModelAttribute("packCmd") ClientDetailsBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 	System.out.println("Home controller...");
 	List<Map<String, String>> listOrderBeans = null;
-	CollectionBean listOrderBeans1 = null;
+	ClientDetailsBean listOrderBeans1 = null;
 	ObjectMapper objectMapper = null;
-	String sJson = "";	
-	
+	String sJson = "";
 	try{
 		System.out.println("addBoardaddBoardaddBoardaddBoard");
-		listOrderBeans1 = addAccountHeadDao.existingOrNot(objAddAccountHeadBean.getDescription());		
-		
+		listOrderBeans1 = addAccountHeadDao.existingOrNot(objAddAccountHeadBean.getClientName());
 		int id = 0;
 		 int dummyId = 0;
 			if (listOrderBeans1 != null) {
@@ -80,32 +78,23 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 			if (objAddAccountHeadBean.getId() != 0) {
 				id = objAddAccountHeadBean.getId();
 				if (id == dummyId || listOrderBeans1 == null) {
-					
-					String selectOptionIntValue = request.getParameter("client");
-					int gg = Integer.parseInt(selectOptionIntValue);
-					String selectOptionStringValue = statesMap1.get(gg);					
 
-					addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
+					addAccountHeadDao.save(objAddAccountHeadBean);
 					redir.addFlashAttribute("msg", "Record Updated Successfully");
 					redir.addFlashAttribute("cssMsg", "warning");
 				} else {
-					redir.addFlashAttribute("msg", "Already Record Update Exist");
+					redir.addFlashAttribute("msg", "Already Record Exist");
 					redir.addFlashAttribute("cssMsg", "danger");
 				}
 			}
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 == null) {
-				
-				String selectOptionIntValue = request.getParameter("client");
-				int gg = Integer.parseInt(selectOptionIntValue);
-				String selectOptionStringValue = statesMap1.get(gg);				
-				
-				addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
+				addAccountHeadDao.save(objAddAccountHeadBean);
 
 				redir.addFlashAttribute("msg", "Record Inserted Successfully");
 				redir.addFlashAttribute("cssMsg", "success");
 			}
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 != null) {
-				redir.addFlashAttribute("msg", "Already Record Insert Exist");
+				redir.addFlashAttribute("msg", "Already Record Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
 			}
 		
@@ -151,10 +140,10 @@ System.out.println(e);
 		session.setAttribute("message", "Failed");
 	}
 
-	return "redirect:collections";  
+	return "redirect:addClient";  
 }
 
-@RequestMapping(value = "/deleteCollection")
+@RequestMapping(value = "/deleteClient")
 public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 	List<Map<String, String>> listOrderBeans = null;
 	ObjectMapper objectMapper = null;
@@ -185,22 +174,22 @@ public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest 
 	return sJson;  
 }
 
-@ModelAttribute("client")
+/*@ModelAttribute("clients")
 public Map<Integer, String> populateStudent() {
 	Map<Integer, String> statesMap = new LinkedHashMap<Integer, String>();
 	try {
-		String sSql = "select * from clients order by clientName asc";
-		List<ClientDetailsBean> list= usesDao1.populateClient(sSql);
-		for(ClientDetailsBean bean: list){
-			statesMap.put(bean.getId(), bean.getClientName());
+		String sSql = "select * from accounthead order by name asc";
+		List<AddAccountHeadBean> list= usesDao1.populate1(sSql);
+		for(AddAccountHeadBean bean: list){
+			statesMap.put(bean.getId(), bean.getName());
 		}
 				
-				statesMap1 = statesMap;
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
 	}
 	return statesMap;
+}*/ //Now Commented 
 }
-}
+
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.BoardBean;
 import com.aurospaces.neighbourhood.bean.ClassBean1;
+import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
 import com.aurospaces.neighbourhood.bean.MediumBean;
 import com.aurospaces.neighbourhood.bean.SectionBean;
 import com.aurospaces.neighbourhood.bean.SubjectBean;
@@ -39,6 +40,12 @@ public class usersDao1 extends BaseUserDao  {
 				List<AddAccountHeadBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(AddAccountHeadBean.class));
 					return retlist;
 		 }
+	 public List<ClientDetailsBean> populateClient(String sql ){
+		 
+			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
+				List<ClientDetailsBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(ClientDetailsBean.class));
+					return retlist;
+		 }	 
 	 public List<ClassBean1> populateallClasses(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";

@@ -12,7 +12,7 @@
 	
 	<link href="css/datepicker1.css" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='css/MonthPicker.min.css' /> 
-<script type='text/javascript' src='js/MonthPicker.min.js'></script>
+    <script type='text/javascript' src='js/MonthPicker.min.js'></script>
 	<script type="text/javascript" src="js/reports.js"></script>
 	<script>
 	window.setTimeout(function() {
@@ -163,6 +163,7 @@ table{
 							</div>
 							</div>
 							</div>
+							
 <script>
 var listOrders1 = ${dataJson};
 if (listOrders1 != "") {

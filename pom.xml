@@ -332,9 +332,7 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.12</version>
 		</dependency>
-
-
-		<!-- Javaee API -->
+		
 	</dependencies>
 	<build>
 		<plugins>

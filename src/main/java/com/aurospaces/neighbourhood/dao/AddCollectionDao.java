@@ -5,23 +5,21 @@ package com.aurospaces.neighbourhood.dao;
 
 	import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 	import org.springframework.stereotype.Repository;
-
-	import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
-import com.aurospaces.neighbourhood.bean.CollectionBean;
-import com.aurospaces.neighbourhood.db.basedao.AddBaseAccountHeadDao;
-import com.aurospaces.neighbourhood.db.basedao.AddBaseCollectionDao;
-import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
+	
+	import com.aurospaces.neighbourhood.bean.CollectionBean;
+	import com.aurospaces.neighbourhood.db.basedao.AddBaseCollectionDao;
+	import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 	
 	@Repository(value="addCollectionDao")
 	public class AddCollectionDao extends AddBaseCollectionDao {
 		
 		public List<Map<String, String>> getAccountHaed( ){
 			 StringBuffer objStringBuffer = new StringBuffer();
-			 objStringBuffer.append("select id as accountId,date,client,description,amount from collections ");
+			 objStringBuffer.append("select id as accountId,date,client,description,fullamount,paidamount,dueamount from collections ");
 			
 	String sql = objStringBuffer.toString();
 				System.out.println(sql);
-				RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId","date","client","description","amount"});
+				RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId","date","client","description","fullamount","paidamount","dueamount"});
 				jdbcTemplate.query(sql, handler);
 				List<Map<String, String>> result = handler.getResult();
 				return result;
@@ -30,7 +28,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 		
 		public CollectionBean existingOrNot(String id ){			
 			
-			String sql = "select id ,date, client, description, amount from collections where id =? ";
+			String sql = "select id , date, client, description, fullamount, paidamount, dueamount from collections where id =? ";
 			List<CollectionBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{id},
 			ParameterizedBeanPropertyRowMapper.newInstance(CollectionBean.class));

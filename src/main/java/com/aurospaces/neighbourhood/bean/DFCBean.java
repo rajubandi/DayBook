@@ -1,6 +1,6 @@
 package com.aurospaces.neighbourhood.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class DFCBean {
 	

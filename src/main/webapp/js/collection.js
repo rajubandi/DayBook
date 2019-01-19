@@ -8,14 +8,17 @@ $(function(){
 					date: {required: true},
 					client: {required: true},
 					description: {required: true},
-					amount: {required: true},
+					fullamount: {required: true},
+					paidamount: {required: true},						
 				},
 				messages:
 				{
 					date: {required: 'Date'},
 					client: {required: 'Client'},
 					description: {required: 'Description'},
-					amount: {required: 'Amount'},
+					fullamount: {required: 'FullAmount'},
+					paidamount: {required: 'PaidAmount'},	
+					
 				},
 				errorPlacement: function(error, element)
 				{
@@ -25,8 +28,10 @@ $(function(){
 				        error.insertAfter(".client_error").css("color", "red");
 				      else if(element.attr("name") == "description")
 					        error.insertAfter(".description_error").css("color", "red"); 
-				      else if(element.attr("name") == "amount")
-					        error.insertAfter(".amount_error").css("color", "red");					      
+				      else if(element.attr("name") == "fullamount")
+					        error.insertAfter(".fullamount_error").css("color", "red");		
+				      else if(element.attr("name") == "paidamount")
+					        error.insertAfter(".paidamount_error").css("color", "red");					     	
 				      else
 				        error.insertAfter(element);
 				}	
@@ -39,13 +44,29 @@ $(function(){
 				    $("#date").val('');
 				    $("#client").val('');
 				    $("#description").val('');
-				    $("#amount").val('');
+				    $("#fullamount").val('');
+				    $("#paidamount").val('');
+				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
 				    $("#headId").text("Account Creation");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
 });
+
+/*$(function(){
+	
+	$("#date").datepicker({
+		changeDate : true,
+		changeMonth : true,
+		changeYear : true,
+		yearRange: "-17:+0",
+		showButtonPanel : false,
+	    maxDate: '0', 
+		dateFormat : 'dd-MM-yy'
+	});
+	
+});*/
 
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
@@ -67,8 +88,14 @@ $(function(){
 											+ "<td class='' title='"+orderObj.description+"' >"
 											+ orderObj.description
 											+ "</td>"
-											+ "<td class='' title='"+orderObj.amount+"' >"
-											+ orderObj.amount
+											+ "<td class='' title='"+orderObj.fullamount+"' >"
+											+ orderObj.fullamount
+											+ "</td>"
+											+ "<td class='' title='"+orderObj.paidamount+"' >"
+											+ orderObj.paidamount
+											+ "</td>"
+											+ "<td class='' title='"+orderObj.dueamount+"' >"
+											+ orderObj.dueamount
 											+ "</td>"
 											+ "<td>"
 											+ '<a href="javascript:void(0)" onclick=editPack('
@@ -90,7 +117,8 @@ $(function(){
 			$('#date').val(serviceUnitArray[ids].date);
 			$('#client').val(serviceUnitArray[ids].client);
 			$('#description').val(serviceUnitArray[ids].description);
-			$('#amount').val(serviceUnitArray[ids].amount);
+			$('#fullamount').val(serviceUnitArray[ids].fullamount);
+			$('#paidamount').val(serviceUnitArray[ids].paidamount);
 			$("#submitId").val("Update");
 			$("#headId").text("Edit AccountHead");
 		}
@@ -105,7 +133,7 @@ $(function(){
 			  
 			  $.ajax({
 						type : "POST",
-						url : "deleteAccount.json",
+						url : "deleteCollection.json",
 						data : "id=" + id ,
 						success : function(response) {
 							displayTable(response);
@@ -136,3 +164,44 @@ $(function(){
 			}
 		}
 		
+		//remove borders
+		function removeBorder(el){	
+			  $("#"+el).css("border", "");
+			  $("#"+el).css('color','black');
+			  $('#'+el).addClass('default-class');
+			  if ($("#" + el+"_chosen").length)
+				{
+					$("#" +el+"_chosen").children('a').css('border-color','black');
+				}
+		}
+		
+		function checkAmount(theForm) {				
+			
+			var valueDate = document.getElementById('duedate').value;			
+		    
+		    if (theForm.fullamount.value == theForm.paidamount.value) {
+		    	  //  block of code to be executed if condition1 is true
+		    	document.getElementById("duedate").value = "2019-01-01";
+		    	return true;
+		    	} 
+		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is true
+		    		document.getElementById('duedate').style.display="block" ;
+		    		document.getElementById("endTimeLabel").style.display = 'block';
+		    		return false;
+		    	} 
+		    	else if ((theForm.fullamount.value != theForm.paidamount.value)&&(Date.parse(valueDate))) {
+			    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is true			    		
+			    		return true;
+			    	} 
+		    	else {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is false
+		    	}		    
+		    
+		}
+		
+		// USED LINK FOR VALIDATING EMPTY INPUT DATE: https://stackoverflow.com/questions/19110663/how-to-check-the-empty-value-of-a-input-type-date-in-chrome 
+		// USED LINK FOR ONSUBMIT IN SPRING FORM: 
+		// 1. https://stackoverflow.com/questions/26376369/spring-form-submit-using-java-script
+		// 2. https://stackoverflow.com/questions/16262797/html-form-action-and-onsubmit-issues
+		// USED LINK FOR COMPARE TWO INPUT FIELDS IN JAVASCRIPT:  https://lab.artlung.com/compare-fields/
