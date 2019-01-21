@@ -105,7 +105,7 @@
 																	    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>
 																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client Name</th>
 																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>																		
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">FullAmount</th>
+																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">PaidAmount</th>
 																	</tr>
 																</thead>
 																<tbody>
@@ -335,7 +335,7 @@ function removeBorder(el){
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>'
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Client Name</th>'
 					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">FullAmount</th>'
+					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">PaidAmount</th>'
 					+ '</tr>' + '</thead>' + '<tbody></tbody></table>';
 			$('#basicTable').html(tableHead);					
 								
@@ -351,8 +351,8 @@ function removeBorder(el){
 										+ "<td title='"+orderObj.description+"'>"
 										+ orderObj.description
 										+ "</td>"
-										+ "<td title='"+orderObj.fullamount+"'>"
-										+ orderObj.fullamount
+										+ "<td title='"+orderObj.paidamount+"'>"
+										+ orderObj.paidamount
 										+ "</td>"										
 										+ "</tr>";
 								$(tblRow).appendTo("#basicExampleDFC tbody");

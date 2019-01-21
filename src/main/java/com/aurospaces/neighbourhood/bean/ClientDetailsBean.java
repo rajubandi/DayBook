@@ -1,13 +1,45 @@
 package com.aurospaces.neighbourhood.bean;
 
+import java.util.Date;
+
 public class ClientDetailsBean {
 	
 	private int id;
-	private String clientName;
-	private String phoneNumber;
-	private String mail;
-	private String address;
+	private String clientName,phoneNumber,mail,address,fullamount,paidamount;	
+	private Date createddate,duedate;
 	
+	public String getFullamount() {
+		return fullamount;
+	}
+
+	public void setFullamount(String fullamount) {
+		this.fullamount = fullamount;
+	}
+
+	public String getPaidamount() {
+		return paidamount;
+	}
+
+	public void setPaidamount(String paidamount) {
+		this.paidamount = paidamount;
+	}
+
+	public Date getCreateddate() {
+		return createddate;
+	}
+
+	public void setCreateddate(Date createddate) {
+		this.createddate = createddate;
+	}
+
+	public Date getDuedate() {
+		return duedate;
+	}
+
+	public void setDuedate(Date duedate) {
+		this.duedate = duedate;
+	}
+
 	public int getId() {
 		return id;
 	}

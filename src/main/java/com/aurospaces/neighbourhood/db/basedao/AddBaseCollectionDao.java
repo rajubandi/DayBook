@@ -23,7 +23,7 @@ public class AddBaseCollectionDao {
 
 	@Autowired public JdbcTemplate jdbcTemplate;
 	java.sql.Timestamp createdTime,updatedTime,createdDueTime,updatedDueTime;
-	java.sql.Date createdDate, updatedDate,createdDueDate,updatedDueDate;
+	//java.sql.Date createdDate, updatedDate,createdDueDate,updatedDueDate;
 	String dueAmountInSave,dueAmountInUpdate;
 	//java.sql.Date sqlStartDate;
 	 

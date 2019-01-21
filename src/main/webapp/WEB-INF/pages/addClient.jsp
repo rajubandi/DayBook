@@ -10,6 +10,10 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	
+	<link href="css/datepicker1.css" rel="stylesheet">
+	<link rel='stylesheet' type='text/css' href='css/MonthPicker.min.css' /> 
+    <script type='text/javascript' src='js/MonthPicker.min.js'></script>
+	
 	<script type="text/javascript" src="js/addClient.js"></script>
 	<script>
 	window.setTimeout(function() {
@@ -49,7 +53,7 @@
                     
                     <!-- Row Starts -->
 						<div class="row">
-									<form:form action="addClientName.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+									<form:form action="addClientName.htm" onsubmit="return checkAmount(this);" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 																																	
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -88,6 +92,46 @@
 													<form:input path="address" class="form-control" tabindex="1" placeholder="Address" required="true"/>
 													<span class="address_error" id="name_error"></span>
 												</div>
+											</div>
+											</div>											
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
+											    <div class="col-sm-8">
+													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
+													<span class="fullamount_error" id="name_error"></span>
+												</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
+											    <div class="col-sm-8">
+													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<span class="paidamount_error" id="name_error"></span>
+												</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											<label  for="inputEmail3" class="col-sm-4 control-label">Created Date </label>
+											<div class="col-sm-8">
+											<form:input id="createddate" name="createddate" data-format="dd-MM-yyyy" type="text" path="createddate" autocomplete="off"  placeholder="CreatedDate" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+											<span class="createddate_error" id="name_error"></span>
+											</div>
+											</div>
+											</div>
+											
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<div class="col-sm-8">
+			     							<form:input id="duedate" style="display: none" name="duedate" data-format="dd-MM-yyyy" path="duedate" type="text" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
+											<span class="duedate_error" id="name_error"></span>
+											</div>
 											</div>
 											</div>
 											
@@ -133,6 +177,10 @@
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Phone Number</th>
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">email id</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Address</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">FullAmount</th>
+																	<!-- <th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">PaidAmount</th> -->
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">CreatedDate</th>
+																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">DueDate</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
 															</thead>

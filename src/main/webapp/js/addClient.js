@@ -4,11 +4,15 @@ $(function(){
 				errorElement: 'span',
 			    errorClass: 'has-error',
 				rules:
-				{
+				{   
 					clientName: {required: true},
 					phoneNumber: {required: true},
 					mail: {required: true},
 					address: {required: true},
+					fullamount: {required: true},
+					paidamount: {required: true},
+					createddate: {required: true},
+					duedate: {required: true},
 				},
 				messages:
 				{
@@ -16,6 +20,10 @@ $(function(){
 					phoneNumber: {required: 'phoneNumber'},
 					mail: {required: 'mail'},
 					address: {required: 'address'},
+					fullamount: {required: 'fullamount'},
+					paidamount: {required: 'paidamount'},
+					createddate: {required: 'createddate'},
+					duedate: {required: 'duedate'},
 				},
 				errorPlacement: function(error, element)
 				{
@@ -26,7 +34,15 @@ $(function(){
 				      else if(element.attr("name") == "mail")
 					        error.insertAfter(".mail_error").css("color", "red"); 
 				      else if(element.attr("name") == "address")
-					        error.insertAfter(".address_error").css("color", "red");					      
+					        error.insertAfter(".address_error").css("color", "red");	
+				      else if(element.attr("name") == "fullamount")
+					        error.insertAfter(".fullamount_error").css("color", "red");
+				      else if(element.attr("name") == "paidamount")
+					        error.insertAfter(".paidamount_error").css("color", "red");
+				      else if(element.attr("name") == "createddate")
+					        error.insertAfter(".createddate_error").css("color", "red");
+				      else if(element.attr("name") == "duedate")
+					        error.insertAfter(".duedate_error").css("color", "red");
 				      else
 				        error.insertAfter(element);
 				}	
@@ -40,11 +56,37 @@ $(function(){
 				    $("#phoneNumber").val('');
 				    $("#mail").val('');
 				    $("#address").val('');
+				    $("#fullamount").val('');
+				    $("#paidamount").val('');
+				    $("#createddate").val('');
+				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
 				    $("#headId").text("Client Account Creation");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
+});
+
+$(function(){
+	
+	$("#createddate").datepicker({
+		changeDate : true,
+		changeMonth : true,
+		changeYear : true,
+		yearRange: "-17:+0",
+		showButtonPanel : false,
+	    maxDate: '0', 
+		dateFormat : 'dd-MM-yy'
+	});
+	
+	// USED URL: https://stackoverflow.com/questions/4419804/restrict-date-in-jquery-datepicker-based-on-another-datepicker-or-textbox
+	$("#duedate").datepicker({		        
+		  onSelect: function(dateText, inst){
+		     $("#duedate").datepicker("option","minDate",
+		     $("#createddate").datepicker("getDate"));
+		  }
+		});	
+	
 });
 
 
@@ -71,6 +113,18 @@ $(function(){
 											+ "<td class='' title='"+orderObj.address+"' >"
 											+ orderObj.address
 											+ "</td>"
+											+ "<td class='' title='"+orderObj.fullamount+"' >"
+											+ orderObj.fullamount
+											+ "</td>"
+											/*+ "<td class='' title='"+orderObj.paidamount+"' >"
+											+ orderObj.paidamount
+											+ "</td>"*/
+											+ "<td class='' title='"+orderObj.createddate+"' >"
+											+ orderObj.createddate
+											+ "</td>"
+											+ "<td class='' title='"+orderObj.duedate+"' >"
+											+ orderObj.duedate
+											+ "</td>"
 											+ "<td>"
 											+ '<a href="javascript:void(0)" onclick=editPack('
 											+ orderObj.accountId + ')'
@@ -92,6 +146,10 @@ $(function(){
 			$('#phoneNumber').val(serviceUnitArray[ids].phoneNumber);
 			$('#mail').val(serviceUnitArray[ids].mail);
 			$('#address').val(serviceUnitArray[ids].address);
+			$('#fullamount').val(serviceUnitArray[ids].fullamount);
+			$('#paidamount').val(serviceUnitArray[ids].paidamount);
+			$('#createddate').val(serviceUnitArray[ids].createddate);
+			$('#duedate').val(serviceUnitArray[ids].duedate);
 			$("#submitId").val("Update");
 			$("#headId").text("Edit AccountHead");
 		}
@@ -135,6 +193,31 @@ $(function(){
 			}else{
 			return false;
 			}
+		}
+		
+function checkAmount(theForm) {				
+			
+			var valueDate = document.getElementById('duedate').value;			
+		    
+		    if (theForm.fullamount.value == theForm.paidamount.value) {
+		    	  //  block of code to be executed if condition1 is true
+		    	document.getElementById("duedate").value = "19-January-2019";
+		    	return true;
+		    	} 
+		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is true
+		    		document.getElementById('duedate').style.display="block" ;
+		    		document.getElementById("endTimeLabel").style.display = 'block';
+		    		return false;
+		    	} 
+		    	else if ((theForm.fullamount.value != theForm.paidamount.value)&&(Date.parse(valueDate))) {
+			    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is true			    		
+			    		return true;
+			    	} 
+		    	else {
+		    	  //  block of code to be executed if the condition1 is false and condition2 is false and condition3 is false
+		    	}		    
+		    
 		}
 		
 		//remove borders
