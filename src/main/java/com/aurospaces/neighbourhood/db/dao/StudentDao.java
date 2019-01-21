@@ -145,7 +145,13 @@ String sql = "selec"
 
 	public List<Map<String, Object>> getFeesAndExpenses(Integer academicYearId) {
 		//jdbcTemplate = jdbcTemplate.getJdbcTemplate();
-		 
+		
+		/*select 'Total Amount' as totalFees, sum(s.fullamount) as amount from collections s  
+			union all  select 'Fee Collection' as totalFees, sum(sf.paidamount) as amount from collections sf   
+			union all select 'Expenses' as toatalFees, sum(l.amount) as amount from ledger l
+		 * 
+		 * 
+		*/ 
 		 String sql="select 'Total Amount' as totalFees, sum(s.netFee) as amount from student s where s.academicYearId = ? " 
 				 + " union all  select 'Fee Collection' as totalFees, sum(sf.fee) as amount from studentfee sf where sf.academicYearId = ? " 
 				 + " union all select 'Expenses' as toatalFees, sum(l.amount) as amount from ledger l where l.academicYearId = ? " ;
@@ -158,6 +164,15 @@ String sql = "selec"
 	public List<Map<String, Object>> getExpensessummary(Integer academicYearId) {
 		//jdbcTemplate = jdbcTemplate.getJdbcTemplate();
 		 
+		/*
+		 * 
+
+
+			select ah.name as accountHead ,sum(l.amount) as amount from ledger l,accounthead ah where l.accountHeadId = ah.id 
+			GROUP BY accountHead
+		 * 
+		 * 
+		*/
 		 String sql="select ah.name as accountHead ,sum(l.amount) as amount from ledger l,accounthead ah where l.accountHeadId = ah.id and academicYearId= ? GROUP BY accountHead " ;
 		   
 		 List<Map<String, Object>> retlist = jdbcTemplate.queryForList(sql,new Object[]{academicYearId});

@@ -25,7 +25,7 @@ public class AddBaseCollectionDao {
 	java.sql.Timestamp createdTime,updatedTime,createdDueTime,updatedDueTime;
 	java.sql.Date createdDate, updatedDate,createdDueDate,updatedDueDate;
 	String dueAmountInSave,dueAmountInUpdate;
-	java.sql.Date sqlStartDate;
+	//java.sql.Date sqlStartDate;
 	 
 	public final String INSERT_SQL = "INSERT INTO collections( date, client, description, fullamount, paidamount, dueamount, duedate) values (?, ?, ?, ?, ?, ?, ?)"; 
 
@@ -72,7 +72,7 @@ public class AddBaseCollectionDao {
 						 int dueAmtInSave = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount());
 						 dueAmountInSave = String.valueOf(dueAmtInSave);
 						 
-						 String startDate="19-01-2019";
+						 /*String startDate="19-01-2019";
 						 SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yy");
 						 java.util.Date date2;
 						try {
@@ -82,7 +82,7 @@ public class AddBaseCollectionDao {
 						} catch (ParseException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
+						}*/
 						  
 						 
 					PreparedStatement ps =	connection.prepareStatement(INSERT_SQL,new String[]{"id"});

@@ -192,7 +192,7 @@ public class SchoolHomecontroller {
 			userBean.setRolId(rolId);
 			userBean.setPassword(password);
 			userBean.setName(name);
-			academicYearBean =addAcademicYearDao.getAcademicYearSelectList();
+			/*academicYearBean =addAcademicYearDao.getAcademicYearSelectList();
 			
 			if (academicYearBean != null) {
 			objectMapper = new ObjectMapper(); 
@@ -206,7 +206,7 @@ public class SchoolHomecontroller {
 				academicYearJson =objectMapper.writeValueAsString(academicYearBean);
 				//session.setAttribute("academicYear", academicYearBean);
 				session.setAttribute("academicYear", academicYearJson);
-			}
+			}*/
 			
 			objuserBean = usesDao1.loginDetails(userBean);
 			
@@ -314,10 +314,10 @@ e.printStackTrace();
 		List<Map<String, Object>> expensessummary = null;
 		ObjectMapper objectMapper = null;
 		String sJson = null;
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-		session.setAttribute("activeAcademicYearId", academicYearId);
+		/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+		session.setAttribute("activeAcademicYearId", academicYearId);*/
 		try{
-			feesAndExpenses = studentDao.getFeesAndExpenses(academicYearId)	;
+			/*feesAndExpenses = studentDao.getFeesAndExpenses(academicYearId)	;
 			if(feesAndExpenses != null){
 				objectMapper = new ObjectMapper();
 				request.setAttribute("feesAndExpenses", objectMapper.writeValueAsString(feesAndExpenses));
@@ -331,7 +331,7 @@ e.printStackTrace();
 				request.setAttribute("expensessummary", objectMapper.writeValueAsString(expensessummary));
 			}else{
 				request.setAttribute("expensessummary", "''");
-			}
+			}*/
 			
 		}catch(Exception e){
 e.printStackTrace();
@@ -357,7 +357,7 @@ e.printStackTrace();
 		return "parentDashBoard";
 	}
 	
-	@RequestMapping(value = "/addclass")
+	/*@RequestMapping(value = "/addclass")
 	public String addclass(@ModelAttribute("packCmd") ClassBean objClassBean, ModelMap model,HttpServletRequest request,HttpServletResponse response,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
@@ -404,9 +404,9 @@ e.printStackTrace();
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
 //				  return "redirect:HomeControl1.htm?class=exist";
-			}/*else{
+			}else{
 				session.setAttribute("message", "No Records found");
-			}*/
+			}
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -660,7 +660,7 @@ e.printStackTrace();
 				}
 			 
 			 
-/*			 if(id != 0 ){
+			 if(id != 0 ){
 //				 session.setAttribute("message", "Section Updated Successfully");
 				 objSectionDao.save(objClassBean);
 				 redir.addFlashAttribute("msg", "Record Updated Successfully");
@@ -674,16 +674,16 @@ e.printStackTrace();
 				redir.addFlashAttribute("msg", "Record Alredy Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
 			}
-			 }*/
+			 }
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
 //				  return "redirect:HomeControl1.htm?class=exist";
-			}/*else{
+			}else{
 				session.setAttribute("message", "No Records found");
-			}*/
+			}
 			
 		}catch(Exception e){
 e.printStackTrace();
@@ -841,7 +841,7 @@ e.printStackTrace();
 				}
 			
 			
-			/*if(objMediumBean.getId() == 0){
+			if(objMediumBean.getId() == 0){
 				listOrderBeans1 = objMediumDao.existingOrNot(objMediumBean.getName());
 				if(listOrderBeans1.size() == 0){
 					objMediumDao.save(objMediumBean);
@@ -859,7 +859,7 @@ e.printStackTrace();
 //				session.setAttribute("message", "Medium Updated Successfully");
 				redir.addFlashAttribute("msg", "Medium Updated Successfully");
 				redir.addFlashAttribute("cssMsg", "warning");
-			}*/
+			}
 			
 			
 			listOrderBeans = objMediumDao.getMedium();
@@ -992,7 +992,7 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 		
 		objStudentBean.setNetFee(fee);
 		objStudentBean.setDiscountFee(objStudentBean.getTotalFee()-fee);
-		/*String  terms[] =objStudentBean.getT1().split(",");
+		String  terms[] =objStudentBean.getT1().split(",");
 		
 		for(int i=0;i<terms.length;i++) {
 			
@@ -1000,14 +1000,14 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 			if(i==1) {objStudentBean.setTermTwo(Double.parseDouble(terms[i]));}
 			if(i==2) {objStudentBean.setTermThree(Double.parseDouble(terms[i]));}
 			
-		}*/
+		}
 		
 		if (!file.isEmpty()) {
 				byte[] bytes = file.getBytes();
 				name =file.getOriginalFilename();
 				int n=name.lastIndexOf(".");
-				/*name=name.substring(n + 1);
-				name=name+".png";*/
+				name=name.substring(n + 1);
+				name=name+".png";
 				filepath= objStudentBean.getAdmissionNum()+".png";
 				
 				
@@ -1040,16 +1040,16 @@ double fee =objStudentBean.getAdmissionFee()+objStudentBean.getTutionFee()+objSt
 			        filepath= "img/"+filepath;
 			        objStudentBean.setImagePath(filepath);
 			        
-			     /*   ----------------------------------------*/
+			        ----------------------------------------
 			        sTomcatRootPath = System.getProperty("catalina.base");
 					sDirPath = sTomcatRootPath + File.separator + "webapps"+ File.separator + "img" ;
 					System.out.println(sDirPath);
 					File file1 = new File(sDirPath);
 				    file.transferTo(file1);
 				
-		}else{/*
+		}else{
 			filepath= baseUrl+"/img/default.png";
-			objClassBean.setImagePath(filepath);*/
+			objClassBean.setImagePath(filepath);
 		}
 		int id =objStudentBean.getId();
 		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
@@ -1188,9 +1188,9 @@ e.printStackTrace();
 			
 				listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null,academicYearId.toString(),null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
-				  /*objectMapper = new ObjectMapper(); 
+				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
-				  request.setAttribute("allOrders1", sJson);*/
+				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
 			}
 		}catch(Exception e){
@@ -1236,9 +1236,9 @@ e.printStackTrace();
 		return "viewStudent";
 	}
 	
-	/*SELECT   s.id, s.name,s.netFee, SUM(sf.fee), ( s.netFee - SUM(sf.fee)) AS remainBal FROM     student s INNER JOIN
+	SELECT   s.id, s.name,s.netFee, SUM(sf.fee), ( s.netFee - SUM(sf.fee)) AS remainBal FROM     student s INNER JOIN
     studentfee sf ON sf.studentId = s.id
-GROUP BY sf.studentId*/
+GROUP BY sf.studentId
 	@RequestMapping(value = "/studentFeeHome")
 	public String studentFeeHome(@ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean, ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
@@ -1286,9 +1286,9 @@ e.printStackTrace();
 			objStudentFeeBean.setFee(fee);
 			
 				double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
-				/*double netSchoolFeeTermOne = objStudent.getTermOne();
+				double netSchoolFeeTermOne = objStudent.getTermOne();
 				double netSchoolFeeTermTwo = objStudent.getTermTwo();
-				double netSchoolFeeTermThree = objStudent.getTermThree();*/
+				double netSchoolFeeTermThree = objStudent.getTermThree();
 				//double completeNetSchoolFee = netSchoolFeeTermOne+netSchoolFeeTermTwo+netSchoolFeeTermThree;
 				double paidSchoolFee =		objStudentFeeBean.getHostelFee();
 				StudentFeeBean dueFee = objStudentFeeDao.getDueFee(objStudentFeeBean.getStudentId());
@@ -1474,7 +1474,7 @@ e.printStackTrace();
 
 		return "";  
 	}
-	
+	*/
 	@RequestMapping(value = "/deleteStudentFee")
 	public @ResponseBody List<Map<String, String>> deleteStudentFee( ModelMap model,HttpServletRequest request)  {
 		System.out.println("Home controller...");
@@ -1870,6 +1870,7 @@ e.printStackTrace();
 		}
 		return null;
 	}
+	/*
 	@RequestMapping(value = "/viewAttendanceHome")
 	public String viewAttendanceHome(@ModelAttribute("packCmd") StudentBean objStudentBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("viewAttendanceHome controller...");
@@ -1880,14 +1881,14 @@ e.printStackTrace();
 		UsersBean  objuserBean = null;
 
 		try{
-			 /* objuserBean =(UsersBean) session.getAttribute("cacheUserBean");
+			  objuserBean =(UsersBean) session.getAttribute("cacheUserBean");
 			if(objuserBean != null){
 				if(objuserBean.getRolId() == 3"){
 				  objuserBean1 = usesDao1.loginDetails(objuserBean);
 				  objStudentBean.setMobile(objuserBean1.getMobile());
 				}
 			}
-			 */
+			 
 			
 			listOrderBeans = attendanceDao.getAttendance(objStudentBean);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -1934,13 +1935,13 @@ e.printStackTrace();
 				objClassBean.setDob3(date1);
 			}
 			
-			/*listOrderBeans = attendanceDao.getAttendance(objClassBean);
+			listOrderBeans = attendanceDao.getAttendance(objClassBean);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
-			}*/
+			}
 			//studentDao.save(objClassBean);
 		}catch(Exception e){
 e.printStackTrace();
@@ -2118,8 +2119,8 @@ e.printStackTrace();
 			   	
 			   	for(StudentBean list12 : studentdetails){
 			   		
-			   		/*SimpleDateFormat formatter = new SimpleDateFormat("mm-dd-YY");
-			   		Date date1 = formatter.parse(list12.getDob2());*/
+			   		SimpleDateFormat formatter = new SimpleDateFormat("mm-dd-YY");
+			   		Date date1 = formatter.parse(list12.getDob2());
 			   		sno++;
 			   		System.out.println(list12.getSection());
 			   		
@@ -2277,7 +2278,7 @@ e.printStackTrace();
         	}
         	
         	
-        	/*parent username and passwoed creation*/
+        	parent username and passwoed creation
         	
         	if(isInsert){
         		
@@ -2573,8 +2574,8 @@ e.printStackTrace();
 	  return "redirect:dashBoard.htm";
 
 
-	}
-	@RequestMapping(value = "/eventsHome")
+	}*/
+	/*@RequestMapping(value = "/eventsHome")
 	public String upCommingBirthDay(@ModelAttribute("packCmd") StudentBean objStudentBean,
 			HttpServletResponse response, HttpServletRequest request,
 			HttpSession objSession) throws JsonGenerationException, JsonMappingException, IOException {
@@ -2662,13 +2663,13 @@ e.printStackTrace();
 				Date date1 = formatter.parse(objStudentBean.getDob2());
 				objStudentBean.setDob3(date1);
 			}
-			/*listOrderBeans = attendanceDao.getAttendance(objClassBean);
+			listOrderBeans = attendanceDao.getAttendance(objClassBean);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
-			}*/
+			}
 			//studentDao.save(objClassBean);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -2879,7 +2880,7 @@ try {
 				}
 			
 			
-			/*if(objAddBoardBean.getId() == 0){
+			if(objAddBoardBean.getId() == 0){
 				listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
 				if(listOrderBeans1.size() == 0){
 					addBoardDao.save(objAddBoardBean);
@@ -2897,7 +2898,7 @@ try {
 //				session.setAttribute("message", "Successfully Board is Updated");
 				redir.addFlashAttribute("msg", " Board Updated  Successfully");
 				redir.addFlashAttribute("cssMsg", "warning");
-			}*/
+			}
 			
 			
 			listOrderBeans = addBoardDao.getBoard();
@@ -3026,7 +3027,7 @@ e.printStackTrace();
 				}
 			
 			
-			/*if(objStudentBean.getId() == 0){
+			if(objStudentBean.getId() == 0){
 				listOrderBeans1 = subjectDao.existingOrNot(objStudentBean.getName());
 				if(listOrderBeans1.size() == 0){
 					subjectDao.save(objStudentBean);
@@ -3044,7 +3045,7 @@ e.printStackTrace();
 //				session.setAttribute("message", "Successfully Subject is Updated");
 				redir.addFlashAttribute("msg", "Subject Updated Successfully");
 				redir.addFlashAttribute("cssMsg", "warning");
-			}*/
+			}
 			
 			
 			listOrderBeans = subjectDao.getSubjects();
@@ -3282,7 +3283,7 @@ System.out.println(e);
 	
 	return "hallticket";
 }
-
+*/
 
 @RequestMapping(value = "/changePassword")
 public @ResponseBody String changePassword( HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException, AddressException, MessagingException {

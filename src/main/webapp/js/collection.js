@@ -190,7 +190,7 @@ $(function(){
 		    
 		    if (theForm.fullamount.value == theForm.paidamount.value) {
 		    	  //  block of code to be executed if condition1 is true
-		    	document.getElementById("duedate").value = "2019-01-01";
+		    	document.getElementById("duedate").value = "19-January-2019";
 		    	return true;
 		    	} 
 		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {

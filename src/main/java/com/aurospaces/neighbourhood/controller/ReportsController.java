@@ -46,8 +46,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			//String sJson = "";
 			//String dayWiseJson="";
 			String dataJson="";
-			Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-			session.setAttribute("activeAcademicYearId", academicYearId);
+			/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+			session.setAttribute("activeAcademicYearId", academicYearId);*/
 			try{
 				Date toDate = new Date();
 				/*expensesBeanList = reportsDao.getExpensesBeanAll(null);
