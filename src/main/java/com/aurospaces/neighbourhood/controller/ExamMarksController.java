@@ -34,13 +34,14 @@ import com.aurospaces.neighbourhood.db.dao.usersDao1;
 	@Autowired private ExamTypeDao  examTypeDao;
 	@Autowired ExamPatternDao examPatternDao;
 	@Autowired usersDao1 usesDao1;
-	@RequestMapping(value = "/examMarks")
+	
+	/*@RequestMapping(value = "/examMarks")
 	public String examMarksHome(@ModelAttribute("examMarkscmd") ExamMarksBean examMarksBean,Model model )  {
 		model.addAttribute("board", schoolHomecontroller.populate()) ;
 		model.addAttribute("sections", schoolHomecontroller.populateallSection()) ;
 		model.addAttribute("examType", examTypeDao.getAllExamType()) ;
 		return "examMarks";
-	}
+	}*/
 
 	
 	@RequestMapping(value = "/examPattern")

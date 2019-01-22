@@ -1,6 +1,6 @@
 package com.aurospaces.neighbourhood.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class CollectionBean {
 
@@ -8,13 +8,21 @@ public class CollectionBean {
 	private Date date,duedate;
 	private String client,description,fullamount,paidamount,dueamount;
 	
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public Date getDuedate() {
 		return duedate;
 	}
 
 	public void setDuedate(Date duedate) {
 		this.duedate = duedate;
-	}		
+	}	
 	
 	public String getDueamount() {
 		return dueamount;
@@ -22,15 +30,7 @@ public class CollectionBean {
 
 	public void setDueamount(String dueamount) {
 		this.dueamount = dueamount;
-	}
-
-	public java.sql.Date getDate() {
-		return date;
-	}
-
-	public void setDate(java.sql.Date date) {
-		this.date = date;
-	}
+	}	
 
 	public String getPaidamount() {
 		return paidamount;

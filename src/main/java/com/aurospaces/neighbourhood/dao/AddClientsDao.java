@@ -14,11 +14,11 @@ public class AddClientsDao extends AddBaseClientsDao {
 	
 	public List<Map<String, String>> getAccountHaed( ){
 		 StringBuffer objStringBuffer = new StringBuffer();
-		 objStringBuffer.append("select id as accountId,clientName,phoneNumber,mail,address from clients ");
+		 objStringBuffer.append("select id as accountId,clientName,phoneNumber,mail,address,fullamount,DATE_format(createddate,'%d-%M-%Y') as createddate,DATE_format(duedate,'%d-%M-%Y') as duedate  from clients ");
 		
 String sql = objStringBuffer.toString();
 			System.out.println(sql);
-			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId","clientName","phoneNumber","mail","address"});
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId","clientName","phoneNumber","mail","address","fullamount","createddate","duedate"});
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
 			return result;
@@ -27,7 +27,7 @@ String sql = objStringBuffer.toString();
 	
 	public ClientDetailsBean  existingOrNot(String id ){			
 		
-		String sql = "select id ,clientName, phoneNumber, mail, address from clients where id =? ";
+		String sql = "select id ,clientName, phoneNumber, mail, address, fullamount, DATE_format(createddate,'%d-%M-%Y') as createddate, DATE_format(duedate,'%d-%M-%Y') as duedate from clients where id =? ";
 		List<ClientDetailsBean> retlist = jdbcTemplate.query(sql,
 		new Object[]{id},
 		ParameterizedBeanPropertyRowMapper.newInstance(ClientDetailsBean.class));

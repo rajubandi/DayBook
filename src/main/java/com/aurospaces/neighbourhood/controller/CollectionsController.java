@@ -1,6 +1,8 @@
 package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,7 +85,13 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 					
 					String selectOptionIntValue = request.getParameter("client");
 					int gg = Integer.parseInt(selectOptionIntValue);
-					String selectOptionStringValue = statesMap1.get(gg);					
+					String selectOptionStringValue = statesMap1.get(gg);
+					
+					/*String createdDate=request.getParameter("date");
+					SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+					Date date1 = formatter.parse(createdDate.toString());
+					// now, create a java.sql.Date from the java.util.Date
+					java.sql.Date sqlcreatedDate = new java.sql.Date(date1.getTime());*/
 
 					addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
 					redir.addFlashAttribute("msg", "Record Updated Successfully");
@@ -98,6 +106,15 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 				String selectOptionIntValue = request.getParameter("client");
 				int gg = Integer.parseInt(selectOptionIntValue);
 				String selectOptionStringValue = statesMap1.get(gg);				
+				
+				/*String createdDate=request.getParameter("date");
+				System.out.println("sqlcreateddate in string formate" +createdDate);
+				SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+				
+				Date date1 = formatter.parse(createdDate.toString());
+				// now, create a java.sql.Date from the java.util.Date
+				java.sql.Date sqlcreatedDate = new java.sql.Date(date1.getTime());
+				System.out.println("sqlcreateddate in sql" +sqlcreatedDate);*/
 				
 				addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue);
 
@@ -141,7 +158,7 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 			objectMapper = new ObjectMapper(); 
 			  sJson =objectMapper.writeValueAsString(listOrderBeans);
 			  request.setAttribute("allOrders1", "''");
-		}
+		} 
 		//studentDao.save(objClassBean);
 	}catch(Exception e){
 e.printStackTrace();

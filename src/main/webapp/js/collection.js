@@ -54,7 +54,7 @@ $(function(){
 
 });
 
-/*$(function(){
+$(function(){
 	
 	$("#date").datepicker({
 		changeDate : true,
@@ -66,7 +66,16 @@ $(function(){
 		dateFormat : 'dd-MM-yy'
 	});
 	
-});*/
+	// USED URL: https://stackoverflow.com/questions/4419804/restrict-date-in-jquery-datepicker-based-on-another-datepicker-or-textbox
+	$("#duedate").datepicker({		        
+		  onSelect: function(dateText, inst){
+		     $("#duedate").datepicker("option","minDate",
+		     $("#date").datepicker("getDate"));
+		  }
+		});	
+	
+});
+
 
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
@@ -181,7 +190,7 @@ $(function(){
 		    
 		    if (theForm.fullamount.value == theForm.paidamount.value) {
 		    	  //  block of code to be executed if condition1 is true
-		    	document.getElementById("duedate").value = "2019-01-01";
+		    	document.getElementById("duedate").value = "19-January-2019";
 		    	return true;
 		    	} 
 		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {
