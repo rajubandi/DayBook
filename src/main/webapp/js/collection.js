@@ -119,6 +119,42 @@ $(function(){
 								});
 		}
 		
+		/*var showAmountValue;
+		
+		function showAmountFunc(showamt) {
+			
+			showAmountValue = showamt;
+			//showAmountValue = "gg";
+			
+		}*/
+		
+		var gg ; 
+		
+		function searchData() {			
+			
+			
+			
+			var clientid = $("#client").val();
+				$.ajax({
+					type : "POST",
+					url : "getAmountData.json",
+					data : "clientid=" + clientid,
+					async:false,
+					success : function(response) {	
+						
+						gg = response;
+						
+						//showAmountFunc(response)
+						
+					}
+				});
+				
+				document.getElementById('showamount').style.display="block" ;
+				//document.getElementById('showamount').innerHTML = showAmountValue;
+				document.getElementById('showamount').innerHTML = gg;
+				
+		}
+		
 		function editPack(id1) {
 			var ids= id1;
 			$("#cls-form").validate().resetForm();

@@ -1,6 +1,7 @@
 package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,11 +36,13 @@ public class ClientsController {
 	@RequestMapping(value = "/addClient")
 	public String addAccountHead(@ModelAttribute("packCmd") ClientDetailsBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		List<Map<String, String>> listOrderBeans = null;
+		
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		String accountName=null;
 		try{
-			listOrderBeans = addAccountHeadDao.getAccountHaed();
+			listOrderBeans = addAccountHeadDao.getAccountHaed();			
+			
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
@@ -64,6 +67,7 @@ public class ClientsController {
 public String addAccountName(@ModelAttribute("packCmd") ClientDetailsBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 	System.out.println("Home controller...");
 	List<Map<String, String>> listOrderBeans = null;
+	List<Map<String, String>> listOrderBeansId = null;
 	ClientDetailsBean listOrderBeans1 = null;
 	ObjectMapper objectMapper = null;
 	String sJson = "";
@@ -80,6 +84,20 @@ public String addAccountName(@ModelAttribute("packCmd") ClientDetailsBean objAdd
 				if (id == dummyId || listOrderBeans1 == null) {
 
 					addAccountHeadDao.save(objAddAccountHeadBean);
+					listOrderBeansId = addAccountHeadDao.getClientId();
+					System.out.println("Id from clients: " +listOrderBeansId);
+					
+					int clientIdd=0 ;
+					
+					for (Iterator iterator = listOrderBeansId.iterator(); iterator.hasNext();) {
+						Map<String, String> map = (Map<String, String>) iterator.next();
+						System.out.println("In for loop: " +map.get("accountId"));	
+						String gg = map.get("accountId");					 
+						clientIdd = Integer.parseInt(gg);
+					}
+					
+					addAccountHeadDao.saveToCollection(objAddAccountHeadBean, clientIdd);
+					
 					redir.addFlashAttribute("msg", "Record Updated Successfully");
 					redir.addFlashAttribute("cssMsg", "warning");
 				} else {
@@ -89,6 +107,21 @@ public String addAccountName(@ModelAttribute("packCmd") ClientDetailsBean objAdd
 			}
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 == null) {
 				addAccountHeadDao.save(objAddAccountHeadBean);
+				
+				listOrderBeansId = addAccountHeadDao.getClientId();
+				System.out.println("Id from clients: " +listOrderBeansId);
+				
+				int clientId=0 ;
+				
+				for (Iterator iterator = listOrderBeansId.iterator(); iterator.hasNext();) {
+					Map<String, String> map = (Map<String, String>) iterator.next();
+					System.out.println("In for loop: " +map.get("accountId"));	
+					String gg = map.get("accountId");					 
+					clientId = Integer.parseInt(gg);
+				}
+				
+				addAccountHeadDao.saveToCollection(objAddAccountHeadBean, clientId);
+				
 
 				redir.addFlashAttribute("msg", "Record Inserted Successfully");
 				redir.addFlashAttribute("cssMsg", "success");

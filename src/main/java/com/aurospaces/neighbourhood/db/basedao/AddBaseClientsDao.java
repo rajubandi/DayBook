@@ -20,10 +20,11 @@ import com.aurospaces.neighbourhood.bean.CollectionBean;
 public class AddBaseClientsDao {
 
 	@Autowired public JdbcTemplate jdbcTemplate;
-	java.sql.Timestamp createdTime,updatedTime,createdDueTime,updatedDueTime;
-	//String dueAmountInSave,dueAmountInUpdate;
+	java.sql.Timestamp createdTime,updatedTime,createdDueTime,updatedDueTime,createdTimeColl,updatedTimeColl,createdDueTimeColl,updatedDueTimeColl;
+	String dueAmountInSave,dueAmountInUpdate;
 		 
 	public final String INSERT_SQL = "INSERT INTO clients( clientName, phoneNumber, mail, address, fullamount, createddate, duedate) values (?, ?, ?, ?, ?, ?, ?)"; 
+	public final String INSERT_SQLTOCOLLECTION = "INSERT INTO collections( date, client, fullamount, paidamount, dueamount, duedate, clientid) values (?, ?, ?, ?, ?, ?, ?)";
 
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
@@ -96,6 +97,82 @@ public class AddBaseClientsDao {
 			} else {
 			jdbcTemplate.update(sql, new Object[]{addAccountHeadBean.getClientName(),addAccountHeadBean.getPhoneNumber(),addAccountHeadBean.getMail(),addAccountHeadBean.getAddress(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),updatedTime,updatedDueTime,addAccountHeadBean.getId()});
 			}*/
+			
+			}
+	}
+	
+	/* this should be conditional based on whether the id is present or not */
+	@Transactional
+	public void saveToCollection(final ClientDetailsBean addAccountHeadBean , final int cid)
+	{
+		if(addAccountHeadBean.getId()== 0)	{
+
+	KeyHolder keyHolder = new GeneratedKeyHolder();
+	jdbcTemplate.update(
+			new PreparedStatementCreator() {
+					public PreparedStatement 
+					createPreparedStatement(Connection connection) throws SQLException {	
+						
+						if(addAccountHeadBean.getCreateddate() == null)
+						{
+							addAccountHeadBean.setCreateddate( new Date());
+						}
+						createdTimeColl = new java.sql.Timestamp(addAccountHeadBean.getCreateddate().getTime()); 
+						
+						if(addAccountHeadBean.getDuedate() == null)
+						{
+							addAccountHeadBean.setDuedate( new Date());
+						}
+						createdDueTimeColl = new java.sql.Timestamp(addAccountHeadBean.getDuedate().getTime());
+						
+						int dueAmtInSave = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount());
+						dueAmountInSave = String.valueOf(dueAmtInSave);
+	
+					PreparedStatement ps =	connection.prepareStatement(INSERT_SQLTOCOLLECTION,new String[]{"id"});
+					ps.setTimestamp(1, createdTimeColl);
+					
+	ps.setString(2, addAccountHeadBean.getClientName());
+	ps.setString(3, addAccountHeadBean.getFullamount());
+	ps.setString(4, addAccountHeadBean.getPaidamount());
+	ps.setString(5, dueAmountInSave);
+	
+	if (dueAmtInSave==0) {
+		ps.setTimestamp(6, null);
+	} else {
+		ps.setTimestamp(6, createdDueTimeColl);
+	}	
+	
+	ps.setInt(7, cid);
+	
+	
+
+							return ps;
+						}
+				},
+				keyHolder);
+				
+				Number unId = keyHolder.getKey();
+				//addAccountHeadBean.setId(unId.intValue());
+				
+
+		}
+		else
+		{		
+			updatedTimeColl = new java.sql.Timestamp(addAccountHeadBean.getCreateddate().getTime());	
+			updatedDueTimeColl = new java.sql.Timestamp(addAccountHeadBean.getDuedate().getTime());
+			
+			int dueAmtInUpdate = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount());
+			dueAmountInUpdate = String.valueOf(dueAmtInUpdate);
+
+			String sql = "UPDATE collections  set date = ? ,client = ? ,fullamount = ?,paidamount = ?,dueamount = ?,duedate = ?,clientid = ?  where id = ? ";	
+			
+			//jdbcTemplate.update(sql, new Object[]{addAccountHeadBean.getClientName(),addAccountHeadBean.getPhoneNumber(),addAccountHeadBean.getMail(),addAccountHeadBean.getAddress(),addAccountHeadBean.getFullamount(),updatedTimeColl,updatedDueTimeColl,addAccountHeadBean.getId()});
+			
+			if (dueAmtInUpdate==0) {
+			jdbcTemplate.update(sql, new Object[]{updatedTimeColl,addAccountHeadBean.getClientName(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,null,cid,addAccountHeadBean.getId()});
+			} else {
+				jdbcTemplate.update(sql, new Object[]{updatedTimeColl,addAccountHeadBean.getClientName(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,updatedDueTimeColl,cid,addAccountHeadBean.getId()});
+			}
 			
 			}
 	}

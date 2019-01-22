@@ -77,7 +77,7 @@
 										  	<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
 											<div class="col-sm-8">
-											<form:select path="client" name="client" class="form-control" >
+											<form:select path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
 											<form:option value="" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
@@ -132,6 +132,16 @@
 													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
 													</div>
 												</div>
+												
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label id="showamount" style="display: none" for="inputEmail3" class="col-sm-4 control-label">Show Amount</label>
+											    <div class="col-sm-8">
+													<%-- <form:input name="showamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/> --%>
+													<span class="paidamount_error" id="name_error"></span>
+												</div>
+											</div>
+											</div>
 												
 												<div class="col-sm-12">
 													<div class="col-sm-8 col-sm-offset-2">
@@ -228,4 +238,10 @@ var getTabName = window.location.pathname.split('/')[2];
 $("#conf_li").addClass('active');
 $("#conf_li ul").css('display','block');
 $("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
+ /*   var showamt = ${showamount};  
+ 
+ if (showamt != "") {
+	showAmountFunc(showamt);
+}  */ 
 </script>

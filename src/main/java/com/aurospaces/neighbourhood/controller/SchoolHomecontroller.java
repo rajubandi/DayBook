@@ -2365,9 +2365,8 @@ e.printStackTrace();
 		//System.out.println("listServiceUnit1.size()==="+listServiceUnit1.size());
 		request.setAttribute("seviceList", json);
 	  return json;
-
-
 	}
+	
 	@RequestMapping(value = "/getClassNameFilter1")
 	public @ResponseBody String getClassNameFilter1(
 			HttpServletResponse response, HttpServletRequest request,

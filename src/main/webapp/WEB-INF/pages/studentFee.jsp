@@ -723,6 +723,7 @@ width:200px !important;
 				}
 			});
 	}
+	
 	function sectionFilter() {
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
@@ -747,6 +748,7 @@ width:200px !important;
 			});
 		}
 	}
+	
 	function mediumFilter() {
 		var boardId = $("#boardName").val();
 		var classId = $("#className").val();
