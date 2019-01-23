@@ -62,7 +62,8 @@
                     
                     <!-- Row Starts -->
 						<div class="row">
-									<form:form action="collectionName.htm" onsubmit="return checkAmount(this);" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+									<form:form action="collectionName.htm" onsubmit="return checkDueAmount();" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
@@ -77,26 +78,38 @@
 										  	<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
 											<div class="col-sm-8">
-											<form:select path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
+											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
 											<form:option value="" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
-											<span class="client_error" id="name_error"></span>
+											<span class="client_error" id="name_error"></span>											
 											</div>											  
 											</div>
-											</div>	
+											</div>		
+											
+											<div  class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+											<div class="form-group">
+											    <button style="margin-left: 12px;" type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Move To Add Client</button>
+											</div>
+											</div>
+											
+											<!-- <div class="col-sm-12" style="display: inline">
+												  	<div class="col-sm-8 col-sm-offset-2">
+													<button type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Move To Add Client</button>																										
+													</div>
+											</div>	 -->									
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Description</label>
 											   <div class="col-sm-8">
-													<form:input name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
+													<form:input id="description" name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
 													<span class="description_error" id="name_error"></span>
 												</div>
 											</div>
 											</div>
 											
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<%-- <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
 											    <div class="col-sm-8">
@@ -104,13 +117,13 @@
 													<span class="fullamount_error" id="name_error"></span>
 												</div>
 											</div>
-											</div>
+											</div> --%>
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
 											    <div class="col-sm-8">
-													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input id="paidamount" name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -129,17 +142,13 @@
 												<div class="col-sm-12">
 												  	<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="2"/>
-													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
+													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>																										
 													</div>
 												</div>
 												
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label id="showamount" style="display: none" for="inputEmail3" class="col-sm-4 control-label">Show Amount</label>
-											    <div class="col-sm-8">
-													<%-- <form:input name="showamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/> --%>
-													<span class="paidamount_error" id="name_error"></span>
-												</div>
+											    <label id="showamount" style="display: none" for="inputEmail3" class="col-sm-12 control-label">Show Amount</label>											    
 											</div>
 											</div>
 												

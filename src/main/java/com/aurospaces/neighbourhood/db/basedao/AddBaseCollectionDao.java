@@ -31,7 +31,7 @@ public class AddBaseCollectionDao {
 
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
-	public void save(final CollectionBean addAccountHeadBean, final String clientName, final int paidAmount, final int clientId) 
+	public void save(final CollectionBean addAccountHeadBean, final String clientName, final int paidAmount, final int clientId, final String fullAmount) 
 	{		
 		
 		if(addAccountHeadBean.getId()== 0)	{
@@ -69,7 +69,7 @@ public class AddBaseCollectionDao {
 						//createdDueDate = addAccountHeadBean.getDuedate();
 						//createdTime = new java.sql.Timestamp(addAccountHeadBean.getDate().getTime());
 						
-						 int dueAmtInSave = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount()) ;
+						 int dueAmtInSave = Integer.parseInt(fullAmount) - Integer.parseInt(addAccountHeadBean.getPaidamount()) ;
 						 int afterRemoveallPaidAmnts = dueAmtInSave - paidAmount;
 						 System.out.println("Due amount in save: " +afterRemoveallPaidAmnts);
 						 dueAmountInSave = String.valueOf(afterRemoveallPaidAmnts);						 
@@ -92,7 +92,7 @@ public class AddBaseCollectionDao {
 					//ps.setDate(1, createdDate);					
 	ps.setString(2, clientName);
 	ps.setString(3, addAccountHeadBean.getDescription());
-	ps.setString(4, addAccountHeadBean.getFullamount());
+	ps.setString(4, fullAmount);
 	ps.setString(5, addAccountHeadBean.getPaidamount());
 	ps.setString(6, dueAmountInSave);
 	
@@ -121,7 +121,7 @@ public class AddBaseCollectionDao {
 			updatedTime = new java.sql.Timestamp(addAccountHeadBean.getDate().getTime());	
 			updatedDueTime = new java.sql.Timestamp(addAccountHeadBean.getDuedate().getTime());
 			
-			int dueAmtInUpdate = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount()) +paidAmount;
+			int dueAmtInUpdate = Integer.parseInt(fullAmount) - Integer.parseInt(addAccountHeadBean.getPaidamount());
 			
 			int afterRemoveallPaidAmnts = dueAmtInUpdate - paidAmount;			
 			System.out.println("Due amount in update: " +afterRemoveallPaidAmnts);
@@ -133,9 +133,9 @@ public class AddBaseCollectionDao {
 			String sql = "UPDATE collections  set date = ? ,client = ? ,description = ?,fullamount = ?,paidamount = ?,dueamount = ?,duedate = ?,clientid = ? where id = ? ";
 	
 			if (dueAmtInUpdate==0) {
-				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,null,clientId,addAccountHeadBean.getId()});
+				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),fullAmount,addAccountHeadBean.getPaidamount(),dueAmountInUpdate,null,clientId,addAccountHeadBean.getId()});
 			} else {
-				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,updatedDueTime,clientId,addAccountHeadBean.getId()});
+				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),fullAmount,addAccountHeadBean.getPaidamount(),dueAmountInUpdate,updatedDueTime,clientId,addAccountHeadBean.getId()});
 			}
 			
 		}

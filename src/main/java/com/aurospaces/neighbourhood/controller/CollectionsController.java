@@ -124,8 +124,25 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 						String ggg = map.get("paidamount");					 
 						paidamt = Integer.parseInt(ggg);
 					}
-
-					addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue,paidamt,clientId);
+					
+					listOrderBeansFullamt = addAccountHeadDao.getFullAmount(clientId);
+					
+					System.out.println("Full amount from clients after getting ID: " +listOrderBeansFullamt);
+					
+					int fullamt=0 ;
+					
+					for (Iterator iterator = listOrderBeansFullamt.iterator(); iterator.hasNext();) {
+						Map<String, String> map = (Map<String, String>) iterator.next();
+						System.out.println("In for loop getting FullAmount: " +map.get("fullamount"));	
+						String ggg = map.get("fullamount");					 
+						fullamt = Integer.parseInt(ggg);
+						System.out.println("In for loop2 fullamt value: " +fullamt);
+					}
+					
+					System.out.println("Outside for loop2 fullamt value: " +fullamt);
+					String convertedfullAmt =  String.valueOf(fullamt);
+					
+					addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue,paidamt,clientId,convertedfullAmt);
 					redir.addFlashAttribute("msg", "Record Updated Successfully");
 					redir.addFlashAttribute("cssMsg", "warning");
 				} else {
@@ -198,8 +215,9 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 				String notifyMsg = "FullAmount: "+fullamt +" PaidAmount: " +paidamt +" DueAmount:" +dueAmount ;
 				
 				//session.setAttribute("message", notifyMsg);
+				String convertedfullAmt =  String.valueOf(fullamt);
 				
-				addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue,paidamt,clientId);
+				addAccountHeadDao.save(objAddAccountHeadBean,selectOptionStringValue,paidamt,clientId,convertedfullAmt);
 
 				redir.addFlashAttribute("msg", "Record Inserted Successfully");
 				redir.addFlashAttribute("cssMsg", "success");
@@ -310,14 +328,7 @@ public @ResponseBody String getAmountData(@ModelAttribute("packCmd") CollectionB
 	List<Map<String, String>> listOrderBeansFullamt = null;
 	
 	int clientid = Integer.parseInt(request.getParameter("clientid"));
-	
-	
-	
-	
-	
-	
-	
-	
+	System.out.println("Client Id in Onchange() in getAmountData(): " +clientid);
 
 	List<Map<String, String>> listOrderBeans = null;
 	ObjectMapper objectMapper = null;
@@ -368,6 +379,85 @@ public @ResponseBody String getAmountData(@ModelAttribute("packCmd") CollectionB
 			  request.setAttribute("allOrders1", sJson);
 			  
 			  sJson2 =objectMapper.writeValueAsString(notifyMsg);
+			  //request.setAttribute("showamount", notifyMsg);
+			 // System.out.println(sJson); 
+		}else{
+			objectMapper = new ObjectMapper(); 
+			  sJson =objectMapper.writeValueAsString(listOrderBeans);
+			  request.setAttribute("allOrders1", "''");
+		}
+		//studentDao.save(objClassBean);
+	}catch(Exception e){
+		e.printStackTrace();
+		System.out.println(e);
+		
+	}		
+
+	return sJson2;  
+}
+
+@RequestMapping(value = "/getDueAmount")
+public @ResponseBody String getDueAmount(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean, ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+	
+	List<Map<String, String>> listOrderBeansPaidamt = null;
+	List<Map<String, String>> listOrderBeansFullamt = null;
+	
+	int clientid = Integer.parseInt(request.getParameter("clientid"));	
+	System.out.println("Client Id in OnSubmit() in getDueAmount(): " +clientid);
+	
+	int currentpaidAmt = Integer.parseInt(request.getParameter("paidamount"));
+	System.out.println("currentpaidAmt in Onsubmit() in getDueAmount(): " +currentpaidAmt);	
+
+	List<Map<String, String>> listOrderBeans = null;
+	ObjectMapper objectMapper = null;
+	String sJson = "";
+	String sJson2 = "";
+	
+	try{
+		listOrderBeans = addAccountHeadDao.getAccountHaed();
+		if(listOrderBeans != null && listOrderBeans.size() > 0) {
+			
+			listOrderBeansPaidamt = addAccountHeadDao.getPaidAmount(clientid);			
+			System.out.println("Paid amount from clients: " +listOrderBeansPaidamt);
+			
+			int paidamt=0 ;
+			
+			for (Iterator iterator = listOrderBeansPaidamt.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();
+				System.out.println("In for loop PaidAmount value: " +map.get("paidamount"));	
+				String ggg = map.get("paidamount");					 
+				paidamt = Integer.parseInt(ggg);
+			}
+			
+			listOrderBeansFullamt = addAccountHeadDao.getFullAmount(clientid);
+			
+			System.out.println("Full amount from clients after getting ID: " +listOrderBeansFullamt);
+			
+			int fullamt=0 ;
+			
+			for (Iterator iterator = listOrderBeansFullamt.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();
+				System.out.println("In for loop getting FullAmount: " +map.get("fullamount"));	
+				String ggg = map.get("fullamount");					 
+				fullamt = Integer.parseInt(ggg);
+				System.out.println("In for loop2 fullamt value: " +fullamt);
+			}
+			
+			System.out.println("Outside for loop2 fullamt value: " +fullamt);
+			
+			int dueAmount = fullamt - (paidamt + currentpaidAmt);
+			System.out.println("Dueamt value in int: " +dueAmount);
+			
+			String notifyMsg = "FullAmount: "+fullamt +" PaidAmount: " +paidamt +" DueAmount:" +dueAmount ;
+			
+			
+			
+			  objectMapper = new ObjectMapper(); 
+			  sJson =objectMapper.writeValueAsString(listOrderBeans);
+			  request.setAttribute("allOrders1", sJson);
+			  
+			  sJson2 =objectMapper.writeValueAsString(dueAmount);
+			  System.out.println("Dueamt value in string: " +sJson2);
 			  //request.setAttribute("showamount", notifyMsg);
 			 // System.out.println(sJson); 
 		}else{
