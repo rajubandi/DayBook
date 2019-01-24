@@ -13,7 +13,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.aurospaces.neighbourhood.bean.StudentBean;
+//import com.aurospaces.neighbourhood.bean.StudentBean; i com
 import com.aurospaces.neighbourhood.db.basedao.BaseReportsDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 
@@ -39,7 +39,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				
 			}
 
-		 public StudentBean duplicateCheckStudent(String adminsionNumber) {
+		/* public StudentBean duplicateCheckStudent(String adminsionNumber) {
 				String sql = "SELECT * from student where admissionNum = ? ";
 				List<StudentBean> retlist = jdbcTemplate.query(sql,
 				new Object[]{adminsionNumber},
@@ -47,7 +47,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				if(retlist.size() > 0)
 					return retlist.get(0);
 				return null;
-			}
+			}*/
 
 		public List<Map<String, Object>> getDayWiseExpenses() {
 			

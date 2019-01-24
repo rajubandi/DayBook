@@ -6,12 +6,12 @@ import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
-import com.aurospaces.neighbourhood.bean.BoardBean;
-import com.aurospaces.neighbourhood.bean.ClassBean1;
+// import com.aurospaces.neighbourhood.bean.BoardBean; i com
+// import com.aurospaces.neighbourhood.bean.ClassBean1; i com
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
-import com.aurospaces.neighbourhood.bean.MediumBean;
-import com.aurospaces.neighbourhood.bean.SectionBean;
-import com.aurospaces.neighbourhood.bean.SubjectBean;
+// import com.aurospaces.neighbourhood.bean.MediumBean; i com
+//import com.aurospaces.neighbourhood.bean.SectionBean;i com
+//import com.aurospaces.neighbourhood.bean.SubjectBean;i com
 import com.aurospaces.neighbourhood.bean.UsersBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseUserDao;
 
@@ -28,12 +28,13 @@ public class usersDao1 extends BaseUserDao  {
 			return null;
 		}
 	 
-	 public List<BoardBean> populate(String sql ){
+	 /*public List<BoardBean> populate(String sql ){
 		 
 		// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 			List<BoardBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(BoardBean.class));
 				return retlist;
-	 }
+	 }*/ // i com
+	 
 	 public List<AddAccountHeadBean> populate1(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
@@ -46,25 +47,26 @@ public class usersDao1 extends BaseUserDao  {
 				List<ClientDetailsBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(ClientDetailsBean.class));
 					return retlist;
 		 }	 
-	 public List<ClassBean1> populateallClasses(String sql ){
+	 /*public List<ClassBean1> populateallClasses(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 				List<ClassBean1> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(ClassBean1.class));
 					return retlist;
-		 }
-	 public List<SectionBean> populateallSection(String sql ){
+		 }*/ // i com
+	 
+	 /*public List<SectionBean> populateallSection(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 				List<SectionBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(SectionBean.class));
 					return retlist;
-		 }
-	 public List<MediumBean> populatemediam(String sql ){
+		 }*/// i com
+	 /*public List<MediumBean> populatemediam(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 				List<MediumBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(MediumBean.class));
 					return retlist;
-		 }
-	 public List<SubjectBean> populatesubject(String sql ){
+		 }*/ // i com
+	/* public List<SubjectBean> populatesubject(String sql ){
 		 
 			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 				List<SubjectBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(SubjectBean.class));
@@ -75,5 +77,5 @@ public class usersDao1 extends BaseUserDao  {
 				// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
 					List<SubjectBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(SubjectBean.class));
 						return retlist;
-			 }
+			 }*/ // i com
 }

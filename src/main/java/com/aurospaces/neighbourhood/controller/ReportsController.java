@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 import com.aurospaces.neighbourhood.dao.ReportsDao;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
+// import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao; i com
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 		@Autowired ServletContext objContext;
 		@Autowired ReportsDao reportsDao;
 		@Autowired usersDao1 usesDao1;
-		@Autowired AddAcademicYearDao addAcademicYearDao;
+		//	@Autowired AddAcademicYearDao addAcademicYearDao; i com
 		private Logger logger = Logger.getLogger(ReportsController.class);
 		
 		@RequestMapping(value = "/reports")

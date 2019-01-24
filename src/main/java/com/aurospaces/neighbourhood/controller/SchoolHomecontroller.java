@@ -1,26 +1,9 @@
 package com.aurospaces.neighbourhood.controller;
 
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -36,66 +19,36 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.aurospaces.neighbourhood.bean.AddBoardBean;
-import com.aurospaces.neighbourhood.bean.AttendanceBean;
-import com.aurospaces.neighbourhood.bean.BoardBean;
-import com.aurospaces.neighbourhood.bean.BusRouteBean;
-import com.aurospaces.neighbourhood.bean.ClassBean;
-import com.aurospaces.neighbourhood.bean.ClassCreationBean;
-import com.aurospaces.neighbourhood.bean.ExamMarksBean;
-import com.aurospaces.neighbourhood.bean.FacultyBean;
-import com.aurospaces.neighbourhood.bean.FilterBean;
-import com.aurospaces.neighbourhood.bean.HalliticketBean;
-import com.aurospaces.neighbourhood.bean.MediumBean;
-import com.aurospaces.neighbourhood.bean.SectionCreationBean;
-import com.aurospaces.neighbourhood.bean.StudentBean;
-import com.aurospaces.neighbourhood.bean.StudentFeeBean;
-import com.aurospaces.neighbourhood.bean.StudentMarksBean;
+// import com.aurospaces.neighbourhood.bean.ClassBean; i com
+// import com.aurospaces.neighbourhood.bean.StudentFeeBean; i com
 import com.aurospaces.neighbourhood.bean.UsersBean;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
-import com.aurospaces.neighbourhood.db.dao.AddBoardDao;
-import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
-import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
-import com.aurospaces.neighbourhood.db.dao.BirthDayNotificationDao;
-import com.aurospaces.neighbourhood.db.dao.BusRouteDao;
-import com.aurospaces.neighbourhood.db.dao.ClassCreation1Dao;
-import com.aurospaces.neighbourhood.db.dao.ClassCreationDao;
-import com.aurospaces.neighbourhood.db.dao.EventDao;
-import com.aurospaces.neighbourhood.db.dao.MediumDao;
-import com.aurospaces.neighbourhood.db.dao.SectionDao;
-import com.aurospaces.neighbourhood.db.dao.StudentDao;
+// import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao; i com
+// import com.aurospaces.neighbourhood.db.dao.AddBoardDao; i com
+// import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao; i com
+// import com.aurospaces.neighbourhood.db.dao.AttendanceDao; i com
+// import com.aurospaces.neighbourhood.db.dao.BirthDayNotificationDao; i com
+// import com.aurospaces.neighbourhood.db.dao.BusRouteDao; i com
+// import com.aurospaces.neighbourhood.db.dao.ClassCreation1Dao; i com
+
+// import com.aurospaces.neighbourhood.db.dao.EventDao; i com
+//import com.aurospaces.neighbourhood.db.dao.MediumDao; i com
+
 import com.aurospaces.neighbourhood.db.dao.StudentFeeDao;
-import com.aurospaces.neighbourhood.db.dao.SubjectDao;
+// import com.aurospaces.neighbourhood.db.dao.SubjectDao; i com
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
-import com.aurospaces.neighbourhood.db.model.Faculty;
-import com.aurospaces.neighbourhood.service.PopulateService;
-import com.aurospaces.neighbourhood.util.MailSender;
-import com.aurospaces.neighbourhood.util.MiscUtils;
+
+// import com.aurospaces.neighbourhood.service.PopulateService; i com
+//import com.aurospaces.neighbourhood.util.MailSender;// i com
 import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
-import com.aurospaces.neighbourhood.util.SendAttachmentInEmail;
 import com.aurospaces.neighbourhood.util.SendSMS;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -109,31 +62,31 @@ studentfee sf ON sf.studentId = s.id  where s.className=ct.id and s.boardName=bn
  */
 @Controller
 public class SchoolHomecontroller {
-	@Autowired
-	PopulateService objPopulateService;
-	@Autowired	ClassCreationDao objClassCreation;
+	//@Autowired 	PopulateService objPopulateService; i com
+	// @Autowired	ClassCreationDao objClassCreation; i com
 	Logger log = Logger.getLogger(SchoolHomecontroller.class);
 	@Autowired ServletContext objContext;
-	@Autowired Faculty faculty;
-	@Autowired StudentDao studentDao;
-	@Autowired AttendanceDao attendanceDao;
+	// @Autowired Faculty faculty; i com
+	//@Autowired StudentDao studentDao;
+	//@Autowired AttendanceDao attendanceDao; i com
 	@Autowired StudentFeeDao objStudentFeeDao;
 	@Autowired usersDao1 usesDao1;
-	@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao;
+	//@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao; i com
 	@Autowired
 	DataSourceTransactionManager transactionManager;
-	@Autowired EventDao eventDao;
-	@Autowired BirthDayNotificationDao birthDayNotificationDao;
-	@Autowired SubjectDao subjectDao;
-	@Autowired AddBoardDao addBoardDao;
-	@Autowired ClassCreation1Dao objAddedClass;
-	@Autowired SectionDao objSectionDao;
-	@Autowired MediumDao objMediumDao;
+	// @Autowired EventDao eventDao; i com
+	// @Autowired BirthDayNotificationDao birthDayNotificationDao; i com
+	// @Autowired SubjectDao subjectDao; i com
+	// @Autowired AddBoardDao addBoardDao; i com
+	// @Autowired ClassCreation1Dao objAddedClass; i com
+	// @Autowired SectionDao objSectionDao; i com
+	// @Autowired MediumDao objMediumDao; i com
 	/*LoginHome1*/
-	@Autowired AddClassSubjectDao objAddClassSubjectDao;
-	@Autowired AddAcademicYearDao addAcademicYearDao;
-	@Autowired BusRouteDao busRouteDao;
+	// @Autowired AddClassSubjectDao objAddClassSubjectDao; i com
+	//@Autowired AddAcademicYearDao addAcademicYearDao; i com
+	// @Autowired BusRouteDao busRouteDao; i com
 	private Logger logger = Logger.getLogger(SchoolHomecontroller.class);
+	
 	@RequestMapping(value = "/HomePage")
 	public String HomePage(@ModelAttribute("packCmd") UsersBean objUsersBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("HomePage page...");
@@ -172,6 +125,7 @@ public class SchoolHomecontroller {
 		}
 		return "loginHome1";
 	}
+	
 	@RequestMapping(value = "/LoginHome1")
 	public String HomePage1(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("LoginHome1 page...");
@@ -276,7 +230,7 @@ e.printStackTrace();
 	
 	
 	
-	@RequestMapping(value = "/feeDefinationHome")
+	/*@RequestMapping(value = "/feeDefinationHome")
 	public String getaluminiHomePage(@ModelAttribute("packCmd") ClassBean objClassBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("feeDefination...");
 		List<Map<String, String>> listOrderBeans = null;
@@ -303,7 +257,7 @@ e.printStackTrace();
 			logger.fatal("error in userLogin method in school Homecontroller class getaluminiHomePage method");
 		}
 		return "feeDefination";
-	}
+	}*/ // i com
 	
 	
 	@RequestMapping(value = "/dashBoard")
@@ -1486,8 +1440,8 @@ e.printStackTrace();
 		try{
 			id = request.getParameter("id");
 			objStudentFeeDao.delete(Integer.parseInt(id));
-			Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-				listOrderBeans =  objStudentFeeDao.getallStudentsFee(null,null,null,null,null,academicYearId.toString());
+			// Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId(); icom
+				listOrderBeans =  objStudentFeeDao.getallStudentsFee(null,null,null,null,null,String.valueOf(15));// academicYearId.toString() i com
 				if(listOrderBeans != null && listOrderBeans.size() > 0) {
 					  objectMapper = new ObjectMapper(); 
 					  sJson =objectMapper.writeValueAsString(listOrderBeans);
@@ -1508,7 +1462,7 @@ e.printStackTrace();
 		return listOrderBeans;
 	}
 	
-	@RequestMapping(value = "/viewStudentFee")
+	/*@RequestMapping(value = "/viewStudentFee")
 	public String viewStudentFee( @ModelAttribute("packCmd") StudentFeeBean objStudentFeeBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, Object>> listOrderBeans = null;
@@ -1537,8 +1491,9 @@ e.printStackTrace();
 		}
 
 		return "viewStudentFee";  
-	}
-	@RequestMapping(value = "/searchStudetnFee")
+	}*/
+	
+	/*@RequestMapping(value = "/searchStudetnFee")
 	public @ResponseBody String searchStudetnFee1( ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("searchStudetnFee controller...");
 		List<Map<String, Object>> listOrderBeans = null;
@@ -1577,10 +1532,10 @@ e.printStackTrace();
 		}
 
 		return sJson;  
-	}
+	}*/
 	
 	
-	
+/*	
 	@RequestMapping(value = "/sendStudentFeeSMS")
 	public @ResponseBody int sendStudentFeeSMS(@RequestParam(value="studentArry[]") int[] studentArry, ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		List<Map<String, Object>> listOrderBeans = null;
@@ -1598,17 +1553,17 @@ e.printStackTrace();
 		        //StudentFeeBean studentFeeBean=	objStudentFeeDao.getById(litr.next());
 		        	StudentBean studentBean = studentDao.getById(studentArry[i],academicYearId);
 		        mobileNumber = studentBean.getMobile();
-				/*String messageBody = "<table><tr>Dear Parent/Gaurdian,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Thanks for Registering with us.</td></tr><br></table><table ><tr><td style='padding-left:10px;'><b>Your Login Details:</b></td></tr><tr><td style='padding-left:30px;'>Username: _username_</td></tr><tr><td style='padding-left:30px;'>Password: _password_</td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vivekananda vidhyalayam.</ul></div>";
+				String messageBody = "<table><tr>Dear Parent/Gaurdian,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Thanks for Registering with us.</td></tr><br></table><table ><tr><td style='padding-left:10px;'><b>Your Login Details:</b></td></tr><tr><td style='padding-left:30px;'>Username: _username_</td></tr><tr><td style='padding-left:30px;'>Password: _password_</td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vivekananda vidhyalayam.</ul></div>";
 				messageBody = messageBody.replace("_username_", studentBean.getFatherName());
-				messageBody = messageBody.replace("_password_", randomNum);*/
+				messageBody = messageBody.replace("_password_", randomNum);
 				String smsMessage = "Dear Parent,\n Your Child "+studentBean.getName()+"School Fee is still outstanding,\nPlease contact us to repay the fee,\nThank You,\n Vivekananda vidhyalayam.";
 				if(StringUtils.isNotBlank(mobileNumber)){
 					SendSMS.sendSMS(smsMessage, mobileNumber, objContext);
 				}
 		        } 
 			System.out.println("Message sent Successfully For " +studentArry.length+" students" );
-			/*redir.addFlashAttribute("msg", "Message sent successfully for "+studentArry.length+" students" );
-			redir.addFlashAttribute("cssMsg", "success");*/
+			redir.addFlashAttribute("msg", "Message sent successfully for "+studentArry.length+" students" );
+			redir.addFlashAttribute("cssMsg", "success");
 			
 			//studentDao.save(objClassBean);
 		}catch(Exception e){
@@ -1619,8 +1574,8 @@ e.printStackTrace();
 		}
 
 		return studentArry.length;  
-	}
-	@RequestMapping(value = "/getPrintFee")
+	}*/
+	/*@RequestMapping(value = "/getPrintFee")
 	public @ResponseBody String getPrintFee( ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("Home controller...");
 		List<Map<String, String>> listOrderBeans = null;
@@ -1771,13 +1726,13 @@ e.printStackTrace();
 		
 
 		try{
-			/*listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null);
+			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
-			}else{*/
+			}else{
 				 request.setAttribute("allOrders1", "''");
 //			}
 			//studentDao.save(objClassBean);
@@ -1796,7 +1751,7 @@ e.printStackTrace();
 					throws JsonGenerationException, JsonMappingException, IOException {
 		objResponse.setCharacterEncoding("UTF-8");
 		
-		/*if(StringUtils.isNotBlank(orderId)){
+		if(StringUtils.isNotBlank(orderId)){
 		String[] array = orderId.split(",");
 		for(int i=0;i<array.length;i++){
 			if(i==0){
@@ -1805,8 +1760,8 @@ e.printStackTrace();
 			orderId1  =orderId1  + ",'"+array[i]+"'";
 			}
 		}
-		}*/
-	/*	if(StringUtils.isNotBlank(clientId)){
+		}
+		if(StringUtils.isNotBlank(clientId)){
 		String[] array1 = clientId.split(",");
 		for(int i=0;i<array1.length;i++){
 			if(i==0){
@@ -1825,19 +1780,19 @@ e.printStackTrace();
 				emailId1 = emailId1  + ",'"+array2[i]+"'";
 			}
 		}
-		}*/
-		/*if(StringUtils.isNotEmpty(userId)){
+		}
+		if(StringUtils.isNotEmpty(userId)){
 			session.setAttribute("userId", userId);
-		}*/
-		/*int serviceId =0;
+		}
+		int serviceId =0;
 		if(sid !=""){
 		 serviceId =Integer.parseInt(sid);
-		}*/
+		}
 		
-		/*int statusId = 0;
+		int statusId = 0;
 		if(status != ""){
 		 statusId = Integer.parseInt(status);
-		}*/
+		}
 		String boardName =null;
 		String medium = null;
 		String className = null;
@@ -1869,7 +1824,7 @@ e.printStackTrace();
 
 		}
 		return null;
-	}
+	}*/
 	/*
 	@RequestMapping(value = "/viewAttendanceHome")
 	public String viewAttendanceHome(@ModelAttribute("packCmd") StudentBean objStudentBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -3313,7 +3268,7 @@ public @ResponseBody String changePassword( HttpServletRequest request) throws J
 	}
 	 String toAddress= null;
 	if(StringUtils.isNotBlank(toAddress)){
-	MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
+	//MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);// i com
 	
 	
 	}

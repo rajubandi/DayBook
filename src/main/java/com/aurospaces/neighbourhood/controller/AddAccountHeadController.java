@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
-import com.aurospaces.neighbourhood.bean.AddBoardBean;
+// import com.aurospaces.neighbourhood.bean.AddBoardBean; i com
 import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;

@@ -15,7 +15,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aurospaces.neighbourhood.bean.StudentBean;
+// import com.aurospaces.neighbourhood.bean.StudentBean; i com
 import com.aurospaces.neighbourhood.bean.UsersBean;
 
 
@@ -110,7 +110,7 @@ System.out.println(ps);
 				return retlist.get(0);
 			return null;
 		}
-	 public List<StudentBean> getByIdAll() {
+	/* public List<StudentBean> getByIdAll() {
 			String sql = "SELECT * from users  ";
 			List<StudentBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{},
@@ -118,7 +118,7 @@ System.out.println(ps);
 			if(retlist.size() > 0)
 				return retlist;
 			return null;
-		}
+		}*/
 	
 
 }

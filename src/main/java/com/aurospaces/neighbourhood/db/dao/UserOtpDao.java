@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.aurospaces.neighbourhood.bean.CategoryBean;
 import com.aurospaces.neighbourhood.db.basedao.BaseUserOtpDao;
 import com.aurospaces.neighbourhood.db.model.UserOtp;
 

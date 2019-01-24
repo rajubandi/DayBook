@@ -1,4 +1,4 @@
-package com.aurospaces.neighbourhood.controller;
+/*package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -28,6 +28,7 @@ import com.aurospaces.neighbourhood.db.dao.EventDao;
 import com.aurospaces.neighbourhood.db.dao.StudentDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.aurospaces.neighbourhood.util.MailSender;
+// import com.aurospaces.neighbourhood.util.MailSender; i com
 import com.aurospaces.neighbourhood.util.MiscUtils;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -305,7 +306,7 @@ e.printStackTrace();
 			
 //			toAddress=  objStudentBean.getEmail();
 //			if(StringUtils.isNotBlank(toAddress)){
-			MailSender.sendEmailWithAttachment("noreply2stjohns@gmail.com", "Regarding, FeedBack from "+objStudentBean.getFatherName() ,message,null,objContext);
+			MailSender.sendEmailWithAttachment("noreply2stjohns@gmail.com", "Regarding, FeedBack from "+objStudentBean.getFatherName() ,message,null,objContext); // i com
 			session.setAttribute("message", "Successfully Mail has been Sended");
 //			}
 			
@@ -349,3 +350,4 @@ e.printStackTrace();
 		return statesMap;
 	}
 }
+*/

@@ -12,16 +12,16 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aurospaces.neighbourhood.bean.StudentBean;
+// import com.aurospaces.neighbourhood.bean.StudentBean; i com
 
 public class BaseSubjectDao {
 
-	@Autowired
+	/*@Autowired
 	public JdbcTemplate jdbcTemplate;
 
 	public final String INSERT_SQL = "INSERT INTO subject( created_time, updated_time, name) values ( ?, ?, ?)";
 
-	/* this should be conditional based on whether the id is present or not */
+	 this should be conditional based on whether the id is present or not 
 	@Transactional
 	public void save(final StudentBean studentBean) {
 		if (studentBean.getId() == 0) {
@@ -64,7 +64,7 @@ public class BaseSubjectDao {
 	public void delete(int id) {
 		String sql = "DELETE FROM subject WHERE id=?";
 		jdbcTemplate.update(sql, new Object[] { id });
-	}
+	}*/
 
 	
 }

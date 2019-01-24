@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
+// import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao; i com
 import com.aurospaces.neighbourhood.db.dao.LedgerDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -34,8 +34,9 @@ public class ledgerController {
 	@Autowired ServletContext objContext;
 	@Autowired LedgerDao ledgerDao;
 	@Autowired usersDao1 usesDao1;
-	@Autowired AddAccountHeadDao addAccountHeadDao;
-	@Autowired AddAcademicYearDao addAcademicYearDao;
+														// I COMMENTED
+	//@Autowired AddAccountHeadDao addAccountHeadDao;   
+	//@Autowired AddAcademicYearDao addAcademicYearDao; i com
 	private Logger logger = Logger.getLogger(ledgerController.class);
 	
 	@RequestMapping(value = "/ledger")
@@ -132,9 +133,9 @@ public class ledgerController {
 
 		String fromDate=request.getParameter("from");
 		String toDate= request.getParameter("to");
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+		//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId(); i com
 		try{
-			dfcList = ledgerDao.dailyExpensesBetweentwoDate(fromDate,toDate,academicYearId.toString());
+			dfcList = ledgerDao.dailyExpensesBetweentwoDate(fromDate,toDate);
 			
 			
 			String message = "null";
@@ -166,7 +167,7 @@ public class ledgerController {
 		List<ExpensesBean> expensesBeanList = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+		//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId(); I COM
 		try{
 			String fromDate=request.getParameter("onDate");
 			expensesBeanList = ledgerDao.getExpensesBeanAll(fromDate);

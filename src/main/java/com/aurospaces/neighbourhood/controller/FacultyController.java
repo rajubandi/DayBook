@@ -1,4 +1,4 @@
-package com.aurospaces.neighbourhood.controller;
+/*package com.aurospaces.neighbourhood.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -268,7 +268,7 @@ public class FacultyController {
 			}
 			
 			
-			/*int id= facultySubjectBean.getId();
+			int id= facultySubjectBean.getId();
 			if(id != 0){
 				objfacultysubjectDao.save(facultySubjectBean);
 //				session.setAttribute("message", "Successfully Faculty-Subject is Updated");
@@ -286,7 +286,7 @@ public class FacultyController {
 					redir.addFlashAttribute("msg", "Faculty-Subject Already Exist");
 					redir.addFlashAttribute("cssMsg", "danger");
 				}
-			}*/
+			}
 			
 			listOrderBeans = objfacultysubjectDao.getallFacultySubjects(null, null, null, null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -449,3 +449,4 @@ public class FacultyController {
 		return statesMap;
 	}
 }
+*/

@@ -1,4 +1,4 @@
-package com.aurospaces.neighbourhood.controller;
+/*package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -167,9 +167,9 @@ e.printStackTrace();
 			}
 			
 			 toAddress=  oldAcadamicYearData.getEmail();
-			/*if(StringUtils.isNotBlank(toAddress)){
+			if(StringUtils.isNotBlank(toAddress)){
 			MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
-			}*/
+			}
 		
 		}
 			//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
@@ -222,3 +222,4 @@ e.printStackTrace();
 	}
 	
 }
+*/

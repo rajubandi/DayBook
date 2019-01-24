@@ -1,4 +1,4 @@
-package com.aurospaces.neighbourhood.controller;
+/*package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -111,13 +111,13 @@ public class StudentMarksController {
 			String  subjectArray[] =studentMarksBean.getSubjectId().split(",");
 			String  studentMarksArray[] =studentMarksBean.getStudentMarks().split(",");
 			  String  subjectMaxMarksArray[] =studentMarksBean.getSubjectMaxMarks().split(",");
-			  /*Random rand = new Random();
+			  Random rand = new Random();
 			    // Generate random integers in range 0 to 999
 		        int rand_int1 = rand.nextInt(1000);
 			if(StringUtils.isNotBlank(studentMarksBean.getRandomnum())) {
 				
 				examPatternDao.removeOldRecordForUpdate(studentMarksBean.getRandomnum());
-			}*/
+			}
 			  studentMarksBean.setAcademicYearId(addAcademicYearDao.getActiveAcademicYearId());
 			 for(int i=0;i<subjectArray.length;i++){
 				 
@@ -140,12 +140,12 @@ public class StudentMarksController {
 			ObjectMapper objectMapper = null;
 			String sJson = "";
 			String studetnId = null;
-			/*String boardId = null;
+			String boardId = null;
 			String classId = null;
 			String sectionId = null;
 			String mediamId = null;
 			String studentId = null;
-			*/String exampTypeId = null;
+			String exampTypeId = null;
 			String acadamicYearId = null;
 			try{
 				studetnId = request.getParameter("studentId");
@@ -332,3 +332,4 @@ public class StudentMarksController {
 		}
 		
 }
+*/

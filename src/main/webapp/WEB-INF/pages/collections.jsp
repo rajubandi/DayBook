@@ -89,7 +89,7 @@
 											
 											<div  class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 											<div class="form-group">
-											    <button style="margin-left: 12px;" type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Move To Add Client</button>
+											    <button style="margin-left: 12px;" type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Add Client</button>
 											</div>
 											</div>
 											

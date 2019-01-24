@@ -1,4 +1,4 @@
-package com.aurospaces.neighbourhood.db.basedao;
+/*package com.aurospaces.neighbourhood.db.basedao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +29,7 @@ public class BaseStudentDao{
 			+" hostelFee, stationaryFee,fatherOccupation,motherName,motherOccupation,adharNumber,admissionDate,academicYearId,id,termOne,termTwo,termThree  ) values (?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
  
 
-	/* this should be conditional based on whether the id is present or not */
+	 this should be conditional based on whether the id is present or not 
 	@Transactional
 	public boolean save(final StudentBean studentBean) 
 	{
@@ -310,3 +310,4 @@ public class BaseStudentDao{
 	}
 
 }
+*/

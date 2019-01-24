@@ -18,25 +18,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aurospaces.neighbourhood.bean.DFCBean;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
-import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
-import com.aurospaces.neighbourhood.db.dao.StudentDao;
+//import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao; i com
+// import com.aurospaces.neighbourhood.db.dao.AttendanceDao; i com
 import com.aurospaces.neighbourhood.db.dao.StudentFeeDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
-import com.aurospaces.neighbourhood.db.model.Faculty;
+// import com.aurospaces.neighbourhood.db.model.Faculty; i com
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
 public class DailyFeesCollectionController {
 	@Autowired ServletContext objContext;
-	@Autowired Faculty faculty;
-	@Autowired StudentDao studentDao;
-	@Autowired AttendanceDao attendanceDao;
-	@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao;
+	// @Autowired Faculty faculty; i com
+	//@Autowired StudentDao studentDao;
+	// @Autowired AttendanceDao attendanceDao; i com
+	//@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao; i com
 	@Autowired usersDao1 usesDao1;
 	@Autowired StudentFeeDao studentFeeDao;
-	@Autowired AddAcademicYearDao addAcademicYearDao;
+	// @Autowired AddAcademicYearDao addAcademicYearDao; i com 
 	private Logger logger = Logger.getLogger(DailyFeesCollectionController.class);
 	
 	@RequestMapping(value = "/dailyFeesCollection")

@@ -1,90 +1,55 @@
 package com.aurospaces.neighbourhood.controller;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.aurospaces.neighbourhood.bean.BoardBean;
-import com.aurospaces.neighbourhood.bean.BusRouteBean;
-import com.aurospaces.neighbourhood.bean.StudentBean;
-import com.aurospaces.neighbourhood.bean.StudentFeeBean;
-import com.aurospaces.neighbourhood.bean.UsersBean;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
-import com.aurospaces.neighbourhood.db.dao.AddBoardDao;
-import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
-import com.aurospaces.neighbourhood.db.dao.AttendanceDao;
-import com.aurospaces.neighbourhood.db.dao.BirthDayNotificationDao;
-import com.aurospaces.neighbourhood.db.dao.BusRouteDao;
-import com.aurospaces.neighbourhood.db.dao.ClassCreation1Dao;
-import com.aurospaces.neighbourhood.db.dao.ClassCreationDao;
-import com.aurospaces.neighbourhood.db.dao.EventDao;
-import com.aurospaces.neighbourhood.db.dao.MediumDao;
-import com.aurospaces.neighbourhood.db.dao.SectionDao;
-import com.aurospaces.neighbourhood.db.dao.StudentDao;
+// import com.aurospaces.neighbourhood.db.dao.AddBoardDao; i com
+//import com.aurospaces.neighbourhood.db.dao.AddClassSubjectDao;
+// import com.aurospaces.neighbourhood.db.dao.AttendanceDao; i com
+// import com.aurospaces.neighbourhood.db.dao.BirthDayNotificationDao; i com
+// import com.aurospaces.neighbourhood.db.dao.BusRouteDao; i com
+// import com.aurospaces.neighbourhood.db.dao.ClassCreation1Dao; i com
+// import com.aurospaces.neighbourhood.db.dao.EventDao; i com
+// import com.aurospaces.neighbourhood.db.dao.MediumDao; i com
 import com.aurospaces.neighbourhood.db.dao.StudentFeeDao;
-import com.aurospaces.neighbourhood.db.dao.SubjectDao;
+// import com.aurospaces.neighbourhood.db.dao.SubjectDao; i com
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
-import com.aurospaces.neighbourhood.db.model.Faculty;
-import com.aurospaces.neighbourhood.service.PopulateService;
-import com.aurospaces.neighbourhood.util.MailSender;
-import com.aurospaces.neighbourhood.util.MiscUtils;
-import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
-import com.aurospaces.neighbourhood.util.SendSMS;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+// import com.aurospaces.neighbourhood.service.PopulateService; i com
+
 @Controller
 public class UserController {
 	
-	@Autowired PopulateService objPopulateService;
-	@Autowired ClassCreationDao objClassCreation;
+	// @Autowired PopulateService objPopulateService; i com
+	// @Autowired ClassCreationDao objClassCreation; i com
 	Logger log = Logger.getLogger(SchoolHomecontroller.class);
 	@Autowired ServletContext objContext;
-	@Autowired Faculty faculty;
-	@Autowired StudentDao studentDao;
-	@Autowired AttendanceDao attendanceDao;
+	//@Autowired Faculty faculty; i com
+	//@Autowired StudentDao studentDao;
+	// @Autowired AttendanceDao attendanceDao; i com
 	@Autowired StudentFeeDao objStudentFeeDao;
 	@Autowired usersDao1 usesDao1;
-	@Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao;
+	// @Autowired com.aurospaces.neighbourhood.db.dao.FacultySubjectsDao objfacultysubjectDao; i com
 	@Autowired DataSourceTransactionManager transactionManager;
-	@Autowired EventDao eventDao;
-	@Autowired BirthDayNotificationDao birthDayNotificationDao;
-	@Autowired SubjectDao subjectDao;
-	@Autowired AddBoardDao addBoardDao;
-	@Autowired ClassCreation1Dao objAddedClass;
-	@Autowired SectionDao objSectionDao;
-	@Autowired MediumDao objMediumDao;
-	@Autowired BusRouteDao busRouteDao;
-	@Autowired AddAcademicYearDao addAcademicYearDao;
+	// @Autowired EventDao eventDao; i com
+	// @Autowired BirthDayNotificationDao birthDayNotificationDao; i com
+	// @Autowired SubjectDao subjectDao; i com
+	// @Autowired AddBoardDao addBoardDao;  i com
+	// @Autowired ClassCreation1Dao objAddedClass; i com
+	// @Autowired SectionDao objSectionDao; i com
+	// @Autowired MediumDao objMediumDao; i com
+	// @Autowired BusRouteDao busRouteDao; i com
+	//@Autowired AddAcademicYearDao addAcademicYearDao;
 	//@Autowired SchoolHomecontroller schoolHomecontroller;
 	/*LoginHome1*/
-	@Autowired AddClassSubjectDao objAddClassSubjectDao;
+	// @Autowired AddClassSubjectDao objAddClassSubjectDao; i com
 	private Logger logger = Logger.getLogger(UserController.class);
 
 	
-	
+	/*
 	@RequestMapping(value = "/facultyAddStudentHome")
 	public String facultyAddStudentHome(@ModelAttribute("facultyAddStudent") StudentBean objStudentBean, ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException, AddressException, ParseException, MessagingException {
 		
@@ -101,11 +66,11 @@ public class UserController {
 		try{
 			Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 			session.setAttribute("activeAcademicYearId", academicYearId);
-			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null,academicYearId.toString(),null);
+			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
-				  model.addAttribute("activeAcademicYearIdFromAddStudent", academicYearId );
+				 // model.addAttribute("activeAcademicYearIdFromAddStudent", academicYearId );
 				  request.setAttribute("admissionNum", addmission);
 				  request.setAttribute("allOrders1", sJson);
 				  request.setAttribute("baseUrl", baseUrl);
@@ -165,7 +130,7 @@ e.printStackTrace();
 		
 		objStudentBean.setNetFee(objStudentBean.getTotalFee());
 		//objStudentBean.setDiscountFee(-fee);
-		/*if (!file.isEmpty()) {
+		if (!file.isEmpty()) {
 				byte[] bytes = file.getBytes();
 				name =file.getOriginalFilename();
 				int n=name.lastIndexOf(".");
@@ -213,12 +178,12 @@ e.printStackTrace();
 		}else{
 			filepath= baseUrl+"/img/default.png";
 			objClassBean.setImagePath(filepath);
-		}*/
+		}
 		int id =objStudentBean.getId();
 		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 		objStudentBean.setAcademicYearId(academicYearId);
 		if(id!=0){
-			 sbean1 = studentDao.getById(id,academicYearId);
+			 //sbean1 = studentDao.getById(id,0);
 			System.out.println(sbean1.getImagePath());
 			//if(StringUtils.isBlank(file.getOriginalFilename())){
 			//objStudentBean.setImagePath(sbean1.getImagePath());
@@ -258,7 +223,7 @@ e.printStackTrace();
 			}
 			 toAddress=  objStudentBean.getEmail();
 			if(StringUtils.isNotBlank(toAddress)){
-			MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
+			MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);//  i com
 			}
 		
 			}else{
@@ -278,7 +243,7 @@ e.printStackTrace();
 		
 		try{
 			//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null,academicYearId.toString(),null);
+			listOrderBeans = studentDao.getallStudentDetails(null,null,null,null,null,null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
@@ -314,8 +279,8 @@ e.printStackTrace();
 		ObjectMapper objectMapper = null;
 		String sJson = "";
 		try{
-			Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null,academicYearId.toString());
+			//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
@@ -347,14 +312,14 @@ e.printStackTrace();
 		String  toAddress= null;
 		String sJson = "";
 		try{
-			Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+			//Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 			double totalPaidAmount=objStudentFeeBean.getFee();
 			double totalPaidAmount1=objStudentFeeBean.getFee();
 			
 			
 			//double fee =objStudentFeeBean.getAdmissionFee()+objStudentFeeBean.getTutionFee()+objStudentFeeBean.getTransportationFee()+objStudentFeeBean.getHostelFee()+objStudentFeeBean.getStationaryFee();
 			int studentId =Integer.parseInt(objStudentFeeBean.getStudentId());
-			StudentBean objStudent = studentDao.getById(studentId,academicYearId);
+			//StudentBean objStudent = studentDao.getById(studentId,academicYearId);
 			StudentFeeBean individualTotalFeeBean = objStudentFeeDao.editStudentFee(objStudentFeeBean.getStudentId(),objStudentFeeBean.getId());
 			//StudentFeeBean individualTotalFeeBean = objStudentFeeDao.getTotalIndividualfeeByStudentId(studentId);
 			
@@ -453,7 +418,7 @@ e.printStackTrace();
 			        // Generate random integers in range 0 to 999
 			        int rand_int1 = rand.nextInt(100000);
 			        objStudentFeeBean.setInvoiceId(rand_int1);
-			        objStudentFeeBean.setAcademicYearId(addAcademicYearDao.getActiveAcademicYearId());
+			       // objStudentFeeBean.setAcademicYearId(addAcademicYearDao.getActiveAcademicYearId());
 					objStudentFeeDao.save(objStudentFeeBean);
 					
 					String messageBody = "<table><tr>Dear Parent/Gaurdian <b>_username_ </b>,</tr><br><tr ><td style='padding-left:112px; padding-top:5px;'>Your child _studentName_ fee payment has been processed successfully and Invoice Id:<b>_invoiceId_<b></td></tr>    <tr ><td style='padding-left:112px; padding-top:5px;'>Amount:<b>_amount_</b></td></tr>   <tr ><td style='padding-left:112px; padding-top:5px;'>Due Amount:<b>_due_</b></td></tr></table><br><div style='width: 712.5pt;font-size: 14px; top:150px;'><ul>Thanks,<br/>Vivekananda vidhyalayam.</ul></div>";
@@ -471,7 +436,7 @@ e.printStackTrace();
 					}
 					 toAddress=  objStudent.getEmail();
 					if(StringUtils.isNotBlank(toAddress)){
-					MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext);
+					// MailSender.sendEmailWithAttachment(toAddress, "Regarding, School Notifications",messageBody,null,objContext); i com
 					}
 				
 			}
@@ -481,16 +446,16 @@ e.printStackTrace();
 			//objStudentFeeBean.setFee(fee);
 			
 			
-				/*double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
-				objStudentFeeBean.setDueFee1(dueFee1);*/
+				double dueFee1=objStudent.getNetFee()-(fee+studentfee.getFee());
+				objStudentFeeBean.setDueFee1(dueFee1);
 			//objStudentFeeDao.save(objStudentFeeBean);
-			/*listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
+			listOrderBeans = objStudentFeeDao.getallStudentsFee(null,null,null,null,null);
 			if(listOrderBeans != null && listOrderBeans.size() > 0) {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(listOrderBeans);
 				  request.setAttribute("allOrders1", sJson);
 				 // System.out.println(sJson); 
-			}*/
+			}
 			//studentDao.save(objClassBean);
 		}catch(Exception e){
 e.printStackTrace();
@@ -518,6 +483,7 @@ e.printStackTrace();
 		}
 		return statesMap;
 	}
+	
 	@ModelAttribute("busRoute")
 	public Map<Integer, String> getBusRoute() {
 		Map<Integer, String> statesMap = new LinkedHashMap<Integer, String>();
@@ -533,6 +499,6 @@ e.printStackTrace();
 		} finally {
 		}
 		return statesMap;
-	}
+	}*/
 	
 }
