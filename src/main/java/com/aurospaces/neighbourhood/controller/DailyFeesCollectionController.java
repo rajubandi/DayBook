@@ -26,8 +26,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 public class DailyFeesCollectionController {
 	@Autowired ServletContext objContext;
 	@Autowired usersDao1 usesDao1;
-	@Autowired StudentFeeDao studentFeeDao;
-	 
+	@Autowired StudentFeeDao studentFeeDao;	 
 	private Logger logger = Logger.getLogger(DailyFeesCollectionController.class);
 	
 	@RequestMapping(value = "/dailyCollection")

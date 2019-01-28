@@ -56,5 +56,4 @@ public class DFCBean {
 	public void setTo(Date to) {
 		this.to = to;
 	}	
-
 }

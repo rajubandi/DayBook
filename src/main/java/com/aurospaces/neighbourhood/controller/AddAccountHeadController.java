@@ -89,29 +89,7 @@ public String addAccountName(@ModelAttribute("packCmd") AddAccountHeadBean objAd
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 != null) {
 				redir.addFlashAttribute("msg", "Already Record Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
-			}
-		
-		
-		/*if(objAddBoardBean.getId() == 0){
-			listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
-			if(listOrderBeans1.size() == 0){
-				addBoardDao.save(objAddBoardBean);
-//				session.setAttribute("message", "Successfully Board is Created");
-				redir.addFlashAttribute("msg", " Board Created  Successfully");
-				redir.addFlashAttribute("cssMsg", "success");
-			}
-			else{
-//				session.setAttribute("message", "Already Existed Record");
-				redir.addFlashAttribute("msg", " Board Already  Exist");
-				redir.addFlashAttribute("cssMsg", "danger");
-			}
-		}else{
-			addBoardDao.save(objAddBoardBean);
-//			session.setAttribute("message", "Successfully Board is Updated");
-			redir.addFlashAttribute("msg", " Board Updated  Successfully");
-			redir.addFlashAttribute("cssMsg", "warning");
-		}*/
-		
+			}				
 		
 		listOrderBeans = addAccountHeadDao.getAccountHaed();
 		if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -167,4 +145,3 @@ public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest 
 	return sJson;  
 }
 }
-

@@ -34,18 +34,8 @@ package com.aurospaces.neighbourhood.dao;
 			ParameterizedBeanPropertyRowMapper.newInstance(CollectionBean.class));
 			if(retlist.size() > 0)
 				return retlist.get(0);
-			return null;
-			
-			/* StringBuffer objStringBuffer = new StringBuffer();
-			 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
-			
-	String sql = objStringBuffer.toString();
-				System.out.println(sql);
-				RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
-				jdbcTemplate.query(sql, handler);
-				List<Map<String, String>> result = handler.getResult();
-				return result;*/
-				
+			return null;			
+							
 			}
 		
 		public List<Map<String, String>> getClientId(String clientName ){

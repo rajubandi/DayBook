@@ -31,17 +31,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				List<Map<String, String>> result = handler.getResult();
 				return result;
 				
-			}
-
-		/* public StudentBean duplicateCheckStudent(String adminsionNumber) {
-				String sql = "SELECT * from student where admissionNum = ? ";
-				List<StudentBean> retlist = jdbcTemplate.query(sql,
-				new Object[]{adminsionNumber},
-				ParameterizedBeanPropertyRowMapper.newInstance(StudentBean.class));
-				if(retlist.size() > 0)
-					return retlist.get(0);
-				return null;
-			}*/
+			}		
 
 		public List<Map<String, Object>> getDayWiseExpenses() {			
 			

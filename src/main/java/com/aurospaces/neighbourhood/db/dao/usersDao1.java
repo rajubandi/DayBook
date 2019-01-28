@@ -14,6 +14,7 @@ import com.aurospaces.neighbourhood.db.basedao.BaseUserDao;
 public class usersDao1 extends BaseUserDao  {
 
 	 public UsersBean loginDetails(UsersBean userBean ) {
+		 
 			String sql = "SELECT * from users where binary name = ? and binary password = ? and rolId =? ";
 			List<UsersBean> retlist = jdbcTemplate.query(sql,
 			new Object[]{userBean.getName(),userBean.getPassword(),userBean.getRolId()},
@@ -23,16 +24,14 @@ public class usersDao1 extends BaseUserDao  {
 			return null;
 		}
 	 
-	 public List<AddAccountHeadBean> populate1(String sql ){
-		 
-			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
+	 public List<AddAccountHeadBean> populate1(String sql ){		 
+		
 				List<AddAccountHeadBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(AddAccountHeadBean.class));
 					return retlist;
 		 }
 	 
-	 public List<ClientDetailsBean> populateClient(String sql ){
-		 
-			// String sql = "SELECT * from users where name = ? and password = ? and rolId =? ";
+	 public List<ClientDetailsBean> populateClient(String sql ){		 
+		
 				List<ClientDetailsBean> retlist = jdbcTemplate.query(sql,ParameterizedBeanPropertyRowMapper.newInstance(ClientDetailsBean.class));
 					return retlist;
 		 }	  

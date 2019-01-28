@@ -35,21 +35,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 		
 		@RequestMapping(value = "/reports")
 		public String reports(@ModelAttribute("reports") ExpensesBean expensesBean,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
-			/*List<ExpensesBean> expensesBeanList = null;
-			List<Map<String, Object>> dayWiseExpenses = null;*/
-			List<Map<String, Object>> dfcList1 = null;
-			/*ObjectMapper objectMapper = null;
-			ObjectMapper objectMapper1 = null;*/
-			ObjectMapper objectMapper2 = null;
-			//String sJson = "";
-			//String dayWiseJson="";
+			
+			List<Map<String, Object>> dfcList1 = null;			
+			ObjectMapper objectMapper2 = null;			
 			String dataJson="";
-			/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
-			session.setAttribute("activeAcademicYearId", academicYearId);*/
+			
 			try{
-				Date toDate = new Date();
-				/*expensesBeanList = reportsDao.getExpensesBeanAll(null);
-				dayWiseExpenses = reportsDao.getDayWiseExpenses();*/
+				Date toDate = new Date();				
 				dfcList1 = reportsDao.reportsdailyExpensesBetweentwoDate(null,null,null,null);
 				
 				if(dfcList1 != null) {
@@ -58,36 +50,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 					  dataJson =objectMapper2.writeValueAsString(dfcList1);
 					  request.setAttribute("dataJson", dataJson);
 					 // System.out.println(sJson); 
-				}else{
-					  /*objectMapper2 = new ObjectMapper(); 
-					  dataJson =objectMapper2.writeValueAsString(dfcList1);*/
+				}else{					 
 					  request.setAttribute("dataJson", "''");
-				}
+				}				
 				
-				/*if(expensesBeanList != null) {
-					
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  request.setAttribute("expensesList", sJson);
-					 // System.out.println(sJson); 
-				}else{
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  request.setAttribute("expensesList", "''");
-				}
-				
-				
-				if(dayWiseExpenses != null) {
-					
-					 objectMapper1 =  new ObjectMapper(); 
-					  dayWiseJson =objectMapper1.writeValueAsString(dayWiseExpenses);
-					   request.setAttribute("dayWiseExpenses", dayWiseJson);
-					 // System.out.println(sJson); 
-				}else{
-					  objectMapper1 =  new ObjectMapper(); 
-					 // dayWiseJson =objectMapper1.writeValueAsString(dayWiseJson);
-					  request.setAttribute("dayWiseExpenses","''");
-				}*/
 			}catch(Exception e){
 				e.printStackTrace();
 				System.out.println(e);
@@ -103,20 +69,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			
 			try{				
 				
-				reportsDao.save(expensesBean);				
+				reportsDao.save(expensesBean);					
 				
-				/*String message = "null";
-				if(expensesBeanList != null) {
-					
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  //request.setAttribute("dfcListBetweenTwoDates", sJson);
-					 // System.out.println(sJson); 
-				}else{
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  request.setAttribute("dfcList", "''");
-				}*/
 			}catch(Exception e){
 				e.printStackTrace();
 				System.out.println(e);
@@ -171,8 +125,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			
 			try{
 				String fromDate=request.getParameter("onDate");
-				expensesBeanList = reportsDao.getExpensesBeanAll(fromDate);
-				
+				expensesBeanList = reportsDao.getExpensesBeanAll(fromDate);				
 				
 				if(expensesBeanList != null) {
 					
@@ -184,8 +137,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 					  objectMapper = new ObjectMapper(); 
 					  sJson =objectMapper.writeValueAsString(expensesBeanList);
 					  //request.setAttribute("expensesList", "''");
-				}
-				
+				}				
 				
 			}catch(Exception e){
 				e.printStackTrace();
@@ -204,18 +156,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 				
 				reportsDao.delete(request.getParameter("expensId"));				
 				
-				/*String message = "null";
-				if(expensesBeanList != null) {
-					
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  //request.setAttribute("dfcListBetweenTwoDates", sJson);
-					 // System.out.println(sJson); 
-				}else{
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(expensesBeanList);
-					  request.setAttribute("dfcList", "''");
-				}*/
 			}catch(Exception e){
 				e.printStackTrace();
 				System.out.println(e);

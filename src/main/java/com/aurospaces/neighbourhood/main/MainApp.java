@@ -8,10 +8,5 @@ public class MainApp {
 
       ApplicationContext context = new FileSystemXmlApplicationContext(args[0]);
 
-// ("C:/Users/ZARA/workspace/HelloSpring/src/Beans.xml");
-
-//      HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
- //     obj.getMessage();
    }
 }
-

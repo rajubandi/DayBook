@@ -22,7 +22,6 @@ import com.aurospaces.neighbourhood.bean.ExpensesBean;
 public class BaseReportsDao {
 
 @Autowired public JdbcTemplate jdbcTemplate;
-
  
 	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,discription,amount,dairydate ) values (?, ?, ?, ?, ?)";
  
@@ -52,8 +51,7 @@ public class BaseReportsDao {
 					expensesBean.setUpdatedTime( new Date());
 					}
 					java.sql.Timestamp updatedTime = 
-						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 
-					
+						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 					
 							
 					PreparedStatement ps =
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
@@ -70,15 +68,13 @@ public class BaseReportsDao {
 				keyHolder);
 				
 				Number unId = keyHolder.getKey();
-				expensesBean.setId(unId.intValue());
-				
+				expensesBean.setId(unId.intValue());				
 
 		}
 		else
 		{
 		 
-			String sql = "UPDATE ledger  set  updatedTime=?,discription=?,amount=?,dairydate=? where id = ? ";
-	
+			String sql = "UPDATE ledger  set  updatedTime=?,discription=?,amount=?,dairydate=? where id = ? ";	
 			jdbcTemplate.update(sql, new Object[]{expensesBean.getUpdatedTime(),expensesBean.getDiscription(),expensesBean.getAmount(),expensesBean.getDairydate(),expensesBean.getId()});
 		}
 	insert= true;

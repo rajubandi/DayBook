@@ -1,12 +1,6 @@
-/**
- * 
- */
+
 package com.aurospaces.neighbourhood.bean;
 
-/**
- * @author YOGI
- * 
- */
 public class SMSBean {
 	private String orderId;
 	private String customerId;

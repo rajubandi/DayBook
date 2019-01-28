@@ -15,7 +15,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
-import com.aurospaces.neighbourhood.bean.CollectionBean;
 
 public class AddBaseClientsDao {
 
@@ -143,8 +142,6 @@ public class AddBaseClientsDao {
 	}	
 	
 	ps.setInt(7, cid);
-	
-	
 
 							return ps;
 						}
@@ -152,8 +149,7 @@ public class AddBaseClientsDao {
 				keyHolder);
 				
 				Number unId = keyHolder.getKey();
-				//addAccountHeadBean.setId(unId.intValue());
-				
+				//addAccountHeadBean.setId(unId.intValue());			
 
 		}
 		else

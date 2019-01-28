@@ -2,7 +2,6 @@ package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
-import com.aurospaces.neighbourhood.bean.CollectionBean;
 import com.aurospaces.neighbourhood.dao.AddClientsDao;
-import com.aurospaces.neighbourhood.dao.AddCollectionDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -129,29 +125,7 @@ public String addAccountName(@ModelAttribute("packCmd") ClientDetailsBean objAdd
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 != null) {
 				redir.addFlashAttribute("msg", "Already Record Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
-			}
-		
-		
-		/*if(objAddBoardBean.getId() == 0){
-			listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
-			if(listOrderBeans1.size() == 0){
-				addBoardDao.save(objAddBoardBean);
-//				session.setAttribute("message", "Successfully Board is Created");
-				redir.addFlashAttribute("msg", " Board Created  Successfully");
-				redir.addFlashAttribute("cssMsg", "success");
-			}
-			else{
-//				session.setAttribute("message", "Already Existed Record");
-				redir.addFlashAttribute("msg", " Board Already  Exist");
-				redir.addFlashAttribute("cssMsg", "danger");
-			}
-		}else{
-			addBoardDao.save(objAddBoardBean);
-//			session.setAttribute("message", "Successfully Board is Updated");
-			redir.addFlashAttribute("msg", " Board Updated  Successfully");
-			redir.addFlashAttribute("cssMsg", "warning");
-		}*/
-		
+			}		
 		
 		listOrderBeans = addAccountHeadDao.getAccountHaed();
 		if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -224,5 +198,3 @@ public Map<Integer, String> populateStudent() {
 	return statesMap;
 }*/ //Now Commented 
 }
-
-

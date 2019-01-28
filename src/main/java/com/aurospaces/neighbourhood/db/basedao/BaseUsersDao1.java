@@ -22,7 +22,6 @@ import com.aurospaces.neighbourhood.bean.UsersBean;
 public class BaseUsersDao1{
 
 @Autowired public JdbcTemplate jdbcTemplate;
-
  
 	public final String INSERT_SQL = "INSERT INTO users( created_time, updated_time, name,password,rolId) values (?,?,?,?,?)";
 
@@ -33,7 +32,7 @@ public class BaseUsersDao1{
 	if(usersBean.getId() == 0)	{
 
 	KeyHolder keyHolder = new GeneratedKeyHolder();
-	int update = jdbcTemplate.update(
+	jdbcTemplate.update(
 			new PreparedStatementCreator() {
 					public PreparedStatement 
 					createPreparedStatement(Connection connection) throws SQLException {
@@ -50,26 +49,23 @@ public class BaseUsersDao1{
 					{
 					usersBean.setUpdatedTime( new Date());
 					}
-					java.sql.Timestamp updatedTime = 
-						new java.sql.Timestamp(usersBean.getUpdatedTime().getTime()); 
+					java.sql.Timestamp updatedTime = new java.sql.Timestamp(usersBean.getUpdatedTime().getTime()); 
 							
-					PreparedStatement ps =
-									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
+	PreparedStatement ps =	connection.prepareStatement(INSERT_SQL,new String[]{"id"});
 	ps.setTimestamp(1, createdTime);
-ps.setTimestamp(2, updatedTime);
-ps.setString(3, usersBean.getName());
-ps.setString(4, usersBean.getPassword());
-ps.setString(5, usersBean.getRolId());
+	ps.setTimestamp(2, updatedTime);
+	ps.setString(3, usersBean.getName());
+	ps.setString(4, usersBean.getPassword());
+	ps.setString(5, usersBean.getRolId());
 
-System.out.println(ps);
+	System.out.println(ps);
 							return ps;
 						}
 				},
 				keyHolder);
 				
 				Number unId = keyHolder.getKey();
-				usersBean.setId(unId.intValue());
-				
+				usersBean.setId(unId.intValue());				
 
 		}
 		else
@@ -104,15 +100,5 @@ System.out.println(ps);
 				return retlist.get(0);
 			return null;
 		}
-	 
-	/* public List<StudentBean> getByIdAll() {
-			String sql = "SELECT * from users  ";
-			List<StudentBean> retlist = jdbcTemplate.query(sql,
-			new Object[]{},
-			ParameterizedBeanPropertyRowMapper.newInstance(StudentBean.class));
-			if(retlist.size() > 0)
-				return retlist;
-			return null;
-		}*/
 
 }

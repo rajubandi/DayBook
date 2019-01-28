@@ -42,8 +42,6 @@ public class MiscUtils
 	public static int bigRandomStringLen = bigRandomString.length() - 1;
 	public static Random rd = new Random();
 
-
-
 	public static String generateRandomString(int len)
 	{
 		StringBuilder bld = new StringBuilder();
@@ -54,8 +52,6 @@ public class MiscUtils
 		}
 		return bld.toString();
 	}
-
-
 
 	public static String getBaseUrl(HttpServletRequest request)
 	{

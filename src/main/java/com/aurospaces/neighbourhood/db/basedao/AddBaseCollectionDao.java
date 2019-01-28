@@ -3,9 +3,6 @@ package com.aurospaces.neighbourhood.db.basedao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -111,8 +108,7 @@ public class AddBaseCollectionDao {
 				keyHolder);
 				
 				//Number unId = keyHolder.getKey();
-				//addAccountHeadBean.setId(unId.intValue());
-				
+				//addAccountHeadBean.setId(unId.intValue());				
 
 		}
 		else
@@ -157,22 +153,5 @@ public class AddBaseCollectionDao {
 				return retlist.get(0);
 			return null;
 		}
-	
-	 /*public AddBoardBean existingOrNot(String name ){
-		 StringBuffer objStringBuffer = new StringBuffer();
-		 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
-		
-		 String sql = objStringBuffer.toString();
-			System.out.println(sql);
-			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
-			jdbcTemplate.query(sql, handler);
-			List<Map<String, String>> result = handler.getResult();
-			return result;
-			
-		}*/
-
-	
 
 }
-
-

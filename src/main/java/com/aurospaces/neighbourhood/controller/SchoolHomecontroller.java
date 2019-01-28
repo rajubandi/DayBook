@@ -105,22 +105,7 @@ public class SchoolHomecontroller {
 			rolId = request.getParameter("rolId");
 			userBean.setRolId(rolId);
 			userBean.setPassword(password);
-			userBean.setName(name);
-			/*academicYearBean =addAcademicYearDao.getAcademicYearSelectList();
-			
-			if (academicYearBean != null) {
-			objectMapper = new ObjectMapper(); 
-			academicYearJson =objectMapper.writeValueAsString(academicYearBean);
-			session.setAttribute("academicYear", academicYearJson);
-			//request.setAttribute("academicYear", academicYearJson);
-			System.out.println(academicYearJson);
-			}else {
-				
-				objectMapper = new ObjectMapper(); 
-				academicYearJson =objectMapper.writeValueAsString(academicYearBean);
-				//session.setAttribute("academicYear", academicYearBean);
-				session.setAttribute("academicYear", academicYearJson);
-			}*/
+			userBean.setName(name);			
 			
 			objuserBean = usesDao1.loginDetails(userBean);
 			
@@ -237,39 +222,6 @@ e.printStackTrace();
 			logger.fatal("error in userLogin method in school Homecontroller class dashBoard method");
 		}
 		return "parentDashBoard";
-	}	
-	
-	@RequestMapping(value = "/deleteStudentFee")
-	public @ResponseBody List<Map<String, String>> deleteStudentFee( ModelMap model,HttpServletRequest request)  {
-		System.out.println("Home controller...");
-		List<Map<String, String>> listOrderBeans = null;
-		ObjectMapper objectMapper = null;
-		String sJson = "";
-		String message =null;
-		String id = null;
-		try{
-			id = request.getParameter("id");
-			objStudentFeeDao.delete(Integer.parseInt(id));
-			// Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId(); icom
-				listOrderBeans =  objStudentFeeDao.getallStudentsFee(null,null,null,null,null,String.valueOf(15));
-				if(listOrderBeans != null && listOrderBeans.size() > 0) {
-					  objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(listOrderBeans);
-					  request.setAttribute("allOrders1", sJson);
-					 // System.out.println(sJson); 
-				}else{
-					 objectMapper = new ObjectMapper(); 
-					  sJson =objectMapper.writeValueAsString(listOrderBeans);
-					  request.setAttribute("allOrders1", "''");
-				}
-		}catch(Exception e){
-				e.printStackTrace();
-					System.out.println(e);
-			logger.error(e);
-			logger.fatal("error in userLogin method in school Homecontroller class deleteStudent method");
-		}
-
-		return listOrderBeans;
 	}		
 
 @RequestMapping(value = "/changePassword")
@@ -340,6 +292,7 @@ public String adminChangePasswordHome(@ModelAttribute("packCmd") UsersBean objUs
 	}
 	return "adminChangePasswordHome";
 }
+
 @RequestMapping(value = "/adminChangePassword")
 public String adminChangePassword(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 	System.out.println("LoginHome1 page...");
