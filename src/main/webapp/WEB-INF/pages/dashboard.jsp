@@ -49,47 +49,7 @@
 
 					<!-- Current Stats Start -->
 					<div class="current-stats">
-						<div class="row">
-							<!-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-								<a href="viewAttendanceHome">
-                                <div class="danger-bg center-align-text">
-									<div class="spacer-xs">
-										<small class="text-white">View</small>
-										<h4 class="no-margin no-padding">Attendance</h4>
-									</div>
-								</div>
-                                </a>
-							</div> -->
-							 <!-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-                            <a href="viewEvents">
-								<div class="success-bg center-align-text">
-									<div class="spacer-xs">
-										<small class="text-white">View</small>
-										<h4 class="no-margin no-padding text-white">Notifications</h4>
-									</div>
-								</div>
-                                </a>
-							</div> --> 
-							<!-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-                            <a href="viewStudent">
-								<div class="info-bg center-align-text">
-									<div class="spacer-xs">
-										<small class="text-white">View</small>
-										<h4 class="no-margin no-padding">Students</h4>
-									</div>
-								</div>
-                                </a>
-							</div> -->
-							<!-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-                            <a href="exportStudent">
-								<div class="brown-bg center-align-text">
-									<div class="spacer-xs">
-										<small class="text-white">Export</small>
-										<h4 class="no-margin no-padding">Students</h4>
-									</div>
-								</div>
-                                </a>
-							</div> -->
+						<div class="row">							
 							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
                             <a href="ledger">
 								<div class="success-bg center-align-text">
@@ -127,48 +87,28 @@
 				</div>
 				<!-- Container fluid ends -->
 
- <!-- <div class="col-md-6">
-	<h3>Students </h3>
-	<div id="students"></div></div> -->
-	
-	<div class="col-md-6">
+ 	<div class="col-md-6">
 	<h3>Collection </h3>
 	<div id="chartdiv1"></div></div>
 	
 	<div class="col-md-6">
 	<h3>Expenses </h3>
-	<div id="chartdiv2"></div></div>
+	<div id="chartdiv2"></div></div>	
 	
-	<!-- <div class="col-md-6">
-	<h3>Pass Percentage </h3>
-	<div id="chartdiv3"></div></div>
-	
-	<div class="col-md-6">
-	<h3>Cylinders </h3>
-	<div id="chartdiv4"></div></div>
-	
-	<div class="col-md-6">
-	<h3>Cylinders </h3>
-	<div id="chartdiv5"></div></div> -->
 			</div>
 			<!-- Main Container ends -->
 
 		</div>
 		<!-- Dashboard Wrapper ends -->
 
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-$( document ).ready(function() {
-
-	
+$( document ).ready(function() {	
 	
 	var getTabName = window.location.pathname.split('/')[2];
 	$("#das_li").addClass('active');
 	$("#das_li ul").css('display','block');
 	$("#das_li ul li a[href='"+ getTabName +"']").addClass('subactive');
-
 	
 });
 

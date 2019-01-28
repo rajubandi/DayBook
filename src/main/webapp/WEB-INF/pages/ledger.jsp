@@ -19,6 +19,7 @@
 		});
 	}, 5000);
 </script>
+
 <style>
 table{
         width: 100%;
@@ -146,10 +147,7 @@ table{
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
-															</thead>
-															<!-- <tfoot>
-																<tr><th rowspan="1" colspan="1">Board</th><th rowspan="1" colspan="1">Medium</th><th rowspan="1" colspan="1">Class</th><th rowspan="1" colspan="1">Section</th><th rowspan="1" colspan="1">Fees</th><th rowspan="1" colspan="1">Action</th></tr>
-															</tfoot> -->
+															</thead>															
 															<tbody>
 																
 															</tbody>
@@ -187,8 +185,6 @@ table{
 		</div>
 		<!-- Dashboard Wrapper ends -->
 
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -205,22 +201,4 @@ if (listOrders1 != "") {
 	displayTable(listOrders1);
 	$("#emptyMessageId").val("No Results Found");
 }	
-
-
-/* var dayWiseExpenses=${dayWiseExpenses};
-
-if (dayWiseExpenses != "") {
-	/* var mon = dayWiseExpenses[0].monthName;
-	console.log(mon);
-	 $("#onDateExpensesHeading").text(mon); 
-	displayTableDayWiseExpenses(dayWiseExpenses);
-}else{
-	displayTableDayWiseExpenses(dayWiseExpenses);
-	$("#emptyMessageId").val("No Results Found");
-}	 */
-
-
-<!--
-
-//-->
 </script>

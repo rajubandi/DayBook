@@ -15,14 +15,6 @@
     <script type='text/javascript' src='js/MonthPicker.min.js'></script>
 	
 	<script type="text/javascript" src="js/collection.js"></script>
-	
-	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> -->
 
 	<script>
 	window.setTimeout(function() {
@@ -30,7 +22,7 @@
 			$(this).remove();
 		});
 	}, 5000);
-</script>
+     </script>
 
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
@@ -91,13 +83,7 @@
 											<div class="form-group">
 											    <button style="margin-left: 12px;" type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Add Client</button>
 											</div>
-											</div>
-											
-											<!-- <div class="col-sm-12" style="display: inline">
-												  	<div class="col-sm-8 col-sm-offset-2">
-													<button type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Move To Add Client</button>																										
-													</div>
-											</div>	 -->									
+											</div>																		
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -107,17 +93,7 @@
 													<span class="description_error" id="name_error"></span>
 												</div>
 											</div>
-											</div>
-											
-											<%-- <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
-											    <div class="col-sm-8">
-													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
-													<span class="fullamount_error" id="name_error"></span>
-												</div>
-											</div>
-											</div> --%>
+											</div>										
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
@@ -190,10 +166,7 @@
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Due Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
-															</thead>
-															<!-- <tfoot>
-																<tr><th rowspan="1" colspan="1">Board</th><th rowspan="1" colspan="1">Medium</th><th rowspan="1" colspan="1">Class</th><th rowspan="1" colspan="1">Section</th><th rowspan="1" colspan="1">Fees</th><th rowspan="1" colspan="1">Action</th></tr>
-															</tfoot> -->
+															</thead>															
 															<tbody>
 																
 															</tbody>
@@ -207,32 +180,8 @@
 									</div>
 									
 								</div>
-							</div>
-					
-						<!-- Row Ends -->
+							</div>					
 						
-						<!-- Row Starts -->
-						<!-- <div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								
-							</div>
-						</div> -->
-						<!-- Row Ends -->
-						
-					<!-- </div> -->
-					<!-- Spacer ends -->
-
-				<!-- </div> -->
-				<!-- Container fluid ends -->
-
-			<!-- </div> -->
-			<!-- Main Container ends -->
-
-		<!-- </div> -->
-		<!-- Dashboard Wrapper ends -->
-
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 

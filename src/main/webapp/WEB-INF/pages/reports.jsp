@@ -97,10 +97,7 @@ table{
 															<form:options items="${accountHead}"></form:options>
 												</form:select>
 												</div>
-											   <!--  <div class="col-sm-8">
-													<input id="Account Head" name="to" autocomplete="off" placeholder="Account Head" class="form-control validate"  onfocus="removeBorder(this.id)" />
-													<span class="to_error" id="to_error"></span>
-												</div> -->
+											   
 										  	</div>
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
