@@ -21,10 +21,6 @@ public class SMSBean {
 	private String discount;
 	private String otp;
 	
-	
-
-	
-	
 
 	public String getOtp() {
 		return otp;

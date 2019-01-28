@@ -20,14 +20,6 @@ import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
 
-
-/*import com.aurospaces.neighbourhood.patent.GeoMain;
-import com.aurospaces.neighbourhood.patent.GeoTag;*/ // i com
-
-/**
- * @author Amit
- * 
- */
 public class NeighbourhoodUtil {
 	Logger objLogger = Logger.getLogger(NeighbourhoodUtil.class);
 

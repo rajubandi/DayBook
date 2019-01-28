@@ -1,8 +1,6 @@
 package com.aurospaces.neighbourhood.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -225,8 +223,7 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 			if (objAddAccountHeadBean.getId() == 0 && listOrderBeans1 != null) {
 				redir.addFlashAttribute("msg", "Already Record Insert Exist");
 				redir.addFlashAttribute("cssMsg", "danger");
-			}
-		
+			}		
 		
 		/*if(objAddBoardBean.getId() == 0){
 			listOrderBeans1 = addBoardDao.existingOrNot(objAddBoardBean.getName());
@@ -247,7 +244,6 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 			redir.addFlashAttribute("msg", " Board Updated  Successfully");
 			redir.addFlashAttribute("cssMsg", "warning");
 		}*/
-		
 		
 		listOrderBeans = addAccountHeadDao.getAccountHaed();
 		if(listOrderBeans != null && listOrderBeans.size() > 0) {
@@ -476,4 +472,3 @@ public @ResponseBody String getDueAmount(@ModelAttribute("packCmd") CollectionBe
 }
 
 }
-

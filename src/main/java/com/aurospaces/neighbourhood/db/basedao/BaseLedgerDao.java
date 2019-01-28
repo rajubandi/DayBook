@@ -27,7 +27,6 @@ public class BaseLedgerDao{
  
 	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,accountHeadId,discription,amount,dairydate ) values (?, ?,?, ?, ?, ?)";
  
-
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
 	public boolean save(final ExpensesBean expensesBean) 

@@ -87,5 +87,3 @@ package com.aurospaces.neighbourhood.dao;
 			return result;			
 		}
 	}
-
-

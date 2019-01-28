@@ -9,7 +9,4 @@ import com.aurospaces.neighbourhood.db.basemodel.BaseUsers;
 public class Users extends BaseUsers
 {
 
-
-
-
 }

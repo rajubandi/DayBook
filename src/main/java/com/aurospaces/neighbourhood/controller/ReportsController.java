@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 import com.aurospaces.neighbourhood.dao.ReportsDao;
-// import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao; i com
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -32,7 +31,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 		@Autowired ServletContext objContext;
 		@Autowired ReportsDao reportsDao;
 		@Autowired usersDao1 usesDao1;
-		//	@Autowired AddAcademicYearDao addAcademicYearDao; i com
 		private Logger logger = Logger.getLogger(ReportsController.class);
 		
 		@RequestMapping(value = "/reports")
@@ -98,17 +96,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			}
 			
 			return "reports";
-		}
-		
+		}		
 		
 		@RequestMapping(value = "saveReports")
 		public String saveLedger(@ModelAttribute("reports") ExpensesBean expensesBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 			
-			try{
+			try{				
 				
-				
-				reportsDao.save(expensesBean);
-				
+				reportsDao.save(expensesBean);				
 				
 				/*String message = "null";
 				if(expensesBeanList != null) {
@@ -127,13 +122,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 				System.out.println(e);
 				logger.error(e);
 				logger.fatal("error in saveLedger class");
-			}
-			
-				
+			}				
 			
 			return "redirect:reports";
-		}
-		
+		}		
 		
 		@RequestMapping(value = "/reportsdailyExpensesBetweentwoDate")
 		public @ResponseBody  String dailyExpensesBetweentwoDate(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -146,8 +138,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			String accountHead=request.getParameter("accountHead");
 			String month= request.getParameter("monthPicker");
 			try{
-				dfcList = reportsDao.reportsdailyExpensesBetweentwoDate(fromDate,toDate,accountHead,month);
-				
+				dfcList = reportsDao.reportsdailyExpensesBetweentwoDate(fromDate,toDate,accountHead,month);				
 				
 				String message = "null";
 				if(dfcList != null) {
@@ -167,9 +158,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 				System.out.println(e);
 				logger.error(e);
 				logger.fatal("error in DFCController class");
-			}
-			
-				
+			}				
 			
 			return sJson;
 		}
@@ -206,17 +195,14 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			}
 			
 			return sJson;
-		}
-		
+		}		
 
 		@RequestMapping(value = "reportsDeleteExpens")
 		public @ResponseBody String deleteExpens(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 			
-			try{
+			try{				
 				
-				
-				reportsDao.delete(request.getParameter("expensId"));
-				
+				reportsDao.delete(request.getParameter("expensId"));				
 				
 				/*String message = "null";
 				if(expensesBeanList != null) {
@@ -235,9 +221,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 				System.out.println(e);
 				logger.error(e);
 				logger.fatal("error in deleteExpens class");
-			}
-			
-				
+			}			
 			
 			return "deleted";
 		}
@@ -259,6 +243,3 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			return statesMap;
 		}
 	}
-
-
-

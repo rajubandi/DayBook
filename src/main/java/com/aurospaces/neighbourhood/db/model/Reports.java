@@ -8,6 +8,7 @@ public class Reports {
 	private String clientNmae;
 	private String serviceName;
 	private String vendorName;
+	
 	public String getVendorName() {
 		return vendorName;
 	}

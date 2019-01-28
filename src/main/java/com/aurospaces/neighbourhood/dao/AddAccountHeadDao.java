@@ -8,6 +8,7 @@ import java.util.List;
 	import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 	import com.aurospaces.neighbourhood.db.basedao.AddBaseAccountHeadDao;
 	import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
+	
 	@Repository(value="addAccountHeadDao")
 	public class AddAccountHeadDao extends AddBaseAccountHeadDao {
 		public List<Map<String, String>> getAccountHaed( ){
@@ -22,9 +23,8 @@ import java.util.List;
 				return result;
 				
 			}
-		public AddAccountHeadBean existingOrNot(String name ){
-			
-			
+		
+		public AddAccountHeadBean existingOrNot(String name ){			
 			
 			String sql = "select id ,name from accounthead where name =? ";
 			List<AddAccountHeadBean> retlist = jdbcTemplate.query(sql,
@@ -46,5 +46,3 @@ import java.util.List;
 				
 			}
 	}
-
-

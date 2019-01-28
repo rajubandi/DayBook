@@ -19,16 +19,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 
-
 public class BaseReportsDao {
-
 
 @Autowired public JdbcTemplate jdbcTemplate;
 
  
 	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,discription,amount,dairydate ) values (?, ?, ?, ?, ?)";
  
-
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
 	public boolean save(final ExpensesBean expensesBean) 
@@ -96,8 +93,7 @@ public class BaseReportsDao {
 		public void delete(String  id) {
 			String sql = "DELETE FROM ledger WHERE id in(" + id + " )";
 			jdbcTemplate.update(sql, new Object[]{});
-		}
-		
+		}		
 
 	 public ExpensesBean getById(int id) {
 			String sql = "SELECT * from ledger where id = ? ";
@@ -108,8 +104,8 @@ public class BaseReportsDao {
 				return retlist.get(0);
 			return null;
 		}
-	 public List<ExpensesBean> getExpensesBeanAll(String date) throws ParseException {
-		 
+	 
+	 public List<ExpensesBean> getExpensesBeanAll(String date) throws ParseException {		 
 		
 		 StringBuffer buffer = new StringBuffer();
 		 buffer.append("SELECT ld.*,DATE_FORMAT(Date(ld.dairydate),'%d-%M-%Y') as strDate from ledger ld where  ");

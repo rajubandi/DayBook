@@ -25,11 +25,6 @@ public class BaseUsersDao1{
 
  
 	public final String INSERT_SQL = "INSERT INTO users( created_time, updated_time, name,password,rolId) values (?,?,?,?,?)";
- 
-
-
-
-
 
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
@@ -98,8 +93,7 @@ System.out.println(ps);
 		public void delete(String  id) {
 			String sql = "DELETE FROM users WHERE id in(" + id + " )";
 			jdbcTemplate.update(sql, new Object[]{});
-		}
-		
+		}		
 
 	 public UsersBean getById(int id) {
 			String sql = "SELECT * from users where id = ? ";
@@ -110,6 +104,7 @@ System.out.println(ps);
 				return retlist.get(0);
 			return null;
 		}
+	 
 	/* public List<StudentBean> getByIdAll() {
 			String sql = "SELECT * from users  ";
 			List<StudentBean> retlist = jdbcTemplate.query(sql,
@@ -119,6 +114,5 @@ System.out.println(ps);
 				return retlist;
 			return null;
 		}*/
-	
 
 }

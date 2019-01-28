@@ -49,5 +49,3 @@
 		<property name="jndiName" value="java:comp/env/jdbc/jdbcPool"/> </bean> --> 
 
 </beans>
-
-

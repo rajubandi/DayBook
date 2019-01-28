@@ -328,7 +328,7 @@ session.setAttribute("url", url);
 							<li><a href="addAccountHead"><span>Day-Book Catagories</span></a></li>
 							<li><a href="ledger"><span>Ledger</span></a></li>
 							<li><a href="collections"><span>Collections</span></a></li>
-							<li><a href="dailyFeesCollection"><span>Daily Collection</span></a></li>
+							<li><a href="dailyCollection"><span>Daily Collection</span></a></li>
 <!-- 							<li><a href="studentFeeHome"><span>Collection</span></a></li> -->
 							<li><a href="reports"><span>Reports</span></a></li>
 							<li><a href="addClient"><span>Add Client</span></a></li>

@@ -13,31 +13,25 @@ public class DFCBean {
 		return createdTime;
 	}
 
-
 	public void setCreatedTime(String createdTime) {
 		this.createdTime = createdTime;
 	}
-
 
 	public String getAmount() {
 		return amount;
 	}
 
-
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-
 
 	public String getTotal() {
 		return total;
 	}
 
-
 	public void setTotal(String total) {
 		this.total = total;
 	}
-
 
 	@Override
 	public String toString() {
@@ -45,16 +39,13 @@ public class DFCBean {
 				+ ", total=" + total + "]";
 	}
 
-
 	public Date getFrom() {
 		return from;
-	}
-	
+	}	
 	
 	public DFCBean() {
 		super();
 	}
-
 
 	public void setFrom(Date from) {
 		this.from = from;
@@ -64,7 +55,6 @@ public class DFCBean {
 	}
 	public void setTo(Date to) {
 		this.to = to;
-	}
-	
+	}	
 
 }

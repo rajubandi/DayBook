@@ -1,19 +1,13 @@
 package com.aurospaces.neighbourhood.dao;
 
-
-	import java.text.ParseException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang.StringUtils;
-import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
-
-//import com.aurospaces.neighbourhood.bean.StudentBean; i com
 import com.aurospaces.neighbourhood.db.basedao.BaseReportsDao;
 import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 
@@ -49,8 +43,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				return null;
 			}*/
 
-		public List<Map<String, Object>> getDayWiseExpenses() {
-			
+		public List<Map<String, Object>> getDayWiseExpenses() {			
 			
 			//String sql = "select id,DATE_format(dairydate,'%d-%M-%Y') as strDate,sum(amount)  as amount from ledger group by date(dairydate)"  ;
 			String sql = "select ld.id,ah.name as accountHead,DATE_format(ld.dairydate,'%d-%M-%Y') as strDate,ld.discription,ld.amount,monthName(curdate()) as monthName from ledger ld ,accounthead ah  where MONTH(dairydate) = MONTH(CURDATE()) and ld.accountHeadId = ah.id ";
@@ -60,6 +53,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				return retlist;
 			return null;
 		}
+		
 		 public List<Map<String, Object>> reportsdailyExpensesBetweentwoDate(String from, String to,String accounthead,String month) throws ParseException {
 			
 				 StringBuffer objStringBuffer = new StringBuffer();
@@ -110,9 +104,6 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				if(retlist.size() > 0)
 					return retlist;
 				return null;
-			}
-
-		 
+			} 
 
 	}
-
