@@ -36,6 +36,7 @@ import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
 import com.aurospaces.neighbourhood.util.SendSMS;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.aurospaces.neighbourhood.db.dao.StudentDao;
 
 @Controller
 public class SchoolHomecontroller {
@@ -45,6 +46,8 @@ public class SchoolHomecontroller {
 	@Autowired StudentFeeDao objStudentFeeDao;
 	@Autowired usersDao1 usesDao1;
 	@Autowired	DataSourceTransactionManager transactionManager;
+	@Autowired StudentDao studentDao;
+	
 	
 	private Logger logger = Logger.getLogger(SchoolHomecontroller.class);
 	
@@ -184,21 +187,25 @@ e.printStackTrace();
 		/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 		session.setAttribute("activeAcademicYearId", academicYearId);*/
 		try{
-			/*feesAndExpenses = studentDao.getFeesAndExpenses(academicYearId)	;
+			feesAndExpenses = studentDao.getFeesAndExpenses()	;
 			if(feesAndExpenses != null){
 				objectMapper = new ObjectMapper();
 				request.setAttribute("feesAndExpenses", objectMapper.writeValueAsString(feesAndExpenses));
+				//System.out.println("feesAndExpenses in if: " +objectMapper.writeValueAsString(feesAndExpenses));
 			}else{
 				request.setAttribute("feesAndExpenses", "''");
+				//System.out.println("feesAndExpenses in else: " +objectMapper.writeValueAsString(feesAndExpenses));
 			}
 			
-			expensessummary = 	studentDao.getExpensessummary(academicYearId);
+			expensessummary = 	studentDao.getExpensessummary();
 			if(expensessummary != null){
 				objectMapper = new ObjectMapper();
 				request.setAttribute("expensessummary", objectMapper.writeValueAsString(expensessummary));
+				//System.out.println("expensessummary in if: " +objectMapper.writeValueAsString(expensessummary));
 			}else{
 				request.setAttribute("expensessummary", "''");
-			}*/
+				//System.out.println("expensessummary in else: " +objectMapper.writeValueAsString(expensessummary));
+			}
 			
 		}catch(Exception e){
 e.printStackTrace();

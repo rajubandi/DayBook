@@ -117,7 +117,7 @@ function activateAcademicYear(){
 
 </script>
 
-		<!-- Flot Charts -->
+	<!-- Flot Charts -->
     <script src="js/flot/jquery.flot.min.js"></script>
     <script src="js/flot/jquery.flot.orderBar.min.js"></script>
     <script src="js/flot/jquery.flot.pie.min.js"></script>
