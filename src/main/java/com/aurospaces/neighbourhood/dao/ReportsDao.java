@@ -49,6 +49,7 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 				 StringBuffer objStringBuffer = new StringBuffer();
 				//String sql = " select id,DATE_format(dairydate,'%d-%M-%Y') as strDate,sum(sf.amount) as amount from ledger sf where date(dairydate) between  Date('"+fromdate+"')  AND Date('"+todate+"') group by daTE(dairydate)"  ;
 				 objStringBuffer.append("select ld.id, ah.name as accountHead, DATE_format(ld.dairydate,'%d-%M-%Y') as strDate,ld.discription, ld.amount from ledger ld,accounthead ah   where  ld.accountHeadId = ah.id " ) ;
+				
 				 if (StringUtils.isNotBlank(from) && StringUtils.isNotBlank(to)) {
 					 
 					 SimpleDateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy");
@@ -95,5 +96,59 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 					return retlist;
 				return null;
 			} 
+		 
+		 public List<Map<String,Object>> reportsBetweenTwoDates(Date from, Date to) throws ParseException {						
+				
+				java.sql.Timestamp fromdate = new java.sql.Timestamp(from.getTime()); 
+				java.sql.Timestamp todate = new java.sql.Timestamp(to.getTime());
+				
+				System.out.println("reportsBetweenTwoDates DAO -- from: " +from +" to: " +to);
+				
+				String sql = "select ld.id, ah.name as accountHead, DATE_format(ld.dairydate,'%d-%M-%Y') as strDate,ld.discription, ld.amount from ledger ld,accounthead ah where (ld.accountHeadId = ah.id) AND (date(ld.dairydate) between Date('"+fromdate+"')  AND Date('"+todate+"'))";
+				
+				List<Map<String,Object>>  retlist = jdbcTemplate.queryForList(sql,new Object[]{});
+				System.out.println(sql);
+				if(retlist.size() > 0)
+					return retlist;
+				return null;
+			}
+		 
+		 public List<Map<String,Object>> reportsBetweenTwoDatesWithAccount(Date from, Date to, String accounthead) throws ParseException {						
+				
+			 String sql;
+			 if ((from == null)&&(to == null) ) {
+				 System.out.println("IF in reportsBetweenTwoDatesWithAccount - from:" +from +" to: " +to +" Acchead: " +accounthead);
+				 sql = "select ld.id, ah.name as accountHead, DATE_format(ld.dairydate,'%d-%M-%Y') as strDate,ld.discription, ld.amount from ledger ld,accounthead ah where (ld.accountHeadId = ah.id ) and (ah.name = '" +accounthead +" ')";
+				 
+			} else {
+				
+				java.sql.Timestamp fromdate = new java.sql.Timestamp(from.getTime()); 
+				java.sql.Timestamp todate = new java.sql.Timestamp(to.getTime());
+				
+				System.out.println("ELSE in reportsBetweenTwoDatesWithAccount - from:" +from +" to: " +to +" Acchead: " +accounthead);				
+				
+				sql = "select ld.id as id, ah.name as accountHead, DATE_format(ld.dairydate,'%d-%M-%Y') as strDate,ld.discription as discription, ld.amount as amount from ledger ld,accounthead ah where (ld.accountHeadId = ah.id ) and (ah.name = '" +accounthead  +" ') AND (date(ld.dairydate) between Date('"+fromdate+"')  AND Date('"+todate+"'))";
 
+			}			 
+				
+				List<Map<String,Object>>  retlist = jdbcTemplate.queryForList(sql,new Object[]{});
+				System.out.println(sql);
+				if(retlist.size() > 0)
+					return retlist;
+				return null;
+			}
+		 
+		 public List<Map<String, String>> getName(int id ){
+			    StringBuffer objStringBuffer = new StringBuffer();
+			    objStringBuffer.append("select name as AccounterName from accounthead where id ="+id);
+			
+			 	String sql = objStringBuffer.toString();
+				System.out.println(sql);
+				RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "AccounterName"});
+				jdbcTemplate.query(sql, handler);
+				List<Map<String, String>> result = handler.getResult();
+				System.out.println("In getName( ) ---- : " +result);
+				return result;			
+			}
+		 
 	}

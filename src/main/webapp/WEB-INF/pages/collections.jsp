@@ -40,7 +40,8 @@
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="collections"></a>Collections</li>
+    	<li><a href="#">Financial</a></li>
+    	<li><a href="collections">Collections</a></li>
 	</ol>
 						<div class="row">
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">

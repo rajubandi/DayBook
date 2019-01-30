@@ -23,7 +23,7 @@ public class BaseLedgerDao{
 
 @Autowired public JdbcTemplate jdbcTemplate;
  
-	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,accountHeadId,discription,amount,dairydate ) values (?, ?,?, ?, ?, ?)";
+	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,accountHeadId,discription,amount,dairydate ) values (?, ?, ?, ?, ?, ?)";
  
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional

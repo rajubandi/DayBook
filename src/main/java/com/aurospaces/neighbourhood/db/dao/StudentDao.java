@@ -18,7 +18,7 @@ public class StudentDao  extends BaseStudentDao{
 		
 		String sql = "select 'Total Amount' as totalFees, sum(s.fullamount) as amount from collections s " + 
 				" union all " + 
-				" select 'Fee Collection' as totalFees, sum(sf.paidamount) as amount from collections sf " + 
+				" select 'Collected Amount' as totalFees, sum(sf.paidamount) as amount from collections sf " + 
 				" union all " + 
 				" select 'Expenses' as toatalFees, sum(l.amount) as amount from ledger l " ;
 		   

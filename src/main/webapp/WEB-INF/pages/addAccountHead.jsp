@@ -14,7 +14,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Account Head Creation</div>
+				<div class="page-title" id="headId">Day-Book Categories</div>
 			</div>
 			
 			<!-- Top Bar ends -->
@@ -24,10 +24,10 @@
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
 				<ol class="breadcrumb">
-    	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="#">Configurations</a></li>
-		<li><a href="addAccountHead"></a>Account Head Creation</a></li>
-	</ol>
+    			<li><a href="dashBoard">Home</a></li>
+    			<li><a href="#">Financial</a></li>
+				<li><a href="addAccountHead">Day-Book Categories</a></li>
+				</ol>
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">							
 

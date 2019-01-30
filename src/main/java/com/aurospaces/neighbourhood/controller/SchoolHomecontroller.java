@@ -31,7 +31,6 @@ import com.aurospaces.neighbourhood.bean.UsersBean;
 
 import com.aurospaces.neighbourhood.db.dao.StudentFeeDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
-
 import com.aurospaces.neighbourhood.util.NeighbourhoodUtil;
 import com.aurospaces.neighbourhood.util.SendSMS;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -150,6 +149,7 @@ e.printStackTrace();
 		}
 		return "redirect:HomePage";
 	}
+	
 	@RequestMapping(value = "/logoutHome1")
 	public String logoutHome(ModelMap model,HttpServletRequest request,HttpSession objSession,HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("logout page...");
@@ -159,11 +159,11 @@ e.printStackTrace();
 			if (session != null) {
 				session.removeAttribute("cacheUserBean");
 				session.invalidate();
-				  response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");//HTTP 1.1
-				    response.setHeader("Pragma","no-cache"); //HTTP 1.0
-				    response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
-//				    String baseUrl = MiscUtils.getBaseUrl(request);
-//			 		System.out.println(baseUrl);
+				response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");//HTTP 1.1
+				response.setHeader("Pragma","no-cache"); //HTTP 1.0
+				response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
+				    //String baseUrl = MiscUtils.getBaseUrl(request);
+			 		//System.out.println(baseUrl);
 //			 		response.sendRedirect(baseUrl+"/LoginHome1.htm" );
 			}
 			return "redirect:HomePage.htm";

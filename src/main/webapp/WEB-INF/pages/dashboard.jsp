@@ -61,7 +61,7 @@
                                 </a>
 							</div>
 							<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6">
-                            <a href="dailyFeesCollection">
+                            <a href="dailyCollection">
 								<div class="info-bg center-align-text">
 									<div class="spacer-xs">
 									<small class="text-white">Daily</small>

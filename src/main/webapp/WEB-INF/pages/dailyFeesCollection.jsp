@@ -36,7 +36,8 @@
 					<!-- Spacer starts -->
 					<ol class="breadcrumb">
 					    	<li><a href="dashBoard">Home</a></li>
-					    	<li><a href="#">Daily Collection</a></li>
+					    	<li><a href="#">Financial</a></li>
+					    	<li><a href="dailyCollection">Daily Collection</a></li>
 						    </ol>
 						    
 						<!-- Row Starts -->

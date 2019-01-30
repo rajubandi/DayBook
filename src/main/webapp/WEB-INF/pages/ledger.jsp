@@ -51,7 +51,8 @@ table{
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     				<li><a href="dashBoard">Home</a></li>
-					<li><a href="#">Ledger</a></li>
+    				<li><a href="#">Financial</a></li>
+					<li><a href="ledger">Ledger</a></li>
 				</ol>
 						<!-- Row Starts -->
 						<div class="row">
@@ -90,7 +91,7 @@ table{
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label  class="col-sm-4 control-label">Discription<span style="color: red;">*</span></label>
+											    <label  class="col-sm-4 control-label">Description<span style="color: red;">*</span></label>
 											    <div class="col-lg-8">
 											    <form:hidden path="id"  />
 													<form:input path="discription" class="form-control" placeholder="Description" />
@@ -143,7 +144,7 @@ table{
 															<thead>
 																<tr role="row">
 																    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Account Head</th>
-																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Discription</th>
+																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
@@ -198,7 +199,8 @@ $("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 if (listOrders1 != "") {
 	displayTable(listOrders1);
 }else{
+	
 	displayTable(listOrders1);
-	$("#emptyMessageId").val("No Results Found");
-}	
+		$("#emptyMessageId").val("No Results Found");
+	}
 </script>

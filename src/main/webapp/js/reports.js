@@ -23,11 +23,6 @@
     
 });*/
 
-$(document).ready(function() {
-    // click on the text field.
-    $('#monthPicker').MonthPicker({Button: false,OnAfterChooseMonth: searchData });
-});
-
 
 $(function(){
 	
@@ -82,6 +77,15 @@ $(function(){
 		}
 	    
 	   });
+	   
+	 //used url: https://jsfiddle.net/kidsysco/JeZap/
+	   $(document).ready(function() {
+		    // click on the text field.
+		    $('#monthPicker').MonthPicker({Button: false,OnAfterChooseMonth: function() { 
+		    	searchData();
+		    }  });
+		});
+		
 	   
 	   
 	/*   $("#ledgerBwDateSubmitId").click(function(){
@@ -179,6 +183,56 @@ function searchData(){
 					/*$('#todayFeeCollecitonDivId').hide();
 					$('#BetweenTwoDatesListId').show();*/
 					
+				
+			}
+			
+		});
+	}
+}
+
+function getDatabtwdates(){	
+	
+	var from = $("#from").val();
+	var to = $("#to").val();
+	
+	
+	if(to == ""){
+		
+		displayTableDayWiseExpenses('');	
+	}else{
+	 
+	 $.ajax({
+			type : "POST",
+			url : "reportsBetweentwoDates.json",
+			data : {"from":from, "to":to},
+			async:false,
+			success : function(response) {
+				displayTableDayWiseExpenses(response);					
+				
+			}
+			
+		});
+	}
+}
+
+function getDatabtwdatesWithAccount(){	
+	
+	var from = $("#from").val();
+	var to = $("#to").val();
+	var accountHead = $("#accountHead").val();
+	
+	if(accountHead == ""){
+		
+		displayTableDayWiseExpenses('');	
+	}else{
+	 
+	 $.ajax({
+			type : "POST",
+			url : "reportsBetweentwoDatesWithAccount.json",
+			data : {"from":from, "to":to, "accountHead":accountHead},
+			async:false,
+			success : function(response) {
+				displayTableDayWiseExpenses(response);				
 				
 			}
 			

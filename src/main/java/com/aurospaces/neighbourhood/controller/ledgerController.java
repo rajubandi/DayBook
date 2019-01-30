@@ -48,7 +48,7 @@ public class ledgerController {
 		try{
 			Date toDate = new Date();
 			expensesBeanList = ledgerDao.getExpensesBeanAll(null);
-			dayWiseExpenses = ledgerDao.getDayWiseExpenses();
+			/*dayWiseExpenses = ledgerDao.getDayWiseExpenses();*/
 			//model.addAttribute(accountHead, );			
 			
 			if(expensesBeanList != null) {
@@ -63,7 +63,7 @@ public class ledgerController {
 				  request.setAttribute("expensesList", "''");
 			}			
 			
-			if(dayWiseExpenses != null) {
+			/*if(dayWiseExpenses != null) {
 				
 				 objectMapper1 =  new ObjectMapper(); 
 				  dayWiseJson =objectMapper1.writeValueAsString(dayWiseExpenses);
@@ -73,7 +73,7 @@ public class ledgerController {
 				  objectMapper1 =  new ObjectMapper(); 
 				 // dayWiseJson =objectMapper1.writeValueAsString(dayWiseJson);
 				  request.setAttribute("dayWiseExpenses","''");
-			}
+			}*/
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
