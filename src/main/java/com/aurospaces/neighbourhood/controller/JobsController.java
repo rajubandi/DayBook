@@ -4,13 +4,15 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.aurospaces.neighbourhood.db.dao.UsersDao;
+import com.aurospaces.neighbourhood.dao.AddClientsDao;
 
 @Controller
 public class JobsController {
 	private Logger logger = Logger.getLogger(JobsController.class);
-	@Autowired
-	UsersDao objUsersDao;
+	
+	@Autowired AddClientsDao addAccountHeadDao;
+	//@Autowired
+	//UsersDao objUsersDao;
 	/*@Autowired UserrequirementDao objUserrequirementDao;
 	@Autowired StateDao stateDao;
 	 @Autowired CastDao objCastDao;
@@ -231,6 +233,13 @@ public class JobsController {
 		  // EmailUtil.sendEmails(objContext,objUsersDao);
 		   return "";
 	   }
+
+
+	public void accordingToDueDateSendMessage() {
+
+		
+		
+	}
 	   
 	   /*****     back-end jobs   end        ********/
 }

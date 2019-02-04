@@ -24,6 +24,15 @@ public class ScheduledJobs {
 	@Autowired
 	private Environment env;
 	
+	
+	@Scheduled(cron = "0 0 9 * * *") //daily at 9 am
+	public void accordingToDueDateSendMessage() {
+		
+		//System.out.println("#########  sendWeeklyMatches ###########");
+		jobsController.accordingToDueDateSendMessage();
+		
+	}
+	
 	//@Scheduled(cron = "0 0/15 6-16 * * *") //weekly, every monday at 12 am
 //	@Scheduled(cron = "0 0/3 * * * *") //weekly, every monday at 12 am
 //	@Scheduled(cron = "0 0 13 * * TUE") //weekly, every monday at 12 am

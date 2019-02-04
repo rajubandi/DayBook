@@ -75,7 +75,7 @@ public String addAccountName(@ModelAttribute("packCmd") CollectionBean objAddAcc
 	String sJson = "";	
 	
 	try{
-		System.out.println("addBoardaddBoardaddBoardaddBoard");
+		//System.out.println("addBoardaddBoardaddBoardaddBoard");
 		listOrderBeans1 = addAccountHeadDao.existingOrNot(objAddAccountHeadBean.getDescription());		
 		
 		int id = 0;
