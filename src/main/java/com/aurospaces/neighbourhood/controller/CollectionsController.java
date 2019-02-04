@@ -319,12 +319,22 @@ public @ResponseBody String getAmountData(@ModelAttribute("packCmd") CollectionB
 			System.out.println("Paid amount from clients: " +listOrderBeansPaidamt);
 			
 			int paidamt=0 ;
+			String paidamtgg="";
+			
 			
 			for (Iterator iterator = listOrderBeansPaidamt.iterator(); iterator.hasNext();) {
 				Map<String, String> map = (Map<String, String>) iterator.next();
 				System.out.println("In for loop PaidAmount value: " +map.get("paidamount"));	
-				String ggg = map.get("paidamount");					 
-				paidamt = Integer.parseInt(ggg);
+				String ggg = map.get("paidamount");	
+				paidamtgg = ggg;
+				System.out.println("PaidAmountgg value:  " +paidamtgg);
+				
+				if (ggg != null) {
+					paidamt = Integer.parseInt(ggg);
+				} else {
+					paidamt = 0;
+				}
+				
 			}
 			
 			listOrderBeansFullamt = addAccountHeadDao.getFullAmount(clientid);
@@ -346,7 +356,7 @@ public @ResponseBody String getAmountData(@ModelAttribute("packCmd") CollectionB
 			int dueAmount = fullamt - paidamt;
 			System.out.println("Dueamt value: " +dueAmount);
 			
-			String notifyMsg = "FullAmount: "+fullamt +" PaidAmount: " +paidamt +" DueAmount:" +dueAmount ;			
+			String notifyMsg = "FullAmount: "+fullamt +" PaidAmount: " +paidamtgg +" DueAmount:" +dueAmount ;			
 			
 			  objectMapper = new ObjectMapper(); 
 			  sJson =objectMapper.writeValueAsString(listOrderBeans);

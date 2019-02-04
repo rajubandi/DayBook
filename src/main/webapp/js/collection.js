@@ -144,10 +144,20 @@ $(function(){
 					}
 				});
 				
-				document.getElementById('showamount').style.display="block" ;
-				//document.getElementById('showamount').innerHTML = showAmountValue;
-				document.getElementById("showamount").style.color = "blue";
-				document.getElementById('showamount').innerHTML = gg;
+				var str = gg;
+				var patt = new RegExp("null");
+				var res = patt.test(str);
+				
+				if (res==true) {
+					document.getElementById('showamount').style.display="block" ;
+					document.getElementById("showamount").style.color = "blue";
+					document.getElementById('showamount').innerHTML = "";//"Till Now, He Not Paid ";
+				} else {
+					
+					document.getElementById('showamount').style.display="block" ;				
+					document.getElementById("showamount").style.color = "blue";				
+					document.getElementById('showamount').innerHTML = gg;
+				}				
 				
 		}
 		
