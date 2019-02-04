@@ -19,15 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 
-
 public class BaseLedgerDao{
 
 @Autowired public JdbcTemplate jdbcTemplate;
-
  
-	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,accountHeadId,discription,amount,dairydate ) values (?, ?,?, ?, ?, ?)";
+	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,accountHeadId,discription,amount,dairydate ) values (?, ?, ?, ?, ?, ?)";
  
-
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
 	public boolean save(final ExpensesBean expensesBean) 
@@ -54,8 +51,7 @@ public class BaseLedgerDao{
 					expensesBean.setUpdatedTime( new Date());
 					}
 					java.sql.Timestamp updatedTime = 
-						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 
-					
+						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 					
 							
 					PreparedStatement ps =
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
@@ -73,8 +69,7 @@ public class BaseLedgerDao{
 				keyHolder);
 				
 				Number unId = keyHolder.getKey();
-				expensesBean.setId(unId.intValue());
-				
+				expensesBean.setId(unId.intValue());				
 
 		}
 		else

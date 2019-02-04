@@ -20,13 +20,8 @@ import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 public class AddBaseAccountHeadDao{
 
 	@Autowired public JdbcTemplate jdbcTemplate;
-
 	 
 	public final String INSERT_SQL = "INSERT INTO accounthead( created_time, updated_time, name) values (?, ?, ?)"; 
-
-
-
-
 
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
@@ -95,21 +90,4 @@ public class AddBaseAccountHeadDao{
 				return retlist.get(0);
 			return null;
 		}
-	
-	 /*public AddBoardBean existingOrNot(String name ){
-		 StringBuffer objStringBuffer = new StringBuffer();
-		 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
-		
-		 String sql = objStringBuffer.toString();
-			System.out.println(sql);
-			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
-			jdbcTemplate.query(sql, handler);
-			List<Map<String, String>> result = handler.getResult();
-			return result;
-			
-		}*/
-
-	
-
 }
-

@@ -21,7 +21,7 @@
 			$(this).remove();
 		});
 	}, 5000);
-</script>
+     </script>
 
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
@@ -39,7 +39,8 @@
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="collections"></a>Add Client</li>
+    	<li><a href="#">Financial</a></li>
+    	<li><a href="addClient">Add Client</a></li>
 	</ol>
 						<div class="row">
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -200,32 +201,8 @@
 									</div>
 									
 								</div>
-							</div>
-					
-						<!-- Row Ends -->
+							</div>					
 						
-						<!-- Row Starts -->
-						<!-- <div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								
-							</div>
-						</div> -->
-						<!-- Row Ends -->
-						
-					<!-- </div> -->
-					<!-- Spacer ends -->
-
-				<!-- </div> -->
-				<!-- Container fluid ends -->
-
-			<!-- </div> -->
-			<!-- Main Container ends -->
-
-		<!-- </div> -->
-		<!-- Dashboard Wrapper ends -->
-
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 

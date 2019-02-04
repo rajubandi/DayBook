@@ -14,7 +14,7 @@
 
 			<!-- Top Bar starts -->
 			<div class="top-bar">
-				<div class="page-title" id="headId">Account Head Creation</div>
+				<div class="page-title" id="headId">Day-Book Categories</div>
 			</div>
 			
 			<!-- Top Bar ends -->
@@ -24,14 +24,13 @@
 				<!-- Container fluid Starts -->
 				<div class="container-fluid">
 				<ol class="breadcrumb">
-    	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="#">Configurations</a></li>
-		<li><a href="addAccountHead"></a>Account Head Creation</a></li>
-	</ol>
+    			<li><a href="dashBoard">Home</a></li>
+    			<li><a href="#">Financial</a></li>
+				<li><a href="addAccountHead">Day-Book Categories</a></li>
+				</ol>
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							
-<%-- 									<%${message} %> --%>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">							
+
 			<div class="col-md-4">
 			<div class="panel panel-info">
 					<div class="panel-heading">
@@ -89,10 +88,7 @@
 																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Account Name</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
-															</thead>
-															<!-- <tfoot>
-																<tr><th rowspan="1" colspan="1">Board</th><th rowspan="1" colspan="1">Medium</th><th rowspan="1" colspan="1">Class</th><th rowspan="1" colspan="1">Section</th><th rowspan="1" colspan="1">Fees</th><th rowspan="1" colspan="1">Action</th></tr>
-															</tfoot> -->
+															</thead>															
 															<tbody>
 																
 															</tbody>
@@ -130,8 +126,6 @@
 		</div>
 		<!-- Dashboard Wrapper ends -->
 
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 

@@ -4,12 +4,20 @@ import java.util.Date;
 
 public class CollectionBean {
 
-	private int id;
+	private int id,clientid;
 	private Date date,duedate;
 	private String client,description,fullamount,paidamount,dueamount;
 	
 	public Date getDate() {
 		return date;
+	}
+
+	public int getClientid() {
+		return clientid;
+	}
+
+	public void setClientid(int clientid) {
+		this.clientid = clientid;
 	}
 
 	public void setDate(Date date) {

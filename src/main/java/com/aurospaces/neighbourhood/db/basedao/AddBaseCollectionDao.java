@@ -3,9 +3,6 @@ package com.aurospaces.neighbourhood.db.basedao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +24,11 @@ public class AddBaseCollectionDao {
 	String dueAmountInSave,dueAmountInUpdate;
 	//java.sql.Date sqlStartDate;
 	 
-	public final String INSERT_SQL = "INSERT INTO collections( date, client, description, fullamount, paidamount, dueamount, duedate) values (?, ?, ?, ?, ?, ?, ?)"; 
+	public final String INSERT_SQL = "INSERT INTO collections( date, client, description, fullamount, paidamount, dueamount, duedate, clientid) values (?, ?, ?, ?, ?, ?, ?, ?)"; 
 
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
-	public void save(final CollectionBean addAccountHeadBean, final String clientName) 
+	public void save(final CollectionBean addAccountHeadBean, final String clientName, final int paidAmount, final int clientId, final String fullAmount) 
 	{		
 		
 		if(addAccountHeadBean.getId()== 0)	{
@@ -69,8 +66,10 @@ public class AddBaseCollectionDao {
 						//createdDueDate = addAccountHeadBean.getDuedate();
 						//createdTime = new java.sql.Timestamp(addAccountHeadBean.getDate().getTime());
 						
-						 int dueAmtInSave = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount());
-						 dueAmountInSave = String.valueOf(dueAmtInSave);
+						 int dueAmtInSave = Integer.parseInt(fullAmount) - Integer.parseInt(addAccountHeadBean.getPaidamount()) ;
+						 int afterRemoveallPaidAmnts = dueAmtInSave - paidAmount;
+						 System.out.println("Due amount in save: " +afterRemoveallPaidAmnts);
+						 dueAmountInSave = String.valueOf(afterRemoveallPaidAmnts);						 
 						 
 						 /*String startDate="19-01-2019";
 						 SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yy");
@@ -90,7 +89,7 @@ public class AddBaseCollectionDao {
 					//ps.setDate(1, createdDate);					
 	ps.setString(2, clientName);
 	ps.setString(3, addAccountHeadBean.getDescription());
-	ps.setString(4, addAccountHeadBean.getFullamount());
+	ps.setString(4, fullAmount);
 	ps.setString(5, addAccountHeadBean.getPaidamount());
 	ps.setString(6, dueAmountInSave);
 	
@@ -100,6 +99,8 @@ public class AddBaseCollectionDao {
 		ps.setTimestamp(7, createdDueTime);
 	}
 	
+	ps.setInt(8, clientId);
+	
 
 							return ps;
 						}
@@ -107,8 +108,7 @@ public class AddBaseCollectionDao {
 				keyHolder);
 				
 				//Number unId = keyHolder.getKey();
-				//addAccountHeadBean.setId(unId.intValue());
-				
+				//addAccountHeadBean.setId(unId.intValue());				
 
 		}
 		else
@@ -117,18 +117,21 @@ public class AddBaseCollectionDao {
 			updatedTime = new java.sql.Timestamp(addAccountHeadBean.getDate().getTime());	
 			updatedDueTime = new java.sql.Timestamp(addAccountHeadBean.getDuedate().getTime());
 			
-			int dueAmtInUpdate = Integer.parseInt(addAccountHeadBean.getFullamount())   - Integer.parseInt(addAccountHeadBean.getPaidamount());
-			dueAmountInUpdate = String.valueOf(dueAmtInUpdate);
+			int dueAmtInUpdate = Integer.parseInt(fullAmount) - Integer.parseInt(addAccountHeadBean.getPaidamount());
+			
+			int afterRemoveallPaidAmnts = dueAmtInUpdate - paidAmount;			
+			System.out.println("Due amount in update: " +afterRemoveallPaidAmnts);
+			dueAmountInUpdate = String.valueOf(afterRemoveallPaidAmnts);			
 			
 			//updatedDate = addAccountHeadBean.getDate();
 			//updatedDueDate = addAccountHeadBean.getDuedate();
 
-			String sql = "UPDATE collections  set date = ? ,client = ? ,description = ?,fullamount = ?,paidamount = ?,dueamount = ?,duedate = ? where id = ? ";
+			String sql = "UPDATE collections  set date = ? ,client = ? ,description = ?,fullamount = ?,paidamount = ?,dueamount = ?,duedate = ?,clientid = ? where id = ? ";
 	
 			if (dueAmtInUpdate==0) {
-				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,null,addAccountHeadBean.getId()});
+				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),fullAmount,addAccountHeadBean.getPaidamount(),dueAmountInUpdate,null,clientId,addAccountHeadBean.getId()});
 			} else {
-				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),addAccountHeadBean.getFullamount(),addAccountHeadBean.getPaidamount(),dueAmountInUpdate,updatedDueTime,addAccountHeadBean.getId()});
+				jdbcTemplate.update(sql, new Object[]{updatedTime,clientName,addAccountHeadBean.getDescription(),fullAmount,addAccountHeadBean.getPaidamount(),dueAmountInUpdate,updatedDueTime,clientId,addAccountHeadBean.getId()});
 			}
 			
 		}
@@ -150,22 +153,5 @@ public class AddBaseCollectionDao {
 				return retlist.get(0);
 			return null;
 		}
-	
-	 /*public AddBoardBean existingOrNot(String name ){
-		 StringBuffer objStringBuffer = new StringBuffer();
-		 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
-		
-		 String sql = objStringBuffer.toString();
-			System.out.println(sql);
-			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
-			jdbcTemplate.query(sql, handler);
-			List<Map<String, String>> result = handler.getResult();
-			return result;
-			
-		}*/
-
-	
 
 }
-
-

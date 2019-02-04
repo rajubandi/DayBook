@@ -10,15 +10,14 @@ import java.util.Enumeration;
 
 import java.sql.*;
 
-
-
-
 public class AppContextListener implements ServletContextListener{
  
+	//It will Run, after web application is undeployed or server shutdown
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		System.out.println("ServletContextListener destroyed");
-		 Enumeration<Driver> drivers = DriverManager.getDrivers();
+		Enumeration<Driver> drivers = DriverManager.getDrivers();
+		 
         while (drivers.hasMoreElements()) {
             Driver driver = drivers.nextElement();
             try {
@@ -31,9 +30,10 @@ public class AppContextListener implements ServletContextListener{
         }
 	}
  
-        //Run this before web application is started
+    //It will Run, before web application is started
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		System.out.println("ServletContextListener started");	
 	}
+	
 }

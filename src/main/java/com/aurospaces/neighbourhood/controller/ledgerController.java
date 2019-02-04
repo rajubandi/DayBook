@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
-import com.aurospaces.neighbourhood.dao.AddAccountHeadDao;
-import com.aurospaces.neighbourhood.db.dao.AddAcademicYearDao;
 import com.aurospaces.neighbourhood.db.dao.LedgerDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -31,11 +29,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
 public class ledgerController {
+	
 	@Autowired ServletContext objContext;
 	@Autowired LedgerDao ledgerDao;
-	@Autowired usersDao1 usesDao1;
-	@Autowired AddAccountHeadDao addAccountHeadDao;
-	@Autowired AddAcademicYearDao addAcademicYearDao;
+	@Autowired usersDao1 usesDao1;	
 	private Logger logger = Logger.getLogger(ledgerController.class);
 	
 	@RequestMapping(value = "/ledger")
@@ -51,9 +48,8 @@ public class ledgerController {
 		try{
 			Date toDate = new Date();
 			expensesBeanList = ledgerDao.getExpensesBeanAll(null);
-			dayWiseExpenses = ledgerDao.getDayWiseExpenses();
-			//model.addAttribute(accountHead, );
-			
+			/*dayWiseExpenses = ledgerDao.getDayWiseExpenses();*/
+			//model.addAttribute(accountHead, );			
 			
 			if(expensesBeanList != null) {
 				
@@ -65,10 +61,9 @@ public class ledgerController {
 				  objectMapper = new ObjectMapper(); 
 				  sJson =objectMapper.writeValueAsString(expensesBeanList);
 				  request.setAttribute("expensesList", "''");
-			}
+			}			
 			
-			
-			if(dayWiseExpenses != null) {
+			/*if(dayWiseExpenses != null) {
 				
 				 objectMapper1 =  new ObjectMapper(); 
 				  dayWiseJson =objectMapper1.writeValueAsString(dayWiseExpenses);
@@ -78,7 +73,7 @@ public class ledgerController {
 				  objectMapper1 =  new ObjectMapper(); 
 				 // dayWiseJson =objectMapper1.writeValueAsString(dayWiseJson);
 				  request.setAttribute("dayWiseExpenses","''");
-			}
+			}*/
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
@@ -116,13 +111,10 @@ public class ledgerController {
 			System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in saveLedger class");
-		}
-		
-			
+		}			
 		
 		return "redirect:ledger";
-	}
-	
+	}	
 	
 	@RequestMapping(value = "/dailyExpensesBetweentwoDate")
 	public @ResponseBody  String dailyExpensesBetweentwoDate(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
@@ -132,10 +124,9 @@ public class ledgerController {
 
 		String fromDate=request.getParameter("from");
 		String toDate= request.getParameter("to");
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+		
 		try{
-			dfcList = ledgerDao.dailyExpensesBetweentwoDate(fromDate,toDate,academicYearId.toString());
-			
+			dfcList = ledgerDao.dailyExpensesBetweentwoDate(fromDate,toDate);			
 			
 			String message = "null";
 			if(dfcList != null) {
@@ -154,9 +145,7 @@ public class ledgerController {
 			System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in DFCController class");
-		}
-		
-			
+		}			
 		
 		return sJson;
 	}
@@ -166,11 +155,10 @@ public class ledgerController {
 		List<ExpensesBean> expensesBeanList = null;
 		ObjectMapper objectMapper = null;
 		String sJson = "";
-		Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
+		
 		try{
 			String fromDate=request.getParameter("onDate");
-			expensesBeanList = ledgerDao.getExpensesBeanAll(fromDate);
-			
+			expensesBeanList = ledgerDao.getExpensesBeanAll(fromDate);		
 			
 			if(expensesBeanList != null) {
 				
@@ -193,38 +181,21 @@ public class ledgerController {
 		}
 		
 		return sJson;
-	}
-	
+	}	
 
 	@RequestMapping(value = "deleteExpens")
 	public @ResponseBody String deleteExpens(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		
-		try{
+		try{			
 			
+			 ledgerDao.delete(request.getParameter("expensId"));			
 			
-			 ledgerDao.delete(request.getParameter("expensId"));
-			
-			
-			/*String message = "null";
-			if(expensesBeanList != null) {
-				
-				  objectMapper = new ObjectMapper(); 
-				  sJson =objectMapper.writeValueAsString(expensesBeanList);
-				  //request.setAttribute("dfcListBetweenTwoDates", sJson);
-				 // System.out.println(sJson); 
-			}else{
-				  objectMapper = new ObjectMapper(); 
-				  sJson =objectMapper.writeValueAsString(expensesBeanList);
-				  request.setAttribute("dfcList", "''");
-			}*/
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println(e);
 			logger.error(e);
 			logger.fatal("error in deleteExpens class");
-		}
-		
-			
+		}			
 		
 		return "deleted";
 	}

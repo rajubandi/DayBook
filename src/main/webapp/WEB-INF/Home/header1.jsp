@@ -32,10 +32,7 @@
 		
 <!-- 		<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
 		<link href="datatable/buttons.dataTables.min.css"/>
-		<link rel="stylesheet" type="text/css" href="datatable/jquery.dataTables.min.css">
-		
-
-		
+		<link rel="stylesheet" type="text/css" href="datatable/jquery.dataTables.min.css">		
 	
 <!-- 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
@@ -46,6 +43,7 @@
 			<script src="js/html5shiv.js"></script>
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
+		
 <style type="text/css">
 @media only screen and (max-width: 1900px) and (min-width: 1280px) {
 .academicyear {
@@ -328,24 +326,11 @@ session.setAttribute("url", url);
 							<li><a href="addAccountHead"><span>Day-Book Catagories</span></a></li>
 							<li><a href="ledger"><span>Ledger</span></a></li>
 							<li><a href="collections"><span>Collections</span></a></li>
-							<li><a href="dailyFeesCollection"><span>Daily Collection</span></a></li>
+							<li><a href="dailyCollection"><span>Daily Collection</span></a></li>
 <!-- 							<li><a href="studentFeeHome"><span>Collection</span></a></li> -->
 							<li><a href="reports"><span>Reports</span></a></li>
 							<li><a href="addClient"><span>Add Client</span></a></li>
-							<!-- <li><a href="boardHome"><span>Board Creation</span></a></li>
-							<li><a href="classHome"><span>Class Creation</span></a></li>
-							<li><a href="sectionHome"><span>Section Creation</span></a></li>
-							<li><a href="mediumHome"><span>Medium Creation</span></a></li>
-							<li><a href="feeDefinationHome" id="addClass"><span>Fee Definition</span></a></li>
-							<li><a href='subjectHome' id="subjectHome" ><span> Subject Creation</span></a></li>
-							<li><a href='classSubjects' ><span>Class Subjects</span></a></li>
-							<li><a href='addFaculty' id="addfaculty" ><span>Add Faculty</span></a></li>
-							<li><a href='facultySubject' id="addfacultySubjects" ><span>Assign Faculty Subjects</span></a></li>
-							 <li><a href='examType' id="" onclick="examType()"><span>Exam Types</span></a></li>
-							 <li><a href='examPattern' id=""><span>Exam Pattern</span></a></li>
-							 <li><a href='examSchedule' id=""><span>Exam Schedule</span></a></li>
-							 <li><a href="addBusRoute"><span>Add Van Route</span></a></li>
-							<li><a href="busRouteFee"><span>Van Route Fees</span></a></li> -->
+							
 						</ul>
 					</li>
 							 </c:if>
@@ -490,6 +475,7 @@ session.setAttribute("url", url);
 	    $('[data-toggle="tooltip"]').tooltip();  
 	   
 	});
+    	
 /* function activateAcademicYear(){
 			
 			var id = $("#academicYearList").val();; 

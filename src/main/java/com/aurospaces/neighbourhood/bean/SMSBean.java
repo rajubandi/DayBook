@@ -1,12 +1,6 @@
-/**
- * 
- */
+
 package com.aurospaces.neighbourhood.bean;
 
-/**
- * @author YOGI
- * 
- */
 public class SMSBean {
 	private String orderId;
 	private String customerId;
@@ -20,10 +14,6 @@ public class SMSBean {
 	private String scheduleTime;
 	private String discount;
 	private String otp;
-	
-	
-
-	
 	
 
 	public String getOtp() {

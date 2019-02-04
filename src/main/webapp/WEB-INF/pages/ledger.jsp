@@ -19,6 +19,7 @@
 		});
 	}, 5000);
 </script>
+
 <style>
 table{
         width: 100%;
@@ -50,7 +51,8 @@ table{
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     				<li><a href="dashBoard">Home</a></li>
-					<li><a href="#">Ledger</a></li>
+    				<li><a href="#">Financial</a></li>
+					<li><a href="ledger">Ledger</a></li>
 				</ol>
 						<!-- Row Starts -->
 						<div class="row">
@@ -89,7 +91,7 @@ table{
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label  class="col-sm-4 control-label">Discription<span style="color: red;">*</span></label>
+											    <label  class="col-sm-4 control-label">Description<span style="color: red;">*</span></label>
 											    <div class="col-lg-8">
 											    <form:hidden path="id"  />
 													<form:input path="discription" class="form-control" placeholder="Description" />
@@ -142,14 +144,11 @@ table{
 															<thead>
 																<tr role="row">
 																    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Account Head</th>
-																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Discription</th>
+																	<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Description</th>
 																	<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
-															</thead>
-															<!-- <tfoot>
-																<tr><th rowspan="1" colspan="1">Board</th><th rowspan="1" colspan="1">Medium</th><th rowspan="1" colspan="1">Class</th><th rowspan="1" colspan="1">Section</th><th rowspan="1" colspan="1">Fees</th><th rowspan="1" colspan="1">Action</th></tr>
-															</tfoot> -->
+															</thead>															
 															<tbody>
 																
 															</tbody>
@@ -187,8 +186,6 @@ table{
 		</div>
 		<!-- Dashboard Wrapper ends -->
 
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -202,25 +199,8 @@ $("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 if (listOrders1 != "") {
 	displayTable(listOrders1);
 }else{
+	
 	displayTable(listOrders1);
-	$("#emptyMessageId").val("No Results Found");
-}	
-
-
-/* var dayWiseExpenses=${dayWiseExpenses};
-
-if (dayWiseExpenses != "") {
-	/* var mon = dayWiseExpenses[0].monthName;
-	console.log(mon);
-	 $("#onDateExpensesHeading").text(mon); 
-	displayTableDayWiseExpenses(dayWiseExpenses);
-}else{
-	displayTableDayWiseExpenses(dayWiseExpenses);
-	$("#emptyMessageId").val("No Results Found");
-}	 */
-
-
-<!--
-
-//-->
+		$("#emptyMessageId").val("No Results Found");
+	}
 </script>

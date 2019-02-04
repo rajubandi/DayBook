@@ -15,14 +15,6 @@
     <script type='text/javascript' src='js/MonthPicker.min.js'></script>
 	
 	<script type="text/javascript" src="js/collection.js"></script>
-	
-	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script> -->
 
 	<script>
 	window.setTimeout(function() {
@@ -30,7 +22,7 @@
 			$(this).remove();
 		});
 	}, 5000);
-</script>
+     </script>
 
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
@@ -48,7 +40,8 @@
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     	<li><a href="dashBoard">Home</a></li>
-    	<li><a href="collections"></a>Collections</li>
+    	<li><a href="#">Financial</a></li>
+    	<li><a href="collections">Collections</a></li>
 	</ol>
 						<div class="row">
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -62,7 +55,8 @@
                     
                     <!-- Row Starts -->
 						<div class="row">
-									<form:form action="collectionName.htm" onsubmit="return checkAmount(this);" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+									<form:form action="collectionName.htm" onsubmit="return checkDueAmount();" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
+											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
@@ -77,40 +71,36 @@
 										  	<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
 											<div class="col-sm-8">
-											<form:select path="client" name="client" class="form-control" >
+											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
 											<form:option value="" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
-											<span class="client_error" id="name_error"></span>
+											<span class="client_error" id="name_error"></span>											
 											</div>											  
 											</div>
-											</div>	
+											</div>		
+											
+											<div  class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+											<div class="form-group">
+											    <button style="margin-left: 12px;" type="button" class="btn btn-info" tabindex="3" onclick="location.href='addClient';">Add Client</button>
+											</div>
+											</div>																		
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Description</label>
 											   <div class="col-sm-8">
-													<form:input name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
+													<form:input id="description" name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
 													<span class="description_error" id="name_error"></span>
 												</div>
 											</div>
-											</div>
-											
-											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
-											    <div class="col-sm-8">
-													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
-													<span class="fullamount_error" id="name_error"></span>
-												</div>
-											</div>
-											</div>
+											</div>										
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
 											    <div class="col-sm-8">
-													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input id="paidamount" name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -129,9 +119,15 @@
 												<div class="col-sm-12">
 												  	<div class="col-sm-8 col-sm-offset-2">
 													<input type="submit" id="submitId" value="Submit" class="btn btn-success" tabindex="2"/>
-													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>
+													<button type="button" class="btn btn-danger" id="cancel" tabindex="3">Reset</button>																										
 													</div>
 												</div>
+												
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+											<div class="form-group">
+											    <label id="showamount" style="display: none" for="inputEmail3" class="col-sm-12 control-label">Show Amount</label>											    
+											</div>
+											</div>
 												
 												<div class="col-sm-12">
 													<div class="col-sm-8 col-sm-offset-2">
@@ -171,10 +167,7 @@
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Due Amount</th>
 																	<th class="sorting noExport" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Action</th>
 																</tr>
-															</thead>
-															<!-- <tfoot>
-																<tr><th rowspan="1" colspan="1">Board</th><th rowspan="1" colspan="1">Medium</th><th rowspan="1" colspan="1">Class</th><th rowspan="1" colspan="1">Section</th><th rowspan="1" colspan="1">Fees</th><th rowspan="1" colspan="1">Action</th></tr>
-															</tfoot> -->
+															</thead>															
 															<tbody>
 																
 															</tbody>
@@ -188,32 +181,8 @@
 									</div>
 									
 								</div>
-							</div>
-					
-						<!-- Row Ends -->
+							</div>					
 						
-						<!-- Row Starts -->
-						<!-- <div class="row gutter">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								
-							</div>
-						</div> -->
-						<!-- Row Ends -->
-						
-					<!-- </div> -->
-					<!-- Spacer ends -->
-
-				<!-- </div> -->
-				<!-- Container fluid ends -->
-
-			<!-- </div> -->
-			<!-- Main Container ends -->
-
-		<!-- </div> -->
-		<!-- Dashboard Wrapper ends -->
-
-<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -228,4 +197,10 @@ var getTabName = window.location.pathname.split('/')[2];
 $("#conf_li").addClass('active');
 $("#conf_li ul").css('display','block');
 $("#conf_li ul li a[href='"+ getTabName +"']").addClass('subactive');
+
+ /*   var showamt = ${showamount};  
+ 
+ if (showamt != "") {
+	showAmountFunc(showamt);
+}  */ 
 </script>

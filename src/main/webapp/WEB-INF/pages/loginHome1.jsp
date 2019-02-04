@@ -12,13 +12,6 @@
 		<link href="css/main.css" rel="stylesheet" media="screen" />
 		<link rel="stylesheet" type="text/css" href="css/datepicker.css" />
 		<link href="css/barIndicator.css" rel="stylesheet" />
-<!-- 		<link href="fonts/font-awesome.min.css" rel="stylesheet" /> -->
-
-		<!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="js/html5shiv.js"></script>
-			<script src="js/respond.min.js"></script>
-		<![endif]-->
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
@@ -76,14 +69,7 @@ var isClick = 'No';
 						<div class="row" style="">
 							<div class="col-lg-4 col-md-4 hidden-sm hidden-xs"></div>
 							
-							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 fadeInDown animated">
-								<!-- <div class="blog lf">
-									<div class="blog-header" align="center" style="height:89px;background: #dedede;">
-										<img src="img/VVN.png" align="middle" style="width: 65px;height: 65px;" alt="Vijnana Vihara Nutakki">
-										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">VVN</b>
-										<img src="img/loginp.png" align="middle" style="height: ;" alt="viekananda" class="img-responsive">
-										&nbsp; &nbsp; &nbsp; <b style="font-size: 25px;color: white !important">GRETNALTES</b>
-									</div> -->
+							<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 fadeInDown animated">								
 									<div class="blog-body" id="loginFormDiv">
 
 										<form id="login-form" action="LoginHome1" method="post" class="form-horizontal" role="form">
@@ -194,33 +180,20 @@ var isClick = 'No';
 					<!-- Spacer ends -->
 
 				</div>
-				<!-- Container fluid ends -->
-
-
-			<!-- Footer starts -->
-			<!-- <footer class="navbar-fixed-bottom">Copyright Akshara Bharathi Vidyalayam, Mangalagiri.</footer> -->
-			<!-- Footer ends -->
+				<!-- Container fluid ends -->			
 			
 			<script src="js/bootstrap.min.js"></script>
 		<script src="js/scrollup/jquery.scrollUp.js"></script>
-<!--     	<script src="js/flot/jquery.flot.tooltip.min.js"></script> -->
 
 <script type="text/javascript">
 var isClick = 'Yes';
 function forgottenPassword(){
 	
-	$("#loginFormDiv").hide();
-	//$("#login-form").hide();
+	$("#loginFormDiv").hide();	
 	$("#forgotPasswordDiv").show();
 	$("#roleDiv").show();
-	//$("#forgotPasswordDiv").css("style", "");
 	
-	//$("#forgotPasswordDiv").css({ 'display': "block" });
-	//$("#roleDiv").css({ 'display': "block" });
 }
-	 	
-
-
 
   $("#login-form").validate({
 	errorElement: 'span',
@@ -257,21 +230,13 @@ function forgottenPassword(){
 	  
 	  jQuery.validator.addMethod('selectcheck', function (value,element) {
 			 return this.optional(element) || (value != '0');
-	    }, "Select your role");
-	  
-	 /*  $.validator.addMethod("eitherEmailPhone", function(value, element) {
-		 value = value.replace(/\s+/g, ""); 
-          isPhone = this.optional(element) && value.length > 9 && value.match(/^[7-9]\d{9}$/);
-          isEmail = this.optional(element) && /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(value);
-
-          return isPhone || isEmail;
-
-      }, "Please enter either phone or e-mail");
- */
+	    }, "Select your role");	  
+	
 		$('.validate').keydown(function() {
 			var id = $(this).attr('id');
 			removeBorder(id);
 		});
+		
 		//remove borders
 		function removeBorder(el){	
 			  $("#"+el).css("border", "");
@@ -281,9 +246,7 @@ function forgottenPassword(){
 				{
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
-		}
-
-	  
+		}	  
 	  
 	    $('input[placeholder]').blur();
 	    $('#rol').on('change',function () {
@@ -303,12 +266,9 @@ function forgottenPassword(){
 	            $("#uname").attr("placeholder", "Enter Registered Father Name as Username").blur();
 	            $("#upass").attr("placeholder", "Enter Registered Mobile Number as Password").blur();
 	        }
-	    });
+	    });	   
 	    
-	   
-	    
-	 $('#nextButton,#forgottenPasswordSubmit').click(function(){
-		 
+	 $('#nextButton,#forgottenPasswordSubmit').click(function(){		 
 				 
 		 $('#forgotPassword-form').validate({ // initialize the plugin
 			 errorElement: 'span',
@@ -367,21 +327,16 @@ function forgottenPassword(){
 								}
 							},
 						
-						});
-						
+						});						
 						
 						
 					}else {
 					
 						event.preventDefault();
 						return false;
-					}
+					}			 
 			 
-			 
-			 
-		 });
-	    
-	    
+		 });	    
 	    
 	});
 

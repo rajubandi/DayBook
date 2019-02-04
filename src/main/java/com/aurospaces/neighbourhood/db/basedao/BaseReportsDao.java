@@ -19,16 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
 
-
 public class BaseReportsDao {
 
-
 @Autowired public JdbcTemplate jdbcTemplate;
-
  
 	public final String INSERT_SQL = "INSERT INTO ledger( createdTime,updatedTime,discription,amount,dairydate ) values (?, ?, ?, ?, ?)";
  
-
 	/* this should be conditional based on whether the id is present or not */
 	@Transactional
 	public boolean save(final ExpensesBean expensesBean) 
@@ -55,8 +51,7 @@ public class BaseReportsDao {
 					expensesBean.setUpdatedTime( new Date());
 					}
 					java.sql.Timestamp updatedTime = 
-						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 
-					
+						new java.sql.Timestamp(expensesBean.getUpdatedTime().getTime()); 					
 							
 					PreparedStatement ps =
 									connection.prepareStatement(INSERT_SQL,new String[]{"id"});
@@ -73,15 +68,13 @@ public class BaseReportsDao {
 				keyHolder);
 				
 				Number unId = keyHolder.getKey();
-				expensesBean.setId(unId.intValue());
-				
+				expensesBean.setId(unId.intValue());				
 
 		}
 		else
 		{
 		 
-			String sql = "UPDATE ledger  set  updatedTime=?,discription=?,amount=?,dairydate=? where id = ? ";
-	
+			String sql = "UPDATE ledger  set  updatedTime=?,discription=?,amount=?,dairydate=? where id = ? ";	
 			jdbcTemplate.update(sql, new Object[]{expensesBean.getUpdatedTime(),expensesBean.getDiscription(),expensesBean.getAmount(),expensesBean.getDairydate(),expensesBean.getId()});
 		}
 	insert= true;
@@ -96,8 +89,7 @@ public class BaseReportsDao {
 		public void delete(String  id) {
 			String sql = "DELETE FROM ledger WHERE id in(" + id + " )";
 			jdbcTemplate.update(sql, new Object[]{});
-		}
-		
+		}		
 
 	 public ExpensesBean getById(int id) {
 			String sql = "SELECT * from ledger where id = ? ";
@@ -108,8 +100,8 @@ public class BaseReportsDao {
 				return retlist.get(0);
 			return null;
 		}
-	 public List<ExpensesBean> getExpensesBeanAll(String date) throws ParseException {
-		 
+	 
+	 public List<ExpensesBean> getExpensesBeanAll(String date) throws ParseException {		 
 		
 		 StringBuffer buffer = new StringBuffer();
 		 buffer.append("SELECT ld.*,DATE_FORMAT(Date(ld.dairydate),'%d-%M-%Y') as strDate from ledger ld where  ");

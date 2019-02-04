@@ -37,8 +37,7 @@ public class BaseUserDao {
 					ps.setString(1, user.getName());
 					ps.setString(2, user.getPassword());
 					ps.setString(3, user.getRolId());
-					ps.setString(4, user.getMobile());
-					
+					ps.setString(4, user.getMobile());					
 
 					return ps;
 				}
@@ -50,7 +49,7 @@ public class BaseUserDao {
 		} else {
 
 			String sql = "UPDATE users  set name = ? ,password = ? ,rolId = ?,mobile =?  where id = ? ";
-
+			
 			jdbcTemplate.update(sql, new Object[] { user.getName(), user.getPassword(), user.getRolId(),user.getMobile(),
 					 user.getId() });
 		}
@@ -70,6 +69,7 @@ public class BaseUserDao {
 			return retlist.get(0);
 		return null;
 	}
+	
 	public UsersBean getByPassword(String mobile) {
 		String sql = "SELECT * from users where mobile = ? ";
 		List<UsersBean> retlist = jdbcTemplate.query(sql, new Object[] { mobile },
@@ -78,6 +78,7 @@ public class BaseUserDao {
 			return retlist.get(0);
 		return null;
 	}
+	
 	public UsersBean getByMobileAndRole(String mobile, String roleId) {
 		String sql = "SELECT * from users where rolId=? and mobile = ?";
 		List<UsersBean> retlist = jdbcTemplate.query(sql, new Object[] { Integer.parseInt(roleId), mobile,},

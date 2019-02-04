@@ -50,7 +50,8 @@ table{
 				<div class="container-fluid">
 				<ol class="breadcrumb">
     				<li><a href="dashBoard">Home</a></li>
-					<li><a href="#">Reports</a></li>
+    				<li><a href="#">Financial</a></li>
+					<li><a href="reports">Reports</a></li>
 				</ol>
 						<!-- Row Starts -->
 						<div class="row">
@@ -83,7 +84,7 @@ table{
 										  	<div class="form-group">
 											    <label  class="col-sm-4 control-label">To <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<input id="to" name="to" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"  onfocus="removeBorder(this.id)" />
+													<input id="to" name="to" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"  onchange="getDatabtwdates()" onfocus="removeBorder(this.id)" />
 													<span class="to_error" id="to_error"></span>
 												</div>
 										  	</div>
@@ -92,15 +93,12 @@ table{
 										  	<div class="form-group">
 											    <label  class="col-sm-4 control-label">Account Head <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-											    <form:select path="accountHead" name="accountHead" class="form-control "  onchange="searchData()">
+											    <form:select path="accountHead" name="accountHead" class="form-control "  onchange="getDatabtwdatesWithAccount()">
 															<form:option value="" >-- Choose Account Head --</form:option>
 															<form:options items="${accountHead}"></form:options>
 												</form:select>
 												</div>
-											   <!--  <div class="col-sm-8">
-													<input id="Account Head" name="to" autocomplete="off" placeholder="Account Head" class="form-control validate"  onfocus="removeBorder(this.id)" />
-													<span class="to_error" id="to_error"></span>
-												</div> -->
+											   
 										  	</div>
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">

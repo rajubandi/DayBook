@@ -21,8 +21,8 @@ String sql = objStringBuffer.toString();
 			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId","clientName","phoneNumber","mail","address","fullamount","createddate","duedate"});
 			jdbcTemplate.query(sql, handler);
 			List<Map<String, String>> result = handler.getResult();
-			return result;
-			
+			System.out.println("In getAccountHaed( ) ---- : " +result);
+			return result;			
 		}
 	
 	public ClientDetailsBean  existingOrNot(String id ){			
@@ -35,5 +35,18 @@ String sql = objStringBuffer.toString();
 			return retlist.get(0);
 		return null;
 		
+		}
+	
+	public List<Map<String, String>> getClientId( ){
+		    StringBuffer objStringBuffer = new StringBuffer();
+		    objStringBuffer.append("select max(id) as accountId from clients ");
+		
+		 	String sql = objStringBuffer.toString();
+			System.out.println(sql);
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "accountId"});
+			jdbcTemplate.query(sql, handler);
+			List<Map<String, String>> result = handler.getResult();
+			System.out.println("In getClientId( ) ---- : " +result);
+			return result;			
 		}
 }

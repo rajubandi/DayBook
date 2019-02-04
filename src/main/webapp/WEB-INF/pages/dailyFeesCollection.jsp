@@ -36,7 +36,8 @@
 					<!-- Spacer starts -->
 					<ol class="breadcrumb">
 					    	<li><a href="dashBoard">Home</a></li>
-					    	<li><a href="#">Daily Collection</a></li>
+					    	<li><a href="#">Financial</a></li>
+					    	<li><a href="dailyCollection">Daily Collection</a></li>
 						    </ol>
 						    
 						<!-- Row Starts -->
@@ -119,61 +120,15 @@
 											</div>
 										</div>
 									</div>
-								</div>
-								
-											
-							<!-- Row Starts -->
-						<!-- 	<div class="row gutter" id="BetweenTwoDatesListId">
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="panel panel-info">
-						<div class="panel-heading" >
-							<h4>List of DFC</h4>
-						</div>
-						<div class="panel-body collapse in">	
-											<div class="table-responsive">
-												<div id="betweenDatesDiv" class="dataTables_wrapper form-inline dt-bootstrap">
-													<div class="row">
-														<div class="col-sm-12">
-														<div id="betweenDatesTable">
-	 														<table id="betweenDatesTableId" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
-																<thead>
-																	<tr role="row">
-																		<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Date</th>
-																		<th class="sorting" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Amount</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	
-																</tbody>
-															</table>
-														</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
-							<!-- Row Ends -->
-								</div>
-				
-							<!-- Row Starts -->
-							<!-- <div class="row gutter">
-								
-							</div> -->
-							<!-- Row Ends -->					
+								</div>										
+							
+								</div>										
 		
-					</div>
-					<!-- Spacer ends -->
-				<!-- Container fluid ends -->
+					</div>					
 
-				</div>
-			<!-- Main Container ends -->
+				</div>			
 	
 			</div>
-		<!-- Dashboard Wrapper ends -->
-
 
 <script type="text/javascript">
 //$('#BetweenTwoDatesListId').hide();
@@ -186,9 +141,7 @@ $(function () {
 			var getTabName = window.location.pathname.split('/')[2];
 	$("#from").val("");
 	$("#to").val("");
-	//$('#basicExample').dataTable();	
-
-	//$('#betweenDatesTableId').dataTable();
+	
 	
 	 $("#from,#to").datepicker({
 		changeDate : true,
@@ -234,10 +187,7 @@ $(function () {
 			  	$("#dfc-form").validate().resetForm();
 			    $("#dfc-form").removeClass("has-error");
 			    $("#from").val('');
-			    $("#to").val('');
-			    
-			   /*  $('#todayFeeCollecitonDivId').show();
-				$('#BetweenTwoDatesListId').hide(); */
+			    $("#to").val('');			
 			    
 			});	 
 });
@@ -255,12 +205,8 @@ $("#submitId").click(function(e){
 			data : data ,
 			async:false,
 			success : function(response) {
-					//displayTableDfcListBetweenTwoDates(response);
-					displayTable(response);
 					
-					//$('#todayFeeCollecitonDivId').hide();
-					//$('#BetweenTwoDatesListId').show();
-// 					return false;
+					displayTable(response);				
 				
 			}
 			
@@ -358,57 +304,6 @@ function removeBorder(el){
 								$(tblRow).appendTo("#basicExampleDFC tbody");
 			});			
 		} 
-	}   	
-	
-		/* 
-		function displayTableDfcListBetweenTwoDates(listOrders) {
-		console.log(listOrders);
-		if (listOrders != null) {
-			$('#betweenDatesTable').html('');
-			var tableHead1 = '<table id="betweenDatesTableId" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">'
-					+ '<thead>'
-					+ '<tr role="row">'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">DATE</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Student Name</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Class</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Medium</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Fee Category</th>'
-					+ '<th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Amount</th>'
-					+ '</tr>' + '</thead>' + '<tbody></tbody><tfoot><tr><th colspan="5">Total</th><th id="bwtwodatesDfc">0.00</th></tfoot></table>';
-			$('#betweenDatesTable').html(tableHead1);
-				var totalAmountBetweenTwoDates=0;
-			$.each(listOrders, function(i, orderObj) {
-				
-				totalAmountBetweenTwoDates  +=    parseInt(orderObj.amount);
-				
-				var tblRow1 = "<tr align='center' role='row' class='odd'>"
-						+ "<td title='"+orderObj.createdTime+"'>"
-						+ orderObj.createdTime + "</td>"
-						+ "<td title='"+orderObj.name+"'>"
-						+ orderObj.name
-						+ "</td>"
-						+ "<td title='"+orderObj.className+"'>"
-						+ orderObj.className
-						+ "</td>"
-						+ "<td title='"+orderObj.medium+"'>"
-						+ orderObj.medium
-						+ "</td>"
-						+ "<td title='"+feecategory+"'>"
-						+ feecategory
-						+ "</td>"
-						+ "<td title='"+orderObj.amount+"'>" + orderObj.amount
-						+ "</td>" + "</tr>";
-				$(tblRow1).appendTo("#betweenDatesTableId tbody");
-					console.log(totalAmountBetweenTwoDates);
-			});
-			/* var totalRow = "<tr align='center' role='row' class='odd'>"
-							+ "<td title='Total Amount'><b>Total Amount </b></td>"
-							+ "<td title='"+totalAmountBetweenTwoDates+"'><b>" +totalAmountBetweenTwoDates
-							+ "</b></td></tr>";
-			$(totalRow).appendTo("#betweenDatesTableId tbody");
- 
- 
-			$("#bwtwodatesDfc").text(totalAmountBetweenTwoDates);
-		}
-	} */
+	}   		
+		
 </script>

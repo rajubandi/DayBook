@@ -34,19 +34,46 @@ package com.aurospaces.neighbourhood.dao;
 			ParameterizedBeanPropertyRowMapper.newInstance(CollectionBean.class));
 			if(retlist.size() > 0)
 				return retlist.get(0);
-			return null;
-			
-			/* StringBuffer objStringBuffer = new StringBuffer();
-			 objStringBuffer.append("select id ,name from boardname where name ='"+name + "'");
-			
-	String sql = objStringBuffer.toString();
-				System.out.println(sql);
-				RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id","name"});
-				jdbcTemplate.query(sql, handler);
-				List<Map<String, String>> result = handler.getResult();
-				return result;*/
-				
+			return null;			
+							
 			}
+		
+		public List<Map<String, String>> getClientId(String clientName ){
+		    StringBuffer objStringBuffer = new StringBuffer();
+		    objStringBuffer.append("select id from clients where clientName = '"+ clientName +"'");
+		
+		 	String sql = objStringBuffer.toString();
+			System.out.println(sql);
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "id"});
+			jdbcTemplate.query(sql, handler);
+			List<Map<String, String>> result = handler.getResult();
+			System.out.println("In getClientId( ) ---- : " +result);
+			return result;			
+		}
+		
+		public List<Map<String, String>> getPaidAmount(int id ){
+		    StringBuffer objStringBuffer = new StringBuffer();
+		    objStringBuffer.append("select sum(paidamount) as paidamount from collections where clientid ="+id);
+		
+		 	String sql = objStringBuffer.toString();
+			System.out.println(sql);
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "paidamount"});
+			jdbcTemplate.query(sql, handler);
+			List<Map<String, String>> result = handler.getResult();
+			System.out.println("In getPaidAmount( ) ---- : " +result);
+			return result;			
+		}
+		
+		public List<Map<String, String>> getFullAmount(int id ){
+		    StringBuffer objStringBuffer = new StringBuffer();
+		    objStringBuffer.append("select fullamount from collections where clientid ="+id);
+		
+		 	String sql = objStringBuffer.toString();
+			System.out.println(sql);
+			RowValueCallbackHandler handler = new RowValueCallbackHandler(new String[] { "fullamount"});
+			jdbcTemplate.query(sql, handler);
+			List<Map<String, String>> result = handler.getResult();
+			System.out.println("In getFullAmount( ) ---- : " +result);
+			return result;			
+		}
 	}
-
-

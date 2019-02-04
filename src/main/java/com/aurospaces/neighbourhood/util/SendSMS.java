@@ -13,11 +13,8 @@ import javax.servlet.ServletContext;
 
 public class SendSMS {
 	
-   //public  String  mobileNumber =null;
-	
-    
-     //public String message=null;
-    
+   //public  String  mobileNumber =null;	
+   //public String message=null;    
     
     public static String sendSMS(String message, String mobileNumber,ServletContext objContext) throws IOException
 	{
@@ -51,6 +48,4 @@ public class SendSMS {
 		 }
         return response;
 	}
-
-
 }
