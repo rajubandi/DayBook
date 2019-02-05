@@ -374,7 +374,9 @@ function getDatabtwdatesWithAccount(){
 			$(totalAmountRow).appendTo("#dayWiseExpenses");
 				*/
 				
-				 $("#monthlyExpensesTotal").text(TotalExpenses);
+				var totexpensewithsymbol = "र" +TotalExpenses ;
+				
+				 $("#monthlyExpensesTotal").text(totexpensewithsymbol);
 			/*var mon = listOrders[0].monthName
 		    $("#onDateExpensesHeading").text(mon +" Expenses ");*/
 

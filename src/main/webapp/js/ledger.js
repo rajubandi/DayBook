@@ -24,7 +24,7 @@
 });*/
 $(function(){
 	
-	$("#dairydate,#from,#to").datepicker({
+	$("#dairydate").datepicker({
 		changeDate : true,
 		changeMonth : true,
 		changeYear : true,
@@ -33,8 +33,7 @@ $(function(){
 // 		minDate: '-50Y',
 	    maxDate: '0', 
 		dateFormat : 'dd-MM-yy'
-	});
-	
+	});	
 	
 	
 	   $(" #submitId").click(function(e){
@@ -49,19 +48,25 @@ $(function(){
 		    discription:{required: true},
 		    amount:{required: true},
 		    dairydate:{required: true},
+		    accountHeadId:{required: true},
 		   
 	    },
 		messages:
 		{
-		    discription:{required: 'Discription'},
+		    discription:{required: 'Description'},
 		    amount:{required: 'Amount'},
 		    dairydate:{required: 'Select Date'},
+		    accountHeadId:{required: 'Select AccountHead'},
 	    },
 	    errorPlacement: function(error, element){
 	      if(element.attr("name") == "discription")
 	        error.insertAfter(".discription_error").css("color", "red");
 	      else if(element.attr("name") == "amount")
 	        error.insertAfter(".amount_error").css("color", "red"); 
+	      else if(element.attr("name") == "accountHeadId")
+		        error.insertAfter(".accountHeadId_error").css("color", "red"); 
+	      else if(element.attr("name") == "dairydate")
+		        error.insertAfter(".dairydate_error").css("color", "red"); 
 	      
 	    
 	      else
@@ -77,7 +82,7 @@ $(function(){
 	   });
 	   
 	   
-	   $("#ledgerBwDateSubmitId").click(function(){
+	   /*$("#ledgerBwDateSubmitId").click(function(){
 			
 			 //Second form Validation
 			$("#ledgerBwDate-form").validate({
@@ -120,8 +125,8 @@ $(function(){
 						success : function(response) {
 							displayTableDayWiseExpenses(response);
 								
-								/*$('#todayFeeCollecitonDivId').hide();
-								$('#BetweenTwoDatesListId').show();*/
+								$('#todayFeeCollecitonDivId').hide();
+								$('#BetweenTwoDatesListId').show();
 								
 							
 						}
@@ -134,7 +139,7 @@ $(function(){
 				return false;
 			}
 		    
-		   });	  
+		   });	*/  
 
 	$('#cancel').click(function () {
 	   	$('#discription').val("");      //image will be cleared if selected
@@ -142,13 +147,12 @@ $(function(){
 	    $("#ledger-form").removeClass("has-error");
 	    $("#accountHeadId").val("");
 	    $('#amount').val("");
-	    $('#dairydate').val("");
-	    $('#discription').val("");
+	    $('#dairydate').val("");	   
 	    $("#submitId").val("Submit");
 	    
 	});
 	
-	$('#cancel2').click(function () {
+	/*$('#cancel2').click(function () {
 		window.location.href = '?';
 	  	$("#ledgerBwDate-form").validate().resetForm();
 	    $("#ledgerBwDate-form").removeClass("has-error");
@@ -156,7 +160,7 @@ $(function(){
 	    $("#to").val('');
 	    $("#submitId").val("Submit");
 	    
-	});
+	});*/
 	
 
 });
@@ -180,7 +184,7 @@ function displayTable(listOrders) {
 											+ orderObj.discription
 											+ "</td>"
 											+ "<td class='hidden-sm hidden-xs' title='"+orderObj.amount+"' >"
-											+ " ₹"+orderObj.amount
+											+ " र"+orderObj.amount
 											+ "</td>"
 											+ "<td>"
 	 										+ '<a href="javascript:void(0)" onclick=editPack('
@@ -202,11 +206,13 @@ function displayTable(listOrders) {
 								+ "</td>"
 								+"</tr>";
 			*/
-				$("#ledgerTotalAmount").text("INR ₹"+TotalExpenses);
+				$("#ledgerTotalAmount").text("INR र"+TotalExpenses);
 			//$(totalAmountRow).appendTo("#basicExample1");
 			console.log(serviceUnitArray)
 			}
 		}  
+
+
 	 	function editPack(id) {
 	 		console.log(serviceUnitArray[id]);
 			$("#ledger-form").validate().resetForm();
@@ -221,8 +227,7 @@ function displayTable(listOrders) {
 			$(window).scrollTop($('#createLedgerHeading').offset().top);
 		} 
 	 	
-	 	function deleteExpense(id){
-				
+	 	function deleteExpense(id){				
 			
 				/* $('input[name=checkboxName]:checked').map(function() {
 					studentId.push($(this).val());
