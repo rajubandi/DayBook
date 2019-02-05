@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.ClientDetailsBean;
+import com.aurospaces.neighbourhood.bean.CollectionBean;
 import com.aurospaces.neighbourhood.dao.AddClientsDao;
+import com.aurospaces.neighbourhood.dao.AddCollectionDao;
 import com.aurospaces.neighbourhood.db.dao.usersDao1;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @Controller
 public class ClientsController {
 	@Autowired AddClientsDao addAccountHeadDao;
+	@Autowired AddCollectionDao addCollectionDao;
 	@Autowired usersDao1 usesDao1;
 	
 	@RequestMapping(value = "/addClient")
@@ -180,6 +183,42 @@ public @ResponseBody String deleteAccountHead(ModelMap model,HttpServletRequest 
 
 	return sJson;  
 }
+
+@RequestMapping(value = "/getPaidAmountData")
+public @ResponseBody String getAmountData(@ModelAttribute("packCmd") ClientDetailsBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request, HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
+	
+	List<Map<String, String>> listOrderBeansPaidamt = null;	
+	
+	int clientid = Integer.parseInt(request.getParameter("clientid"));
+	System.out.println("Client Id in Edit client details: " +clientid);
+	
+	ObjectMapper objectMapper = null;
+	String sJson = "";	
+	
+	try{
+					
+			listOrderBeansPaidamt = addCollectionDao.getPaidAmount(clientid);						
+			String paidamtgg="";			
+			
+			for (Iterator iterator = listOrderBeansPaidamt.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();
+				System.out.println("In for loop PaidAmount value: " +map.get("paidamount"));	
+				String ggg = map.get("paidamount");	
+				paidamtgg = ggg;								
+			}				
+			
+			  objectMapper = new ObjectMapper(); 
+			  sJson =objectMapper.writeValueAsString(paidamtgg);			
+			
+	}catch(Exception e){
+		e.printStackTrace();
+		System.out.println(e);
+		
+	}		
+
+	return sJson;  
+}
+
 
 /*@ModelAttribute("clients")
 public Map<Integer, String> populateStudent() {

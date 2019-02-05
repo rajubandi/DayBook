@@ -103,7 +103,7 @@ table{
 											<div class="form-group">
 												 <label  class="col-sm-4 control-label">Amount<span style="color: red;">*</span></label>
 											    <div class="col-lg-8">
-													<form:input path="amount" class="form-control" placeholder="Amount" />
+													<form:input path="amount" onKeyPress="validatenum(event);" class="form-control" placeholder="Amount" />
 													<span class="amount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -140,7 +140,7 @@ table{
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
- 														<table id="basicExample1" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
+ 														<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
 															<thead>
 																<tr role="row">
 																    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Account Head</th>
@@ -188,6 +188,18 @@ table{
 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+// used URL: https://stackoverflow.com/questions/21203729/regular-expression-in-javascript-to-allow-only-numbers-with-optional-2-decimals
+function validatenum(evt) {
+	  var theEvent = evt || window.event;
+	  var key = theEvent.keyCode || theEvent.which;
+	  key = String.fromCharCode( key );
+	  var regex = /^[0-9]*$/;    // Valid characters: only Numbers. 
+	  if( !regex.test(key) ) {
+	    theEvent.returnValue = false;
+	    if(theEvent.preventDefault) theEvent.preventDefault();
+	  }
+	}
 
 var listOrders1=${expensesList};
 

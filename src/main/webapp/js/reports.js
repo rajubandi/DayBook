@@ -165,7 +165,7 @@ function searchData(){
 	   
 	var  data = $('#ledgerBwDate-form').serialize();
 	//console.log(data);
-	var monthbox= $("#accountHead").val();
+	var monthbox= $("#monthPicker").val();
 	//var val23=$( "#monthPicker option:selected" ).val();
 	if(monthbox == ""){
 		
@@ -174,7 +174,7 @@ function searchData(){
 	 
 	 $.ajax({
 			type : "POST",
-			url : "reportsdailyExpensesBetweentwoDate.json",
+			url : "reportsdailyExpensesBetweentwoDateWithMonth.json",
 			data : data ,
 			async:false,
 			success : function(response) {

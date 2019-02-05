@@ -134,13 +134,7 @@ $(function(){
 				return false;
 			}
 		    
-		   });
-
-	   
-	  
-		    
-	 
-	  
+		   });	  
 
 	$('#cancel').click(function () {
 	   	$('#discription').val("");      //image will be cleared if selected
@@ -169,8 +163,8 @@ $(function(){
 
 function displayTable(listOrders) {
 			if (listOrders != null) {
-				$("#basicExample1 tr td").remove();
-				$("#basicExample1 td").remove();
+				$("#basicExample tr td").remove();
+				$("#basicExample td").remove();
 				serviceUnitArray = {};
 				var TotalExpenses = 0.00;
 				$.each(listOrders,function(i, orderObj) {
@@ -196,7 +190,7 @@ function displayTable(listOrders) {
 											+ orderObj.id + ')'
 											+ '  ><i class="fa fa-trash-o"></i></a>' + '</td>'
 											+ '</tr>';
-									$(tblRow).appendTo("#basicExample1");
+									$(tblRow).appendTo("#basicExample");
 									
 									//$("#imageId1").attr('src', "@Url.Content("~/Content/images/ajax_activity.gif)")
 								});

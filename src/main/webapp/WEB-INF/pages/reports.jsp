@@ -103,7 +103,7 @@ table{
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  	<div class="form-group">
-							<label class="col-sm-4 control-label">Month</label>
+							<label class="col-sm-4 control-label">Month <span style="color: red;">*</span></label>
 							<div class="col-sm-8">
 				        		<input id="monthPicker" name="monthPicker" class="form-control "  onkeydown="removeBorder(this.id)"/>
 							</div>

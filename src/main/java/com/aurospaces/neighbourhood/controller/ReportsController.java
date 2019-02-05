@@ -125,6 +125,46 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 			return sJson;
 		}		
 		
+		@RequestMapping(value = "/reportsdailyExpensesBetweentwoDateWithMonth")
+		public @ResponseBody  String dailyExpensesBetweentwoDateWithMonth(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+			List<Map<String, Object>> dfcList = null;
+			ObjectMapper objectMapper = null;
+			String sJson = "";
+
+			String fromDate=request.getParameter("from");
+			String toDate= request.getParameter("to");
+			String accountHead=request.getParameter("accountHead");
+			String month= request.getParameter("monthPicker");
+			System.out.println("From value: " +fromDate +" To value: " +toDate +" accounthead value: " +accountHead +" monthpicker value:  " +month );
+			try{
+				System.out.println("In try block of reports controller....");
+				dfcList = reportsDao.reportsdailyExpensesBetweentwoDateWithMonth(fromDate,toDate,accountHead,month);				
+				
+				String message = "null";
+				if(dfcList != null) {
+					System.out.println("In if block of reports controller");
+					
+					  objectMapper = new ObjectMapper(); 
+					  sJson =objectMapper.writeValueAsString(dfcList);
+					  //request.setAttribute("dfcListBetweenTwoDates", sJson);
+					 // System.out.println(sJson); 
+				}else{
+					System.out.println("In else block of reports controller");
+					 /* objectMapper = new ObjectMapper(); 
+					  sJson =objectMapper.writeValueAsString(dfcList);*/
+					 // request.setAttribute("dfcList", "''");
+					return null;
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+				System.out.println(e);
+				logger.error(e);
+				logger.fatal("error in DFCController class");
+			}				
+			
+			return sJson;
+		}		
+		
 		@RequestMapping(value = "/reportsBetweentwoDates")
 		public @ResponseBody  String dailyFeesCollectionBetweentwoDate(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 			List<Map<String,Object>>  dfcList = null;

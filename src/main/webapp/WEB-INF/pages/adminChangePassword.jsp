@@ -51,7 +51,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 										<div class="row">
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-4 control-label">Current Password</label>
+												    <label for="inputEmail3" class="col-sm-4 control-label">Current Password <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">											
 														<form:input path="oldPassword" type ="password"  tabindex="1" class="form-control" required="true"/>
 														<span class="oldPassword_error" id="oldPassword_error"></span>
@@ -60,7 +60,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 											</div>
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-4 control-label">New Password</label>
+												    <label for="inputEmail3" class="col-sm-4 control-label">New Password <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">											
 														<form:input path="password" type ="password" tabindex="2" class="form-control" required="true"/>
 														<span class="password_error" id="password_error"></span>
@@ -69,7 +69,7 @@ int hours = cal.get(Calendar.HOUR_OF_DAY);
 											</div>
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 												<div class="form-group">
-												    <label for="inputEmail3" class="col-sm-4 control-label">Confirm Password</label>
+												    <label for="inputEmail3" class="col-sm-4 control-label">Confirm Password <span style="color: red;">*</span></label>
 												    <div class="col-sm-5">
 														<form:input path="retypePassword" type ="password" tabindex="3" class="form-control" required="true"/>
 														<span class="retypePassword_error" id="retypePassword_error"></span>

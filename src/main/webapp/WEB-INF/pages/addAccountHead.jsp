@@ -41,7 +41,7 @@
                      <div class="panel-body">
 									<form:form action="addAccountName.htm" commandName="packCmd" method="post" id="cls-form" class="form-horizontal">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Account Head Name</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Account Head Name <span style="color: red;">*</span></label>
 											    <div class="col-lg-6 col-md-6 col-sm-6">
 													<form:input path="name" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Account Head Name" required="true"/>
 													<span class="name_error" id="name_error"></span>

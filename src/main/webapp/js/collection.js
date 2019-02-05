@@ -209,6 +209,18 @@ function checkDueAmount() {
 				
 				
 		}
+
+// Used URL: https://stackoverflow.com/questions/21203729/regular-expression-in-javascript-to-allow-only-numbers-with-optional-2-decimals
+function validatenumber(evt) {
+	  var theEvent = evt || window.event;
+	  var key = theEvent.keyCode || theEvent.which;
+	  key = String.fromCharCode( key );
+	  var regex = /^[0-9]*$/;    // Valid characters: only Numbers. 
+	  if( !regex.test(key) ) {
+	    theEvent.returnValue = false;
+	    if(theEvent.preventDefault) theEvent.preventDefault();
+	  }
+	}
 		
 		function editPack(id1) {
 			var ids= id1;
