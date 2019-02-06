@@ -26,7 +26,7 @@ $(function(){
 				    $("#id").val(0);
 				    $("#name").val('');
 				    $("#submitId").val("Submit");
-				    $("#headId").text("Account Creation");
+				    $("#headId").text("Day-Book Categories");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 

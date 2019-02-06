@@ -71,7 +71,7 @@
 										  	<div class="form-group">
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
-											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
+											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()">
 											<form:option value="" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
@@ -98,9 +98,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount <span style="color: red;">*</span></label>
+											    <label id="paidamntLabel" for="inputEmail3" class="col-sm-4 control-label">Paid Amount <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input id="paidamount" name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input id="paidamount" name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" onblur="CheckNo(this)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>

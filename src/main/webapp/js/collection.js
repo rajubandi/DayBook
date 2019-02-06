@@ -48,7 +48,7 @@ $(function(){
 				    $("#paidamount").val('');
 				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
-				    $("#headId").text("Account Creation");
+				    $("#headId").text("Collections");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
@@ -145,6 +145,19 @@ $(function(){
 				});
 				
 				var str = gg;
+				
+				var damont = getSecondPart(gg);			
+				
+		        if(damont == 0 ){
+		        	document.getElementById("paidamount").style.display = "none";
+		        	document.getElementById("paidamount").value = 0;
+		        	document.getElementById("paidamntLabel").style.display = "none";		        	
+		        
+		        }else{
+		        	$("#paidamount").val('');
+		        	document.getElementById("paidamntLabel").style.display = "block";
+		        	document.getElementById("paidamount").style.display = "block";		        	
+		        }
 				var patt = new RegExp("null");
 				var res = patt.test(str);
 				
@@ -191,12 +204,14 @@ function checkDueAmount() {
 			    if ((dueAmtInt == 0)) {
 			    	  //  block of code to be executed if condition1 is true
 			    	document.getElementById("duedate").value = "19-January-2019";
+			    	document.getElementById("showamount").style.display = "none";
 			    	return true;
 			    	} 
 			        else if (((dueAmtInt != 0))&&(!Date.parse(valueDate))) {
 			    	  //  block of code to be executed if the condition1 is false and condition2 is true
 			    		document.getElementById('duedate').style.display="block" ;
 			    		document.getElementById("endTimeLabel").style.display = 'block';
+			    		document.getElementById("showamount").style.display = "none";
 			    		return false;
 			    	} 
 			    	else if (((dueAmtInt != 0))&&(Date.parse(valueDate))) {
@@ -232,7 +247,7 @@ function validatenumber(evt) {
 			//$('#fullamount').val(serviceUnitArray[ids].fullamount);
 			$('#paidamount').val(serviceUnitArray[ids].paidamount);
 			$("#submitId").val("Update");
-			$("#headId").text("Edit AccountHead");
+			$("#headId").text("Edit Collection Details");
 		}
 		
 		
@@ -286,6 +301,27 @@ function validatenumber(evt) {
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
 		}
+		
+		// function you can use:
+		function getSecondPart(str) {
+		    return str.split(':')[3];
+		}
+		
+		// use the function:
+		
+		
+		function CheckNo(sender){
+		    if(!isNaN(sender.value)){
+		    	
+		    	var damnt = getSecondPart(gg);
+		        if(sender.value > damnt )
+		            sender.value = damnt;
+		        
+		    }else{
+		          sender.value = 0;
+		    }
+		}
+		
 		
 		function checkAmount(theForm) {				
 			

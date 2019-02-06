@@ -61,7 +61,7 @@ $(function(){
 				    $("#createddate").val('');
 				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
-				    $("#headId").text("Client Account Creation");
+				    $("#headId").text("Add Client");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
@@ -88,7 +88,6 @@ $(function(){
 		});	
 	
 });
-
 
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
@@ -166,7 +165,7 @@ $(function(){
 			$('#createddate').val(serviceUnitArray[ids].createddate);
 			$('#duedate').val(serviceUnitArray[ids].duedate);
 			$("#submitId").val("Update");
-			$("#headId").text("Edit AccountHead");
+			$("#headId").text("Edit Client Details");
 		}
 		
 		
@@ -221,6 +220,17 @@ $(function(){
 			    if(theEvent.preventDefault) theEvent.preventDefault();
 			  }
 			}
+		
+		function CheckNo(sender){
+		    if(!isNaN(sender.value)){		    	
+		    	var famnt = $("#fullamount").val();
+		        if(sender.value > famnt )
+		            sender.value = famnt;
+		        
+		    }else{
+		          sender.value = 0;
+		    }
+		}
 		
 function checkAmount(theForm) {				
 			

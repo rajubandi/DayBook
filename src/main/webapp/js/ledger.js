@@ -79,67 +79,7 @@ $(function(){
 	    	return true;
 		}
 	    
-	   });
-	   
-	   
-	   /*$("#ledgerBwDateSubmitId").click(function(){
-			
-			 //Second form Validation
-			$("#ledgerBwDate-form").validate({
-			    	errorElement : 'span',
-					errorClass : 'has-error',
-					rules : {
-						 from:{required:true},
-						 to:{required:true},  
-						
-					},
-					messages : {
-						from:{required:'Select Date '},
-						to:{required:'Select Date'},
-						
-					},
-					errorPlacement: function(error, element){
-					      if(element.attr("name") == "from")
-					        error.insertAfter(".from_error").css("color", "red");
-					      else if(element.attr("name") == "to")
-					        error.insertAfter(".to_error").css("color", "red"); 
-					      					    
-					      else
-					        error.insertAfter(element);
-					      }
-				    	
-				});
-
-			
-		    if ( $("#ledgerBwDate-form").valid() == true){
-				  
-				 
-				var  data = $('#ledgerBwDate-form').serialize();
-				console.log(data);
-				 
-				 $.ajax({
-						type : "POST",
-						url : "dailyExpensesBetweentwoDate.json",
-						data : data ,
-						async:false,
-						success : function(response) {
-							displayTableDayWiseExpenses(response);
-								
-								$('#todayFeeCollecitonDivId').hide();
-								$('#BetweenTwoDatesListId').show();
-								
-							
-						}
-						
-					});
-				
-				
-			}else{
-				
-				return false;
-			}
-		    
-		   });	*/  
+	   });	   
 
 	$('#cancel').click(function () {
 	   	$('#discription').val("");      //image will be cleared if selected
@@ -151,17 +91,6 @@ $(function(){
 	    $("#submitId").val("Submit");
 	    
 	});
-	
-	/*$('#cancel2').click(function () {
-		window.location.href = '?';
-	  	$("#ledgerBwDate-form").validate().resetForm();
-	    $("#ledgerBwDate-form").removeClass("has-error");
-	    $("#from").val('');
-	    $("#to").val('');
-	    $("#submitId").val("Submit");
-	    
-	});*/
-	
 
 });
 
@@ -343,9 +272,4 @@ function displayTable(listOrders) {
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
 		}
-		
-		
-		
-		
-		
 		

@@ -110,7 +110,7 @@
 											<div class="form-group">
 											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" onblur="CheckNo(this)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
