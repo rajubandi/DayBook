@@ -42,7 +42,7 @@ $(function(){
 				    $("#cls-form").removeClass("has-error");
 				    $("#id").val(0);
 				    $("#date").val('');
-				    $("#client").val('');
+				    $("#client").prop('selectedIndex','');
 				    $("#description").val('');
 				    //$("#fullamount").val('');
 				    $("#paidamount").val('');
@@ -50,6 +50,7 @@ $(function(){
 				    $("#submitId").val("Submit");
 				    $("#headId").text("Collections");
 				    $("#cls-form").addClass('form-horizontal');
+				    document.getElementById('showamount').style.display="none" ;
 				  });
 
 });
@@ -159,7 +160,7 @@ $(function(){
 		        	document.getElementById("paidamount").style.display = "block";		        	
 		        }
 				var patt = new RegExp("null");
-				var res = patt.test(str);
+				var res = patt.test(str);				
 				
 				if (res==true) {
 					document.getElementById('showamount').style.display="block" ;
@@ -170,9 +171,12 @@ $(function(){
 					document.getElementById('showamount').style.display="block" ;				
 					document.getElementById("showamount").style.color = "blue";				
 					document.getElementById('showamount').innerHTML = gg;
-				}				
+				}	
 				
-		}
+				if (clientid=='clnt') 
+					document.getElementById('showamount').style.display="none" ;
+				
+				}
 		
 		var dueAmt;
 		var dueAmtInt; 

@@ -72,7 +72,7 @@
 											<label  for="inputEmail3" class="col-sm-4 control-label">Client <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
 											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()">
-											<form:option value="" >-- Choose Client --</form:option>
+											<form:option value="clnt" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
 											<span class="client_error" id="name_error"></span>											

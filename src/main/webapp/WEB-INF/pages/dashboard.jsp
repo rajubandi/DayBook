@@ -21,6 +21,7 @@
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+	
 	<!-- Grapics Repots js  -->
 	<script src="chat/amcharts.js"></script>
 	<script src="chat/pie.js"></script>
@@ -29,9 +30,13 @@
 	<script src="chat/light.js"></script>
 	<script src="chat/funnel.js"></script>
 	<script type="text/javascript" src="chat/canvasjs.min.js"></script>
+	
 	<!-- Grapics Repots js  -->
 	<script type="text/javascript" src="js/TableBarChart.js"></script>
 	<link rel="stylesheet" href="css/TableBarChart.css" />
+	<script src="amcharts/plugins/responsive/responsive.min.js" type="text/javascript"></script>
+	
+	
 		<!-- Dashboard Wrapper starts -->
 		<div class="dashboard-wrapper">
 
@@ -123,6 +128,9 @@ var chart = AmCharts.makeChart( "chartdiv1", {
 	  "depth3D": 15,
 	  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 	  "angle": 30,
+	  "responsive": {
+		    "enabled": true
+		  },
 	  "export": {
 	    "enabled": true
 	  }
@@ -139,6 +147,9 @@ var chart = AmCharts.makeChart( "chartdiv2", {
 	  "depth3D": 15,
 	  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 	  "angle": 30,
+	  "responsive": {
+		    "enabled": true
+		  },
 	  "export": {
 	    "enabled": true
 	  }

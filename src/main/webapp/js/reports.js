@@ -37,46 +37,49 @@ $(function(){
 		dateFormat : 'dd-MM-yy'
 	});
 	
-	
-	
-	   $(" #submitId").click(function(e){
+	$(" #ledgerBwDateSubmitId").click(function(e){
 		   
-	   var isValid= false;
-	   
-	    $("#ledger-form").validate({
-	    errorElement: 'span',
-	    errorClass: 'has-error',
-		rules:
-		{
-		    discription:{required: true},
-		    amount:{required: true},
-		    dairydate:{required: true},
+		   var isValid= false;
 		   
-	    },
-		messages:
-		{
-		    discription:{required: 'Discription'},
-		    amount:{required: 'Amount'},
-		    dairydate:{required: 'Select Date'},
-	    },
-	    errorPlacement: function(error, element){
-	      if(element.attr("name") == "discription")
-	        error.insertAfter(".discription_error").css("color", "red");
-	      else if(element.attr("name") == "amount")
-	        error.insertAfter(".amount_error").css("color", "red"); 
-	      
-	    
-	      else
-	        error.insertAfter(element);
-	      }
-    	
-	});
-	    if ( $("#ledger-form").valid() == true){
-	    	
-	    	return true;
-		}
-	    
-	   });
+		    $("#ledgerBwDate-form").validate({
+		    errorElement: 'span',
+		    errorClass: 'has-error',
+			rules:
+			{
+				from:{required: true},
+				to:{required: true},
+				accountHead:{required: true},
+				monthPicker:{required: true},
+			   
+		    },
+			messages:
+			{
+				from:{required: 'From Date'},
+				to:{required: 'To Date'},
+				accountHead:{required: 'Select Account Head'},
+				monthPicker:{required: 'Select Month Picker'},
+		    },
+		    errorPlacement: function(error, element){
+		      if(element.attr("name") == "from")
+		        error.insertAfter(".from_error").css("color", "red");
+		      else if(element.attr("name") == "to")
+		        error.insertAfter(".to_error").css("color", "red"); 
+		      else if(element.attr("name") == "accountHead")
+			        error.insertAfter(".accountHead_error").css("color", "red"); 
+		      else if(element.attr("name") == "monthPicker")
+			        error.insertAfter(".monthPicker_error").css("color", "red"); 		    
+		      else
+		        error.insertAfter(element);
+		      }
+	 	
+		});
+		    if ( $("#ledgerBwDate-form").valid() == true){
+		    	
+		    	return true;
+			}
+		    
+		   });		
+	
 	   
 	 //used url: https://jsfiddle.net/kidsysco/JeZap/
 	   $(document).ready(function() {
@@ -84,54 +87,7 @@ $(function(){
 		    $('#monthPicker').MonthPicker({Button: false,OnAfterChooseMonth: function() { 
 		    	searchData();
 		    }  });
-		});
-		
-	   
-	   
-	/*   $("#ledgerBwDateSubmitId").click(function(){
-			
-			 //Second form Validation
-			$("#ledgerBwDate-form").validate({
-			    	errorElement : 'span',
-					errorClass : 'has-error',
-					rules : {
-						 from:{required:true},
-						 to:{required:true},  
-						
-					},
-					messages : {
-						from:{required:'Select Date '},
-						to:{required:'Select Date'},
-						
-					},
-					errorPlacement: function(error, element){
-					      if(element.attr("name") == "from")
-					        error.insertAfter(".from_error").css("color", "red");
-					      else if(element.attr("name") == "to")
-					        error.insertAfter(".to_error").css("color", "red"); 
-					      					    
-					      else
-					        error.insertAfter(element);
-					      }
-				    	
-				});
-
-			
-		   // if ( $("#ledgerBwDate-form").valid() == true){
-				  
-			
-				
-			}else{
-				
-				return false;
-			}
-			
-		   });*/
-	   
-	   
-	  
-		    
-	 
+		});	 
 	  
 /*
 	$('#cancel').click(function () {
