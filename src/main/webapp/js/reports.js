@@ -102,7 +102,7 @@ $(function(){
 	});*/
 	
 	$('#cancel2').click(function () {
-		window.location.href = '?';
+		//window.location.href = '?'; i com
 	  	$("#ledgerBwDate-form").validate().resetForm();
 	    $("#ledgerBwDate-form").removeClass("has-error");
 	    $("#from").val('');
@@ -112,8 +112,7 @@ $(function(){
 	    $("#monthPicker").val('');
 	    //$("#submitId").val("Submit");
 	    		
-	});
-	
+	});	
 
 });
 
@@ -137,9 +136,7 @@ function searchData(){
 				displayTableDayWiseExpenses(response);
 					
 					/*$('#todayFeeCollecitonDivId').hide();
-					$('#BetweenTwoDatesListId').show();*/
-					
-				
+					$('#BetweenTwoDatesListId').show();*/			
 			}
 			
 		});
@@ -149,8 +146,7 @@ function searchData(){
 function getDatabtwdates(){	
 	
 	var from = $("#from").val();
-	var to = $("#to").val();
-	
+	var to = $("#to").val();	
 	
 	if(to == ""){
 		
@@ -248,8 +244,8 @@ function getDatabtwdatesWithAccount(){
 			$(window).scrollTop($('#discription').offset().top);
 		} 
 	 	 */
-	 	function deleteExpense(id){
-				
+
+	 	function deleteExpense(id){				
 			
 				/* $('input[name=checkboxName]:checked').map(function() {
 					studentId.push($(this).val());
@@ -275,9 +271,7 @@ function getDatabtwdatesWithAccount(){
 				}else{
 				return false;
 				}
-			}	
-	 	
-	 	
+			}		 	
 	 	
 	 	function displayTableDayWiseExpenses(listOrders) {
 			if (listOrders != null) {
@@ -352,9 +346,7 @@ function getDatabtwdatesWithAccount(){
 				$("#onDateExpensesHeading").text(response[0].strDate);
 				
 					$('#todayFeeCollecitonDivId').hide();
-					$('#BetweenTwoDatesListId').show();
-					
-				
+					$('#BetweenTwoDatesListId').show();				
 			}
 			
 		});
@@ -370,10 +362,4 @@ function getDatabtwdatesWithAccount(){
 				{
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
-		}
-		
-		
-		
-		
-		
-		
+		}		

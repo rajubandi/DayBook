@@ -3,15 +3,11 @@ package com.aurospaces.context;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-
 import java.util.Enumeration;
-
-
-
 import java.sql.*;
 
-public class AppContextListener implements ServletContextListener{
- 
+public class AppContextListener implements ServletContextListener{ 
+	
 	//It will Run, after web application is undeployed or server shutdown
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
@@ -33,7 +29,7 @@ public class AppContextListener implements ServletContextListener{
     //It will Run, before web application is started
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("ServletContextListener started");	
-	}
-	
+		System.out.println("ServletContextListener started");			
+		
+	}	
 }

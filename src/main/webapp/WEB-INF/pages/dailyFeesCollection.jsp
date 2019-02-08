@@ -183,7 +183,7 @@ $(function () {
 			$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 			
 			$('#cancel').click(function () {
-				window.location.href = '?';
+				// window.location.href = '?'; i com
 			  	$("#dfc-form").validate().resetForm();
 			    $("#dfc-form").removeClass("has-error");
 			    $("#from").val('');

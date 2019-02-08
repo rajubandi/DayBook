@@ -136,6 +136,7 @@ var chart = AmCharts.makeChart( "chartdiv1", {
 	  }
 	} );
 	
+	// Used url for responsive amcharts: https://www.amcharts.com/docs/v3/tutorials/making-charts-responsive/
 var expensessummary =${expensessummary};
 var chart = AmCharts.makeChart( "chartdiv2", {
 	  "type": "pie",

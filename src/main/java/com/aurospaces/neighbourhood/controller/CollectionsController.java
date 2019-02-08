@@ -37,7 +37,7 @@ public class CollectionsController {
 	public String addAccountHead(@ModelAttribute("packCmd") CollectionBean objAddAccountHeadBean,ModelMap model,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		List<Map<String, String>> listOrderBeans = null;
 		ObjectMapper objectMapper = null;
-		String sJson = "";
+		String sJson = "";		
 		
 		try{
 			listOrderBeans = addAccountHeadDao.getAccountHaed();

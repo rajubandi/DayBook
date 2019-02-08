@@ -64,8 +64,9 @@ $(function(){
 		yearRange: "-17:+0",
 		showButtonPanel : false,
 	    maxDate: '0', 
-		dateFormat : 'dd-MM-yy'
+		dateFormat : 'dd-MM-yy'			
 	});
+	
 	
 	// USED URL: https://stackoverflow.com/questions/4419804/restrict-date-in-jquery-datepicker-based-on-another-datepicker-or-textbox
 	$("#duedate").datepicker({		        
@@ -73,7 +74,7 @@ $(function(){
 		     $("#duedate").datepicker("option","minDate",
 		     $("#date").datepicker("getDate"));
 		  }
-		});	
+		});  	
 	
 });
 
