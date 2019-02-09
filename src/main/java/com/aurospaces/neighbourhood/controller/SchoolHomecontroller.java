@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.poi.util.SystemOutLogger;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
@@ -214,7 +215,10 @@ e.printStackTrace();
 		String sJson = null;
 		String year="";
 		String mon="";
-		String day="";		
+		String day="";	
+		int monint = 0;
+		int dayint = 0;
+		
 		ArrayList al = new ArrayList();
 		//ArrayList al2 = new ArrayList();
 		Map< Integer,String> hm =  new HashMap< Integer,String>();
@@ -237,7 +241,7 @@ e.printStackTrace();
 		
 		for (Iterator iterator = listOrderBeansduedate.iterator(); iterator.hasNext();) {
 			Map<String, String> map = (Map<String, String>) iterator.next();				
-			ggg = map.get("duedate");					
+			ggg = map.get("duedate");							
 			
 			if (ggg!="") {
 				
@@ -254,10 +258,17 @@ e.printStackTrace();
 			}
 		}		
 		
-		int monint = Integer.parseInt(mon);
-		int dayint = Integer.parseInt(day);
-		System.out.println("year: " +year +" month: " +mon +" day: " +day);
-		System.out.println("Month INT: "+monint +" day INT: " +dayint );
+		System.out.println("BEFORE IF year: " +year +" month: " +mon +" day: " +day);
+		System.out.println("BEFORE IF  Month INT: "+monint +" day INT: " +dayint );
+		
+		if ((mon!="")&&(day!="")) {
+			
+			monint = Integer.parseInt(mon);
+			dayint = Integer.parseInt(day);
+			System.out.println("year: " +year +" month: " +mon +" day: " +day);
+			System.out.println("Month INT: "+monint +" day INT: " +dayint );
+			
+		}		
 
 		listOrderBeansClientid = addAccountHeadDao.getClientIdBasedOnDuedate();		
 		System.out.println("clientId from collections: " +listOrderBeansClientid);		
@@ -426,7 +437,7 @@ for(Object obj : al) {
 	System.out.println("client Full Details Map : " +hm5);
 	System.out.println("client Phone & Full Details Map : " +hm7);
 	hm8=hm7;
-	System.out.println("hm8 in dashboard : " +hm8);
+	System.out.println("hm8 in dashboard : " +hm8);	
 	
 	listOrderBeansadminphone = addAccountHeadDao.getPhoneNumberOfAdmin();
 	
@@ -441,11 +452,14 @@ for(Object obj : al) {
 // used URL: http://java.candidjava.com/tutorial/Quartz-Scheduer-Cron-Trigger-example-using-java.htm
 try {
 	
-	String cronexmp = "0/20 * * * * ?";
+	String cronexmp = "0 5 * * * ?";
 	//cronexmp = "0/5" + " * * * * ?";
-	//cronexmp = "0 50 16 " +dayint +" " +monint +" 5 " +year;
+	//cronexmp = "0 50 16 " +dayint +" " +monint +" 5 " +year;	
 	
-	cronexmp = "0 53 17 " +dayint +" "  +monint +" ? " +year;	
+	if ((monint!=0)&&(dayint!=0)) {
+		
+		cronexmp = "0  11 " +dayint +" "  +monint +" ? " +year;		
+	}	
 	
 	//0 39 16 day mon 5 year;
  
@@ -476,8 +490,6 @@ try {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 		
 		/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 		session.setAttribute("activeAcademicYearId", academicYearId);*/
@@ -656,7 +668,7 @@ public @ResponseBody String adminoldPasswordCheck(ModelMap model,HttpServletRequ
 		password = userBean.getPassword();
 		if(!password.equals(oldPassword)){
 			
-		}
+		}	
 		
 	}catch(Exception e){
 		e.printStackTrace();
@@ -673,7 +685,7 @@ public void execute(JobExecutionContext context) throws JobExecutionException {
 	// TODO Auto-generated method stub
 	System.out.println("Trigger Starts in SchoolHomeController.. "+new Date());
 	System.out.println("hm8 value: " +hm8);
-	System.out.println("Phone number in execute method: " +phnumber);
+	System.out.println("Phone number in execute method: " +phnumber);	
 		
 	SendSMS sms = new SendSMS();	
 		 
