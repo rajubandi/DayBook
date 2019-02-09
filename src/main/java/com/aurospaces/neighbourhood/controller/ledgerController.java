@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.aurospaces.neighbourhood.bean.AddAccountHeadBean;
 import com.aurospaces.neighbourhood.bean.ExpensesBean;
@@ -86,12 +87,15 @@ public class ledgerController {
 	
 	
 	@RequestMapping(value = "saveLedger")
-	public String saveLedger(@ModelAttribute("ledger") ExpensesBean expensesBean,ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
+	public String saveLedger(@ModelAttribute("ledger") ExpensesBean expensesBean,ModelMap model,HttpServletRequest request,HttpSession session,RedirectAttributes redir) throws JsonGenerationException, JsonMappingException, IOException {
 		
 		try{
 			
 			//expensesBean.setAcademicYearId(addAcademicYearDao.getActiveAcademicYearId());
 			 ledgerDao.save(expensesBean);
+			 
+			 redir.addFlashAttribute("msg", "Record Inserted Successfully");
+			 redir.addFlashAttribute("cssMsg", "success");
 			
 			
 			/*String message = "null";

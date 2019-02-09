@@ -11,10 +11,14 @@ import java.util.Properties;
 
 import javax.servlet.ServletContext;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SendSMS {
 	
    //public  String  mobileNumber =null;	
-   //public String message=null;    
+   //public String message=null; 
+	static String requestUrl = null;
     
     public static String sendSMS(String message, String mobileNumber,ServletContext objContext) throws IOException
 	{
@@ -48,4 +52,26 @@ public class SendSMS {
 		 }
         return response;
 	}
+    
+    public void sendSMS(String message, String mobileNumber)// throws IOException
+	{	
+    	try {
+    	String username ="ssjewellers";
+    	String password ="SSjewellers@123";
+    	String from = "daybok";    	
+		System.out.println("hello sms class");
+		requestUrl  = "http://182.18.160.225/index.php/api/bulk-sms?username="+URLEncoder.encode(username, "UTF-8")+"&password="+ URLEncoder.encode(password, "UTF-8")+"&from="+from+"&to="+URLEncoder.encode(mobileNumber, "UTF-8")+"&message="+URLEncoder.encode(message, "UTF-8")+"&sms_type=2";
+        URL url = new URL(requestUrl);
+        HttpURLConnection uc = (HttpURLConnection)url.openConnection();
+        String response = uc.getResponseMessage();
+        System.out.println("SMS response:"+response);
+        uc.disconnect();
+        //return response;
+    	 } catch (IOException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();	
+ 			System.out.println("IO EXception handled...."); 
+ 		}	
+	}   
+    
 }

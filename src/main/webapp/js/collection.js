@@ -42,14 +42,15 @@ $(function(){
 				    $("#cls-form").removeClass("has-error");
 				    $("#id").val(0);
 				    $("#date").val('');
-				    $("#client").val('');
+				    $("#client").prop('selectedIndex','');
 				    $("#description").val('');
 				    //$("#fullamount").val('');
 				    $("#paidamount").val('');
 				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
-				    $("#headId").text("Account Creation");
+				    $("#headId").text("Collections");
 				    $("#cls-form").addClass('form-horizontal');
+				    document.getElementById('showamount').style.display="none" ;
 				  });
 
 });
@@ -63,8 +64,9 @@ $(function(){
 		yearRange: "-17:+0",
 		showButtonPanel : false,
 	    maxDate: '0', 
-		dateFormat : 'dd-MM-yy'
+		dateFormat : 'dd-MM-yy'			
 	});
+	
 	
 	// USED URL: https://stackoverflow.com/questions/4419804/restrict-date-in-jquery-datepicker-based-on-another-datepicker-or-textbox
 	$("#duedate").datepicker({		        
@@ -72,7 +74,7 @@ $(function(){
 		     $("#duedate").datepicker("option","minDate",
 		     $("#date").datepicker("getDate"));
 		  }
-		});	
+		});  	
 	
 });
 
@@ -145,8 +147,21 @@ $(function(){
 				});
 				
 				var str = gg;
+				
+				var damont = getSecondPart(gg);			
+				
+		        if(damont == 0 ){
+		        	document.getElementById("paidamount").style.display = "none";
+		        	document.getElementById("paidamount").value = 0;
+		        	document.getElementById("paidamntLabel").style.display = "none";		        	
+		        
+		        }else{
+		        	$("#paidamount").val('');
+		        	document.getElementById("paidamntLabel").style.display = "block";
+		        	document.getElementById("paidamount").style.display = "block";		        	
+		        }
 				var patt = new RegExp("null");
-				var res = patt.test(str);
+				var res = patt.test(str);				
 				
 				if (res==true) {
 					document.getElementById('showamount').style.display="block" ;
@@ -157,10 +172,13 @@ $(function(){
 					document.getElementById('showamount').style.display="block" ;				
 					document.getElementById("showamount").style.color = "blue";				
 					document.getElementById('showamount').innerHTML = gg;
-				}				
+				}	
 				
+				if (clientid=='clnt') {
+					document.getElementById('showamount').style.display="none" ;
+				
+				}
 		}
-		
 		var dueAmt;
 		var dueAmtInt; 
 function checkDueAmount() {		
@@ -191,12 +209,14 @@ function checkDueAmount() {
 			    if ((dueAmtInt == 0)) {
 			    	  //  block of code to be executed if condition1 is true
 			    	document.getElementById("duedate").value = "19-January-2019";
+			    	document.getElementById("showamount").style.display = "none";
 			    	return true;
 			    	} 
 			        else if (((dueAmtInt != 0))&&(!Date.parse(valueDate))) {
 			    	  //  block of code to be executed if the condition1 is false and condition2 is true
 			    		document.getElementById('duedate').style.display="block" ;
 			    		document.getElementById("endTimeLabel").style.display = 'block';
+			    		document.getElementById("showamount").style.display = "none";
 			    		return false;
 			    	} 
 			    	else if (((dueAmtInt != 0))&&(Date.parse(valueDate))) {
@@ -209,6 +229,18 @@ function checkDueAmount() {
 				
 				
 		}
+
+// Used URL: https://stackoverflow.com/questions/21203729/regular-expression-in-javascript-to-allow-only-numbers-with-optional-2-decimals
+function validatenumber(evt) {
+	  var theEvent = evt || window.event;
+	  var key = theEvent.keyCode || theEvent.which;
+	  key = String.fromCharCode( key );
+	  var regex = /^[0-9]*$/;    // Valid characters: only Numbers. 
+	  if( !regex.test(key) ) {
+	    theEvent.returnValue = false;
+	    if(theEvent.preventDefault) theEvent.preventDefault();
+	  }
+	}
 		
 		function editPack(id1) {
 			var ids= id1;
@@ -220,7 +252,7 @@ function checkDueAmount() {
 			//$('#fullamount').val(serviceUnitArray[ids].fullamount);
 			$('#paidamount').val(serviceUnitArray[ids].paidamount);
 			$("#submitId").val("Update");
-			$("#headId").text("Edit AccountHead");
+			$("#headId").text("Edit Collection Details");
 		}
 		
 		
@@ -274,6 +306,27 @@ function checkDueAmount() {
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
 		}
+		
+		// function you can use:
+		function getSecondPart(str) {
+		    return str.split(':')[3];
+		}
+		
+		// use the function:
+		
+		
+		function CheckNo(sender){
+		    if(!isNaN(sender.value)){
+		    	
+		    	var damnt = getSecondPart(gg);
+		        if(sender.value > damnt )
+		            sender.value = damnt;
+		        
+		    }else{
+		          sender.value = 0;
+		    }
+		}
+		
 		
 		function checkAmount(theForm) {				
 			

@@ -70,8 +70,8 @@ table{
 											<div class="form-group">
 												<label for="inputEmail3" class="col-sm-4 control-label">Date:<span style="color: red;">*</span></label>
 												 <div class="col-sm-8">
-														<form:input path="dairydate"  autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate" type="text"  onfocus="removeBorder(this.id)" />
-														<span class="from_error" id="from_error"></span>
+														<form:input id="dairydate" name="dairydate" path="dairydate"  autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate" type="text"  onfocus="removeBorder(this.id)" required="true"/>
+														<span class="dairydate_error" id="name_error"></span>
 													</div>
 											</div>
 										</div>
@@ -81,11 +81,11 @@ table{
 											<div class="form-group">
 												<label class="col-sm-4 control-label">Account Head<span style="color: red;">*</span></label>
 												 <div class="col-sm-8">
-														<form:select path="accountHeadId"	class="form-control" >
+														<form:select id="accountHeadId" name="accountHeadId" path="accountHeadId" class="form-control" >
 														<form:option value="">-- Choose Account Head --</form:option>
 														<form:options items="${accountHead}"></form:options>
 													</form:select>
-														<span class="from_error" id="from_error"></span>
+														<span class="accountHeadId_error" id="name_error"></span>
 													</div>
 											</div>
 										</div>
@@ -94,7 +94,7 @@ table{
 											    <label  class="col-sm-4 control-label">Description<span style="color: red;">*</span></label>
 											    <div class="col-lg-8">
 											    <form:hidden path="id"  />
-													<form:input path="discription" class="form-control" placeholder="Description" />
+													<form:input id="discription" name="discription" path="discription" class="form-control" placeholder="Description" required="true"/>
 													<span class="discription_error" id="name_error"></span>
 												</div>
 											</div>
@@ -103,7 +103,7 @@ table{
 											<div class="form-group">
 												 <label  class="col-sm-4 control-label">Amount<span style="color: red;">*</span></label>
 											    <div class="col-lg-8">
-													<form:input path="amount" class="form-control" placeholder="Amount" />
+													<form:input id="amount" name="amount" path="amount" onKeyPress="validatenum(event);" class="form-control" placeholder="Amount" required="true"/>
 													<span class="amount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -140,7 +140,7 @@ table{
 											<div id="basicExample_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 												<div class="row">
 													<div class="col-sm-12">
- 														<table id="basicExample1" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
+ 														<table id="basicExample" class="table table-striped table-condensed table-bordered no-margin dataTable" role="grid" aria-describedby="basicExample_info">
 															<thead>
 																<tr role="row">
 																    <th class="sorting_asc" tabindex="0" aria-controls="basicExample" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Account Head</th>
@@ -188,6 +188,18 @@ table{
 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+// used URL: https://stackoverflow.com/questions/21203729/regular-expression-in-javascript-to-allow-only-numbers-with-optional-2-decimals
+function validatenum(evt) {
+	  var theEvent = evt || window.event;
+	  var key = theEvent.keyCode || theEvent.which;
+	  key = String.fromCharCode( key );
+	  var regex = /^[0-9]*$/;    // Valid characters: only Numbers. 
+	  if( !regex.test(key) ) {
+	    theEvent.returnValue = false;
+	    if(theEvent.preventDefault) theEvent.preventDefault();
+	  }
+	}
 
 var listOrders1=${expensesList};
 

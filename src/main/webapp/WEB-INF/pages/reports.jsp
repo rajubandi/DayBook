@@ -76,7 +76,7 @@ table{
 												    <label  class="col-sm-4 control-label">From <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 														<input id="from"  name="from" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"   onfocus="removeBorder(this.id)" />
-														<span class="from_error" id="from_error"></span>
+														<span class="from_error" id="name_error"></span>
 													</div>
 											  	</div>
 											</div>
@@ -85,7 +85,7 @@ table{
 											    <label  class="col-sm-4 control-label">To <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
 													<input id="to" name="to" autocomplete="off" data-format="dd-MM-yyyy" placeholder="Date" class="form-control validate"  onchange="getDatabtwdates()" onfocus="removeBorder(this.id)" />
-													<span class="to_error" id="to_error"></span>
+													<span class="to_error" id="name_error"></span>
 												</div>
 										  	</div>
 										</div>
@@ -93,26 +93,28 @@ table{
 										  	<div class="form-group">
 											    <label  class="col-sm-4 control-label">Account Head <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-											    <form:select path="accountHead" name="accountHead" class="form-control "  onchange="getDatabtwdatesWithAccount()">
+											    <form:select path="accountHead" id="accountHead" name="accountHead" class="form-control "  onchange="getDatabtwdatesWithAccount()">
 															<form:option value="" >-- Choose Account Head --</form:option>
 															<form:options items="${accountHead}"></form:options>
 												</form:select>
+												<span class="accountHead_error" id="name_error"></span>
 												</div>
 											   
 										  	</div>
 										</div>
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  	<div class="form-group">
-							<label class="col-sm-4 control-label">Month</label>
+							<label class="col-sm-4 control-label">Month <span style="color: red;">*</span></label>
 							<div class="col-sm-8">
 				        		<input id="monthPicker" name="monthPicker" class="form-control "  onkeydown="removeBorder(this.id)"/>
+							    <span class="monthPicker_error" id="name_error"></span>
 							</div>
 						</div>
 					</div>
 										
 										<div class="col-sm-12">
 											<div class="col-sm-8 col-sm-offset-2">
-												<input type="button" id="ledgerBwDateSubmitId" value="Get Expenses" class="btn btn-success" onclick="searchData()"	/>
+												<input type="button" id="ledgerBwDateSubmitId" value="Get Expenses" class="btn btn-success"/>  <!-- onclick="searchData()" -->
 												<button type="button" class="btn btn-danger" id="cancel2"	>Cancel</button>
 											</div>
 										</div>

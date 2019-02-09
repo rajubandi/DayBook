@@ -30,12 +30,7 @@
 		<script src="js/datatables/buttons.print.min.js"></script>
 		
 		Custom Data tables
-		<script src="js/datatables/custom-datatables.js"></script> -->
-		
-		
-		
-		
-		
+		<script src="js/datatables/custom-datatables.js"></script> -->		
 		
 <script src="datatable/jquery.dataTables.min.js"></script>
 <script src="datatable/dataTables.buttons.min.js"></script>
@@ -45,7 +40,12 @@
 <script src="datatable/vfs_fonts.js"></script>
 <script src="datatable/buttons.html5.min.js"></script>
 <script src="datatable/buttons.print.min.js"></script>
-		
+
+<!--  USED URL FOR FIXED HEADER AND FOOTER
+https://datatables.net/extensions/fixedheader/examples/options/header_footer.html -->
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/fixedheader/3.1.5/css/fixedHeader.dataTables.min.css" rel="stylesheet"/>		
 		
 <script type="text/javascript">
 var isClick = 'Yes'; 
@@ -79,9 +79,10 @@ function activateAcademicYear(){
 	    	 "defaultContent": "",
 	    	 "defaultContent": "",
 	    	 aLengthMenu: [
-	    	         [25, 50, 100, 200, -1],
-	    	         [25, 50, 100, 200, "All"]
+	    	         [10, 25, 50, 100, 200, -1],
+	    	         [10, 25, 50, 100, 200, "All"]
 	    	     ],
+	    	     "pageLength": 10,
 	    	     iDisplayLength: -1,	
 	        dom: 'lBfrtip',
 	      
@@ -105,7 +106,12 @@ function activateAcademicYear(){
 	                columns: "thead th:not(.noExport)"
 	               
 	            }
-	        ]
+	        ],
+	        
+	        fixedHeader: {
+	            header: true,
+	            footer: true
+	        }
 	    
 	    } );
 		

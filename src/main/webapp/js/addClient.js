@@ -16,14 +16,14 @@ $(function(){
 				},
 				messages:
 				{
-					clientName: {required: 'clientName'},
-					phoneNumber: {required: 'phoneNumber'},
-					mail: {required: 'mail'},
+					clientName: {required: 'client Name'},
+					phoneNumber: {required: 'phone Number'},
+					mail: {required: 'email id'},
 					address: {required: 'address'},
-					fullamount: {required: 'fullamount'},
-					paidamount: {required: 'paidamount'},
-					createddate: {required: 'createddate'},
-					duedate: {required: 'duedate'},
+					fullamount: {required: 'full amount'},
+					paidamount: {required: 'paid amount'},
+					createddate: {required: 'created date'},
+					duedate: {required: 'due date'},
 				},
 				errorPlacement: function(error, element)
 				{
@@ -61,7 +61,7 @@ $(function(){
 				    $("#createddate").val('');
 				    $("#duedate").val('');
 				    $("#submitId").val("Submit");
-				    $("#headId").text("Client Account Creation");
+				    $("#headId").text("Add Client");
 				    $("#cls-form").addClass('form-horizontal');
 				  });
 
@@ -88,7 +88,6 @@ $(function(){
 		});	
 	
 });
-
 
 		function displayTable(listOrders) {
 				$("#basicExample tr td").remove();
@@ -138,20 +137,35 @@ $(function(){
 								});
 		}
 		
+		var paidAmoutClient;
+		
 		function editPack(id1) {
 			var ids= id1;
+			
+			$.ajax({
+				type : "POST",
+				url : "getPaidAmountData.json",
+				data : "clientid=" + id1,
+				async:false,
+				success : function(response) {	
+					
+					paidAmoutClient = response;					
+											
+				}
+			});			
+			
 			$("#cls-form").validate().resetForm();
 			$("#id").val(serviceUnitArray[ids].accountId);
 			$('#clientName').val(serviceUnitArray[ids].clientName);
 			$('#phoneNumber').val(serviceUnitArray[ids].phoneNumber);
 			$('#mail').val(serviceUnitArray[ids].mail);
 			$('#address').val(serviceUnitArray[ids].address);
-			$('#fullamount').val(serviceUnitArray[ids].fullamount);
-			$('#paidamount').val(serviceUnitArray[ids].paidamount);
+			$('#fullamount').val(serviceUnitArray[ids].fullamount);			
+			$('#paidamount').val(paidAmoutClient);
 			$('#createddate').val(serviceUnitArray[ids].createddate);
 			$('#duedate').val(serviceUnitArray[ids].duedate);
 			$("#submitId").val("Update");
-			$("#headId").text("Edit AccountHead");
+			$("#headId").text("Edit Client Details");
 		}
 		
 		
@@ -193,6 +207,29 @@ $(function(){
 			}else{
 			return false;
 			}
+		}
+		
+		// used URL: https://stackoverflow.com/questions/21203729/regular-expression-in-javascript-to-allow-only-numbers-with-optional-2-decimals
+		function validatenumber(evt) {
+			  var theEvent = evt || window.event;
+			  var key = theEvent.keyCode || theEvent.which;
+			  key = String.fromCharCode( key );
+			  var regex = /^[0-9]*$/;    // Valid characters: only Numbers. 
+			  if( !regex.test(key) ) {
+			    theEvent.returnValue = false;
+			    if(theEvent.preventDefault) theEvent.preventDefault();
+			  }
+			}
+		
+		function CheckNo(sender){
+		    if(!isNaN(sender.value)){		    	
+		    	var famnt = $("#fullamount").val();
+		        if(sender.value > famnt )
+		            sender.value = famnt;
+		        
+		    }else{
+		          sender.value = 0;
+		    }
 		}
 		
 function checkAmount(theForm) {				

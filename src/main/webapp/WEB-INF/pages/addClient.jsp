@@ -58,7 +58,7 @@
 																																	
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Client Name</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Client Name <span style="color: red;">*</span></label>
 											   <div class="col-sm-8">
 													<form:input path="clientName" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Client Name" required="true"/>
 													<span class="clientName_error" id="name_error"></span>
@@ -68,9 +68,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Phone Number</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Phone Number <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input path="phoneNumber" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Phone Number" required="true"/>
+													<form:input path="phoneNumber"  onKeyPress="validatenumber(event);" class="form-control" tabindex="1" placeholder="Phone Number" required="true"/>
 													<span class="phoneNumber_error" id="name_error"></span>
 												</div>
 											</div>
@@ -78,7 +78,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">email id</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">email id <span style="color: red;">*</span></label>
 											   <div class="col-sm-8">
 													<form:input path="mail" type="email" class="form-control" tabindex="1" placeholder="email id" required="true"/>
 													<span class="mail_error" id="name_error"></span>
@@ -88,7 +88,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Address</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Address <span style="color: red;">*</span></label>
 											   <div class="col-sm-8">
 													<form:input path="address" class="form-control" tabindex="1" placeholder="Address" required="true"/>
 													<span class="address_error" id="name_error"></span>
@@ -98,9 +98,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Full Amount <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input name="fullamount" path="fullamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
+													<form:input name="fullamount" path="fullamount" onKeyPress="validatenumber(event);" class="form-control" tabindex="1" placeholder="Full Amount" required="true"/>
 													<span class="fullamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -108,9 +108,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" onblur="CheckNo(this)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -118,9 +118,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  for="inputEmail3" class="col-sm-4 control-label">Created Date </label>
+											<label  for="inputEmail3" class="col-sm-4 control-label">Created Date <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
-											<form:input id="createddate" name="createddate" data-format="dd-MM-yyyy" type="text" path="createddate" autocomplete="off"  placeholder="CreatedDate" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
+											<form:input id="createddate" name="createddate" data-format="dd-MM-yyyy" type="text" path="createddate" autocomplete="off"  placeholder="Created Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
 											<span class="createddate_error" id="name_error"></span>
 											</div>
 											</div>
@@ -128,9 +128,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
-			     							<form:input id="duedate" style="display: none" name="duedate" data-format="dd-MM-yyyy" path="duedate" type="text" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
+			     							<form:input id="duedate" style="display: none" name="duedate" data-format="dd-MM-yyyy" path="duedate" type="text" autocomplete="off"  placeholder="Due Date" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
 											<span class="duedate_error" id="name_error"></span>
 											</div>
 											</div>

@@ -59,7 +59,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  for="inputEmail3" class="col-sm-4 control-label">Date </label>
+											<label  for="inputEmail3" class="col-sm-4 control-label">Date <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
 											<form:input id="date" name="date" data-format="dd-MM-yyyy" type="text" path="date" autocomplete="off"  placeholder="Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />
 											<span class="date_error" id="name_error"></span>
@@ -69,10 +69,10 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 										  	<div class="form-group">
-											<label  for="inputEmail3" class="col-sm-4 control-label">Client</label>
+											<label  for="inputEmail3" class="col-sm-4 control-label">Client <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
-											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()"> <!-- onchange="searchData()" -->
-											<form:option value="" >-- Choose Client --</form:option>
+											<form:select id="client" path="client" name="client" class="form-control" onchange="searchData()">
+											<form:option value="clnt" >-- Choose Client --</form:option>
 											<form:options items="${client}"></form:options>
 											</form:select>
 											<span class="client_error" id="name_error"></span>											
@@ -88,7 +88,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Description</label>
+											    <label for="inputEmail3" class="col-sm-4 control-label">Description <span style="color: red;">*</span></label>
 											   <div class="col-sm-8">
 													<form:input id="description" name="description" path="description" class="form-control nospecialCharacter onlyCharacters" tabindex="1" placeholder="Description" required="true"/>
 													<span class="description_error" id="name_error"></span>
@@ -98,9 +98,9 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											    <label for="inputEmail3" class="col-sm-4 control-label">Paid Amount</label>
+											    <label id="paidamntLabel" for="inputEmail3" class="col-sm-4 control-label">Paid Amount <span style="color: red;">*</span></label>
 											    <div class="col-sm-8">
-													<form:input id="paidamount" name="paidamount" path="paidamount" type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
+													<form:input id="paidamount" name="paidamount" path="paidamount" onKeyPress="validatenumber(event);" onblur="CheckNo(this)" class="form-control" tabindex="1" placeholder="Paid Amount" required="true"/>
 													<span class="paidamount_error" id="name_error"></span>
 												</div>
 											</div>
@@ -108,7 +108,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											<div class="form-group">
-											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate</label>
+											<label  id="endTimeLabel" style="display: none" for="inputEmail3" class="col-sm-4 control-label">DueDate <span style="color: red;">*</span></label>
 											<div class="col-sm-8">
 			     							<form:input id="duedate"  name="duedate" data-format="dd-MM-yyyy" style="display: none" path="duedate" type="text" autocomplete="off"  placeholder="DueDate" class="form-control" tabindex="1" onfocus="removeBorder(this.id)" />
 											</div>

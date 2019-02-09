@@ -57,7 +57,7 @@
 										
 										<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
-												    <label  for="inputEmail3" class="col-sm-4 control-label">From </label>
+												    <label  for="inputEmail3" class="col-sm-4 control-label">From <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 												        <form:input id="from" name="from" data-format="dd-MM-yyyy" type="text" path="from" autocomplete="off"  placeholder="From Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />														
 														<span class="from_error" id="from_error"></span>
@@ -67,7 +67,7 @@
 											
 											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 											  	<div class="form-group">
-												    <label  for="inputEmail3" class="col-sm-4 control-label">To </label>
+												    <label  for="inputEmail3" class="col-sm-4 control-label">To <span style="color: red;">*</span></label>
 												    <div class="col-sm-8">
 												    <form:input id="to" name="to" data-format="dd-MM-yyyy" type="text" path="to" autocomplete="off"  placeholder="To Date" class="form-control validate"  required="true" tabindex="1" onfocus="removeBorder(this.id)" />														
 													<span class="to_error" id="to_error"></span>
@@ -183,7 +183,7 @@ $(function () {
 			$("#stu_li ul li a[href='"+ getTabName +"']").addClass('subactive');
 			
 			$('#cancel').click(function () {
-				window.location.href = '?';
+				// window.location.href = '?'; i com
 			  	$("#dfc-form").validate().resetForm();
 			    $("#dfc-form").removeClass("has-error");
 			    $("#from").val('');

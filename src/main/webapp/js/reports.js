@@ -37,46 +37,49 @@ $(function(){
 		dateFormat : 'dd-MM-yy'
 	});
 	
-	
-	
-	   $(" #submitId").click(function(e){
+	$(" #ledgerBwDateSubmitId").click(function(e){
 		   
-	   var isValid= false;
-	   
-	    $("#ledger-form").validate({
-	    errorElement: 'span',
-	    errorClass: 'has-error',
-		rules:
-		{
-		    discription:{required: true},
-		    amount:{required: true},
-		    dairydate:{required: true},
+		   var isValid= false;
 		   
-	    },
-		messages:
-		{
-		    discription:{required: 'Discription'},
-		    amount:{required: 'Amount'},
-		    dairydate:{required: 'Select Date'},
-	    },
-	    errorPlacement: function(error, element){
-	      if(element.attr("name") == "discription")
-	        error.insertAfter(".discription_error").css("color", "red");
-	      else if(element.attr("name") == "amount")
-	        error.insertAfter(".amount_error").css("color", "red"); 
-	      
-	    
-	      else
-	        error.insertAfter(element);
-	      }
-    	
-	});
-	    if ( $("#ledger-form").valid() == true){
-	    	
-	    	return true;
-		}
-	    
-	   });
+		    $("#ledgerBwDate-form").validate({
+		    errorElement: 'span',
+		    errorClass: 'has-error',
+			rules:
+			{
+				from:{required: true},
+				to:{required: true},
+				accountHead:{required: true},
+				monthPicker:{required: true},
+			   
+		    },
+			messages:
+			{
+				from:{required: 'From Date'},
+				to:{required: 'To Date'},
+				accountHead:{required: 'Select Account Head'},
+				monthPicker:{required: 'Select Month Picker'},
+		    },
+		    errorPlacement: function(error, element){
+		      if(element.attr("name") == "from")
+		        error.insertAfter(".from_error").css("color", "red");
+		      else if(element.attr("name") == "to")
+		        error.insertAfter(".to_error").css("color", "red"); 
+		      else if(element.attr("name") == "accountHead")
+			        error.insertAfter(".accountHead_error").css("color", "red"); 
+		      else if(element.attr("name") == "monthPicker")
+			        error.insertAfter(".monthPicker_error").css("color", "red"); 		    
+		      else
+		        error.insertAfter(element);
+		      }
+	 	
+		});
+		    if ( $("#ledgerBwDate-form").valid() == true){
+		    	
+		    	return true;
+			}
+		    
+		   });		
+	
 	   
 	 //used url: https://jsfiddle.net/kidsysco/JeZap/
 	   $(document).ready(function() {
@@ -84,54 +87,7 @@ $(function(){
 		    $('#monthPicker').MonthPicker({Button: false,OnAfterChooseMonth: function() { 
 		    	searchData();
 		    }  });
-		});
-		
-	   
-	   
-	/*   $("#ledgerBwDateSubmitId").click(function(){
-			
-			 //Second form Validation
-			$("#ledgerBwDate-form").validate({
-			    	errorElement : 'span',
-					errorClass : 'has-error',
-					rules : {
-						 from:{required:true},
-						 to:{required:true},  
-						
-					},
-					messages : {
-						from:{required:'Select Date '},
-						to:{required:'Select Date'},
-						
-					},
-					errorPlacement: function(error, element){
-					      if(element.attr("name") == "from")
-					        error.insertAfter(".from_error").css("color", "red");
-					      else if(element.attr("name") == "to")
-					        error.insertAfter(".to_error").css("color", "red"); 
-					      					    
-					      else
-					        error.insertAfter(element);
-					      }
-				    	
-				});
-
-			
-		   // if ( $("#ledgerBwDate-form").valid() == true){
-				  
-			
-				
-			}else{
-				
-				return false;
-			}
-			
-		   });*/
-	   
-	   
-	  
-		    
-	 
+		});	 
 	  
 /*
 	$('#cancel').click(function () {
@@ -146,7 +102,7 @@ $(function(){
 	});*/
 	
 	$('#cancel2').click(function () {
-		window.location.href = '?';
+		//window.location.href = '?'; i com
 	  	$("#ledgerBwDate-form").validate().resetForm();
 	    $("#ledgerBwDate-form").removeClass("has-error");
 	    $("#from").val('');
@@ -156,8 +112,7 @@ $(function(){
 	    $("#monthPicker").val('');
 	    //$("#submitId").val("Submit");
 	    		
-	});
-	
+	});	
 
 });
 
@@ -165,7 +120,7 @@ function searchData(){
 	   
 	var  data = $('#ledgerBwDate-form').serialize();
 	//console.log(data);
-	var monthbox= $("#accountHead").val();
+	var monthbox= $("#monthPicker").val();
 	//var val23=$( "#monthPicker option:selected" ).val();
 	if(monthbox == ""){
 		
@@ -174,16 +129,14 @@ function searchData(){
 	 
 	 $.ajax({
 			type : "POST",
-			url : "reportsdailyExpensesBetweentwoDate.json",
+			url : "reportsdailyExpensesBetweentwoDateWithMonth.json",
 			data : data ,
 			async:false,
 			success : function(response) {
 				displayTableDayWiseExpenses(response);
 					
 					/*$('#todayFeeCollecitonDivId').hide();
-					$('#BetweenTwoDatesListId').show();*/
-					
-				
+					$('#BetweenTwoDatesListId').show();*/			
 			}
 			
 		});
@@ -193,8 +146,7 @@ function searchData(){
 function getDatabtwdates(){	
 	
 	var from = $("#from").val();
-	var to = $("#to").val();
-	
+	var to = $("#to").val();	
 	
 	if(to == ""){
 		
@@ -292,8 +244,8 @@ function getDatabtwdatesWithAccount(){
 			$(window).scrollTop($('#discription').offset().top);
 		} 
 	 	 */
-	 	function deleteExpense(id){
-				
+
+	 	function deleteExpense(id){				
 			
 				/* $('input[name=checkboxName]:checked').map(function() {
 					studentId.push($(this).val());
@@ -319,9 +271,7 @@ function getDatabtwdatesWithAccount(){
 				}else{
 				return false;
 				}
-			}	
-	 	
-	 	
+			}		 	
 	 	
 	 	function displayTableDayWiseExpenses(listOrders) {
 			if (listOrders != null) {
@@ -374,7 +324,9 @@ function getDatabtwdatesWithAccount(){
 			$(totalAmountRow).appendTo("#dayWiseExpenses");
 				*/
 				
-				 $("#monthlyExpensesTotal").text(TotalExpenses);
+				var totexpensewithsymbol = "र" +TotalExpenses ;
+				
+				 $("#monthlyExpensesTotal").text(totexpensewithsymbol);
 			/*var mon = listOrders[0].monthName
 		    $("#onDateExpensesHeading").text(mon +" Expenses ");*/
 
@@ -394,9 +346,7 @@ function getDatabtwdatesWithAccount(){
 				$("#onDateExpensesHeading").text(response[0].strDate);
 				
 					$('#todayFeeCollecitonDivId').hide();
-					$('#BetweenTwoDatesListId').show();
-					
-				
+					$('#BetweenTwoDatesListId').show();				
 			}
 			
 		});
@@ -412,10 +362,4 @@ function getDatabtwdatesWithAccount(){
 				{
 					$("#" +el+"_chosen").children('a').css('border-color','black');
 				}
-		}
-		
-		
-		
-		
-		
-		
+		}		
