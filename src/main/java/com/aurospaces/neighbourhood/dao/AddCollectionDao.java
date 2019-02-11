@@ -1,7 +1,6 @@
 package com.aurospaces.neighbourhood.dao;
 
     import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -146,8 +145,8 @@ import com.aurospaces.neighbourhood.db.callback.RowValueCallbackHandler;
 			return result;			
 		}
 		
-		public List<Map<String, String>> getPhoneNumberOfAdmin(){
-			
+		public List<Map<String, String>> getPhoneNumberOfAdmin(){			
+						
 			String admin = "admin";
 		    StringBuffer objStringBuffer = new StringBuffer();
 		    objStringBuffer.append("select mobile from users where name = '" +admin +"'");
