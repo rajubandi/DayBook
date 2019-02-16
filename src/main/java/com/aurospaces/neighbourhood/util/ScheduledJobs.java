@@ -1,7 +1,5 @@
 package com.aurospaces.neighbourhood.util;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -9,21 +7,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.aurospaces.neighbourhood.controller.JobsController;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Configuration
 @EnableScheduling
 public class ScheduledJobs {
 
 	@Autowired
-	JobsController jobsController;
-	
+	JobsController jobsController;	
 	
 	@Autowired
-	private Environment env;
-	
+	private Environment env;	
 	
 	@Scheduled(cron = "0 0 9 * * *") //daily at 9 am
 	public void accordingToDueDateSendMessage() {
@@ -33,17 +26,17 @@ public class ScheduledJobs {
 		
 	}
 	
-	//@Scheduled(cron = "0 0/15 6-16 * * *") //weekly, every monday at 12 am
+//@Scheduled(cron = "0 0/15 6-16 * * *") //weekly, every monday at 12 am
 //	@Scheduled(cron = "0 0/3 * * * *") //weekly, every monday at 12 am
 //	@Scheduled(cron = "0 0 13 * * TUE") //weekly, every monday at 12 am
-	@Scheduled(cron = "0 0 10 * * FRI") //weekly, every monday at 12 am
+	//@Scheduled(cron = "0 0 10 * * FRI") //weekly, every monday at 12 am
 //	@Scheduled(cron = "0 0/15 * * * *") //weekly, every monday at 12 am
-	 public void sendWeeklyMatches(){
-		System.out.println("#########  sendWeeklyMatches ###########");
-	jobsController.weeklyMatchEmails();
-	 }
+	// public void sendWeeklyMatches(){
+//		System.out.println("#########  sendWeeklyMatches ###########");
+//	jobsController.weeklyMatchEmails();
+// }
 	
-	@Scheduled(cron = "0 0/5 * * * *") //daily at 12 am
+	/*@Scheduled(cron = "0 0/5 * * * *") //daily at 12 am
 //	@Scheduled(cron = "0 0 14 * * *") //daily at 12 am
 	 public void sendEmails(){
 		System.out.println("#########  sendEmails ###########");
@@ -71,5 +64,5 @@ public class ScheduledJobs {
 	 public void rotateEmployeesProfilesSlot(){
 		System.out.println("#########  rotateEmployeesProfilesSlot ###########");
 		jobsController.rotateEmployeesProfilesSlot();
-	 }
+	 }*/
 }

@@ -222,13 +222,24 @@ $(function(){
 			}
 		
 		function CheckNo(sender){
+			
 		    if(!isNaN(sender.value)){		    	
 		    	var famnt = $("#fullamount").val();
-		        if(sender.value > famnt )
-		            sender.value = famnt;
+		    	
+		        if(sender.value > famnt )	{	
+		        	document.getElementById('duedate').style.display="none" ;
+    		        document.getElementById("endTimeLabel").style.display = 'none';    		       
+		            sender.value = famnt;		            
+		            
+		        }else{		        	
+		        	document.getElementById('duedate').style.display="block" ;
+	    		    document.getElementById("endTimeLabel").style.display = 'block';		        	
+		        }
 		        
 		    }else{
-		          sender.value = 0;
+		    	 
+		         sender.value = 0;
+		         
 		    }
 		}
 		
@@ -243,8 +254,8 @@ function checkAmount(theForm) {
 		    	} 
 		        else if ((theForm.fullamount.value != theForm.paidamount.value)&&(!Date.parse(valueDate))) {
 		    	  //  block of code to be executed if the condition1 is false and condition2 is true
-		    		document.getElementById('duedate').style.display="block" ;
-		    		document.getElementById("endTimeLabel").style.display = 'block';
+		    		/*document.getElementById('duedate').style.display="block" ;
+		    		document.getElementById("endTimeLabel").style.display = 'block';*/
 		    		return false;
 		    	} 
 		    	else if ((theForm.fullamount.value != theForm.paidamount.value)&&(Date.parse(valueDate))) {

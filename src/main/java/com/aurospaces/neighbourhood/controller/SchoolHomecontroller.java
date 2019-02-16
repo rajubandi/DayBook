@@ -1,14 +1,9 @@
 package com.aurospaces.neighbourhood.controller;
 
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -24,21 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.poi.util.SystemOutLogger;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
-import org.quartz.DateBuilder;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
@@ -58,7 +39,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Controller
-public class SchoolHomecontroller implements Job{
+public class SchoolHomecontroller {
 	
 	Logger log = Logger.getLogger(SchoolHomecontroller.class);
 	@Autowired ServletContext objContext;
@@ -68,8 +49,8 @@ public class SchoolHomecontroller implements Job{
 	@Autowired StudentDao studentDao;
 	@Autowired AddCollectionDao addAccountHeadDao;
 	@Autowired SendSMS sendSMS;
-	static Map< String,String> hm8 =  new HashMap< String,String>();
-	static String phnumber;
+	//static Map< String,String> hm8 =  new HashMap< String,String>();
+	//static String phnumber;
 	
 	private Logger logger = Logger.getLogger(SchoolHomecontroller.class);
 	
@@ -202,17 +183,19 @@ e.printStackTrace();
 	@RequestMapping(value = "/dashBoard")
 	public String dashBoard(ModelMap model,HttpServletRequest request,HttpSession session) throws JsonGenerationException, JsonMappingException, IOException {
 		System.out.println("alumini page...");
-		List<Map<String, String>> listOrderBeansClientid = null;
-		List<Map<String, String>> listOrderBeansClientName = null;
 		List<Map<String, Object>> feesAndExpenses = null;
 		List<Map<String, Object>> expensessummary = null;
+		ObjectMapper objectMapper = null;
+		String sJson = null;
+		
+		/*List<Map<String, String>> listOrderBeansClientid = null;
+		List<Map<String, String>> listOrderBeansClientName = null;
+		
 		List<Map<String, String>> listOrderBeansFullamt = null;
 		List<Map<String, String>> listOrderBeansPaidamt = null;	
 		List<Map<String, String>> listOrderBeansPhoneNumber = null;
-		List<Map<String, String>> listOrderBeansadminphone = null;
+		List<Map<String, String>> listOrderBeansadminphone = null;		
 		
-		ObjectMapper objectMapper = null;
-		String sJson = null;
 		String year="";
 		String mon="";
 		String day="";	
@@ -221,14 +204,14 @@ e.printStackTrace();
 		
 		ArrayList al = new ArrayList();
 		//ArrayList al2 = new ArrayList();
+		
 		Map< Integer,String> hm =  new HashMap< Integer,String>();
 		Map< Integer,Integer> hm2 =  new HashMap< Integer,Integer>();
 		Map< Integer,Integer> hm3 =  new HashMap< Integer,Integer>();
 		Map< Integer,Integer> hm4 =  new HashMap< Integer,Integer>();
 		Map< Integer,Object> hm5 =  new HashMap< Integer,Object>();
 		Map< Integer,String> hm6 =  new HashMap< Integer,String>();
-		Map< String,String> hm7 =  new HashMap< String,String>();
-		
+		Map< String,String> hm7 =  new HashMap< String,String>();		
 		
 		List<Map<String, String>> listOrderBeansduedate = null;		
 		listOrderBeansduedate = addAccountHeadDao.getDueDate();		
@@ -236,8 +219,7 @@ e.printStackTrace();
 		
 		String ggg ="";
 		int id = 0;
-		int dueamt=0 ;
-		
+		int dueamt=0 ;		
 		
 		for (Iterator iterator = listOrderBeansduedate.iterator(); iterator.hasNext();) {
 			Map<String, String> map = (Map<String, String>) iterator.next();				
@@ -419,8 +401,8 @@ for(Object obj : al) {
 		            if (me5.getKey() == me6.getKey()) {	            	
 		            	
 		            	hm7.put(me6.getValue(), (String)me5.getValue());
-		            	/*sendSMS.sendSMS(" Message from Schedule task of DayBook project","9676944419");
-		            	sendSMS.sendSMS((String)me5.getValue(),me6.getValue());*/
+		            	sendSMS.sendSMS(" Message from Schedule task of DayBook project","9676944419");
+		            	sendSMS.sendSMS((String)me5.getValue(),me6.getValue());
 					}
 		        }     	
 		        
@@ -449,6 +431,7 @@ for(Object obj : al) {
 		phnumber = mobile;		
 	}
 		System.out.println("Phone number in dashboard: " +phnumber); 
+		
 // used URL: http://java.candidjava.com/tutorial/Quartz-Scheduer-Cron-Trigger-example-using-java.htm
 try {
 	
@@ -489,7 +472,8 @@ try {
 			se.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
+				
 		
 		/*Integer academicYearId = addAcademicYearDao.getActiveAcademicYearId();
 		session.setAttribute("activeAcademicYearId", academicYearId);*/
@@ -680,7 +664,7 @@ public @ResponseBody String adminoldPasswordCheck(ModelMap model,HttpServletRequ
 	return "redirect:adminChangePasswordHome";
 }
 
-@Override
+/*@Override
 public void execute(JobExecutionContext context) throws JobExecutionException {
 	// TODO Auto-generated method stub
 	System.out.println("Trigger Starts in SchoolHomeController.. "+new Date());
@@ -702,6 +686,7 @@ public void execute(JobExecutionContext context) throws JobExecutionException {
 	            sms.sendSMS((String)me.getValue(),me.getKey());
 				
 	        }		 		
-	 }	
-}
+	 }
+}*/
+
 }

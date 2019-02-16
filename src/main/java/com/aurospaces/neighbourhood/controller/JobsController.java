@@ -1,16 +1,28 @@
 package com.aurospaces.neighbourhood.controller;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.aurospaces.neighbourhood.dao.AddClientsDao;
+import com.aurospaces.neighbourhood.dao.AddCollectionDao;
+import com.aurospaces.neighbourhood.util.SendSMS;
 
 @Controller
 public class JobsController {
 	private Logger logger = Logger.getLogger(JobsController.class);
 	
-	@Autowired AddClientsDao addAccountHeadDao;
+	//@Autowired AddClientsDao addAccountHeadDao;
+	@Autowired AddCollectionDao addAccountHeadDao;
+	static Map< String,String> hm8 =  new HashMap< String,String>();
+	static String phnumber;
+	
 	//@Autowired
 	//UsersDao objUsersDao;
 	/*@Autowired UserrequirementDao objUserrequirementDao;
@@ -139,7 +151,7 @@ public class JobsController {
 	   
 	   
 	    /*
-	    
+	     * 	    
 	   @RequestMapping(value="/createActivityLogDataForOldReqs")
 	   public String createActivityLogDataForOldReqs(HttpSession session,HttpServletRequest request){
 		   try{
@@ -228,18 +240,228 @@ public class JobsController {
 		   return "";
 	   }
 	   */
+	   
 	   //@RequestMapping(value="/sendEmails")
 	   public String sendEmails(){
 		  // EmailUtil.sendEmails(objContext,objUsersDao);
 		   return "";
 	   }
 
+	   public void accordingToDueDateSendMessage() {
+		   
+		    List<Map<String, String>> listOrderBeansClientid = null;
+			List<Map<String, String>> listOrderBeansClientName = null;			
+			List<Map<String, String>> listOrderBeansFullamt = null;
+			List<Map<String, String>> listOrderBeansPaidamt = null;	
+			List<Map<String, String>> listOrderBeansPhoneNumber = null;
+			List<Map<String, String>> listOrderBeansadminphone = null;			
+			
+			
+			ArrayList al = new ArrayList();			
+		    Map< Integer,String> hm =  new HashMap< Integer,String>();
+			Map< Integer,Integer> hm2 =  new HashMap< Integer,Integer>();
+			Map< Integer,Integer> hm3 =  new HashMap< Integer,Integer>();
+			Map< Integer,Integer> hm4 =  new HashMap< Integer,Integer>();
+			Map< Integer,Object> hm5 =  new HashMap< Integer,Object>();
+			Map< Integer,String> hm6 =  new HashMap< Integer,String>();
+			Map< String,String> hm7 =  new HashMap< String,String>();
+			
+			
+			List<Map<String, String>> listOrderBeansduedate = null;		
+			listOrderBeansduedate = addAccountHeadDao.getDueDate();		
+			System.out.println("duedate from collections: " +listOrderBeansduedate);		
+			
+			String ggg ="";
+			int id = 0;
+			int dueamt=0 ;		
 
-	public void accordingToDueDateSendMessage() {
-
-		
-		
+			listOrderBeansClientid = addAccountHeadDao.getClientIdBasedOnDuedate();		
+			System.out.println("clientId from collections: " +listOrderBeansClientid);		
+			
+			String clntId ="";
+			String clntName ="";		
+			
+			for (Iterator iterator = listOrderBeansClientid.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();				
+				clntId = map.get("clntid");	
+				System.out.println("ClientId: " +clntId);			
+				
+				al.add(clntId);
+			}
+			
+			System.out.println("clientId ArrayList : " +al);
+			
+			for(Object obj : al) {
+				
+				String ss = (String)obj;			
+				id = Integer.parseInt(ss);				
+			
+				if (id!=0) {
+					listOrderBeansClientName = addAccountHeadDao.getClientName(id);
+				
+					
+			System.out.println("clientName from collections: " +listOrderBeansClientName);			
+			
+			for (Iterator iterator = listOrderBeansClientName.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();				
+				clntName = map.get("client");	
+				
+				hm.put(id, clntName);							
+			}	
+				}
+				
+			}
+			
+			System.out.println("clientName Details Map : " +hm);
+			
+			for(Object obj : al) {
+				
+				String ss = (String)obj;			
+				id = Integer.parseInt(ss);
+			if (id!=0) {
+			listOrderBeansFullamt = addAccountHeadDao.getFullAmount(id);
+			
+			System.out.println("Full amount from clients after getting ID: " +listOrderBeansFullamt);
+			
+			int fullamt=0 ;
+			
+			for (Iterator iterator = listOrderBeansFullamt.iterator(); iterator.hasNext();) {
+				Map<String, String> map = (Map<String, String>) iterator.next();					
+				String famt = map.get("fullamount");					 
+				fullamt = Integer.parseInt(famt);
+				hm2.put(id, fullamt);				
+			}
+			}
 	}
+			System.out.println("client FullAmount Details Map : " +hm2);
+			
+	for(Object obj : al) {
+				
+				String ss = (String)obj;			
+				id = Integer.parseInt(ss);
+			if (id!=0) {
+				listOrderBeansPaidamt = addAccountHeadDao.getPaidAmount(id);
+				
+				System.out.println("Paid amount from clients: " +listOrderBeansPaidamt);				
+				int paidamt=0 ;				
+				
+				for (Iterator iterator = listOrderBeansPaidamt.iterator(); iterator.hasNext();) {
+					Map<String, String> map = (Map<String, String>) iterator.next();
+					//System.out.println("In for loop: " +map.get("paidamount"));	
+					String pamt = map.get("paidamount");					 
+					paidamt = Integer.parseInt(pamt);
+					hm3.put(id, paidamt);
+				}
+				
+				listOrderBeansPhoneNumber = addAccountHeadDao.getPhoneNumber(id);				
+				System.out.println("PhoneNumber from clients: " +listOrderBeansPhoneNumber);			
+				
+				for (Iterator iterator = listOrderBeansPhoneNumber.iterator(); iterator.hasNext();) {
+					Map<String, String> map = (Map<String, String>) iterator.next();						
+					String pno = map.get("phoneNumber");					
+					hm6.put(id, pno);
+				}
+				
+				
+				
+				// Returns Set view      
+				Set< Map.Entry< Integer,String> > st = hm.entrySet();
+			    Set< Map.Entry< Integer,Integer> > st2 = hm2.entrySet();    
+			    Set< Map.Entry< Integer,Integer> > st3 = hm3.entrySet();
+			    Set< Map.Entry< Integer,Integer> > st4 = hm4.entrySet();
+
+			    for (Map.Entry< Integer,Integer> me:st2) 
+			    { 		    	
+			    	for (Map.Entry< Integer,Integer> me2:st3) 
+			        { 	      		            
+			            if (me.getKey() == me2.getKey()) {
+			            	dueamt = me.getValue() - me2.getValue();
+			            	hm4.put(id, dueamt);						
+						}
+			        }     	
+			        
+			    } 	
+			    
+			    for (Map.Entry< Integer,String> me:st) 
+			    { 		    	
+			    	for (Map.Entry< Integer,Integer> me2:st2) 
+			        { 	
+			    		for (Map.Entry< Integer,Integer> me3:st3) 		        
+				    { 		    	
+				    	for (Map.Entry< Integer,Integer> me4:st4) 
+				        { 	
+				    		if ((me.getKey() == me2.getKey()) == (me3.getKey() == me4.getKey())) {
+				            	
+				    			String details =  "Name: " +me.getValue() + " FullAmount: " + me2.getValue() + " PaidAmount: " +me3.getValue() + " DueAmount: " +me4.getValue();
+				            	hm5.put(id, details);						
+							}
+			    
+				        }
+				    }
+			        }
+			    }
+			    
+			    Set< Map.Entry< Integer,Object> > st5 = hm5.entrySet();
+			    Set< Map.Entry< Integer,String> > st6 = hm6.entrySet();
+			    
+			    for (Map.Entry< Integer,Object> me5:st5) 
+			    { 		    	
+			    	for (Map.Entry< Integer,String> me6:st6) 
+			        { 	      		            
+			            if (me5.getKey() == me6.getKey()) {	            	
+			            	
+			            	hm7.put(me6.getValue(), (String)me5.getValue());			            	
+						}
+			        }     	
+			        
+			    } 	
+			    
+			    
+			    
+				
+			}
+	}
+		System.out.println("client PaidAmount Details Map : " +hm3);
+		System.out.println("client DueAmount Details Map : " +hm4);
+		System.out.println("client Phone Details Map : " +hm6);
+		System.out.println("client Full Details Map : " +hm5);
+		System.out.println("client Phone & Full Details Map : " +hm7);
+		hm8=hm7;
+		System.out.println("hm8 while assigned to hm7  : " +hm8);	
+		
+		listOrderBeansadminphone = addAccountHeadDao.getPhoneNumberOfAdmin();
+		
+		System.out.println("Phone number of ADMIN: " +listOrderBeansadminphone);	
+		
+		for (Iterator iterator = listOrderBeansadminphone.iterator(); iterator.hasNext();) {
+			Map<String, String> map = (Map<String, String>) iterator.next();
+			String mobile = map.get("mobile");	
+			phnumber = mobile;		
+		}
+			System.out.println("Phone number in dashboard: " +phnumber); 
+			
+			System.out.println("Trigger Starts in JobController.. "+new Date());
+			System.out.println("hm8 value after triggerstarts : " +hm8);
+			System.out.println("Phone number after triggerstarts: " +phnumber);	
+				
+			SendSMS sms = new SendSMS();	
+				 
+			 if (hm8!=null) {		 
+				 
+			        Set<Map.Entry<String,String>> set1 = hm8.entrySet(); 	        
+			        
+			        for (Map.Entry<String,String> me : set1) 
+			        {
+			            System.out.print(me.getKey() + ": ");
+			            System.out.println(me.getValue());
+			            
+			            sms.sendSMS((String)me.getValue(),phnumber);
+			            sms.sendSMS((String)me.getValue(),me.getKey());
+						
+			        }		 		
+			 }			
+		
+	   }
 	   
 	   /*****     back-end jobs   end        ********/
 }
